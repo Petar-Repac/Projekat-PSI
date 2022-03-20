@@ -1,0 +1,118 @@
+:root {
+  --color-paper: #f3f2fc;
+  --color-body: rgb(39, 39, 39);
+  --body-font: sans-serif;
+  --page-margin: 15mm 30mm;
+  --font-size: 10pt;
+  --line-height: 1.3;
+
+  --color-primary: #ff1a87;
+  --color-link: #00e;
+}
+
+a:not(:visited) {
+  color: var(--color-link);
+}
+
+h1 {
+  text-align: center;
+  color: var(--color-body);
+  font-size: 1em;
+}
+
+h2 {
+  font-size: 1.1em;
+  color: var(--color-primary);
+  margin-bottom: 1.5em;
+}
+
+h3 {
+  color: var(--color-body);
+  border-top: 1px solid black;
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+
+.page {
+  position: relative;
+  counter-increment: page;
+}
+
+.page::after {
+  content: counter(page);
+  position: absolute;
+  left: 50%;
+  bottom: 2cm;
+}
+
+.toc {
+  line-height: 1.5;
+}
+
+.condition,
+.effect {
+  padding: 0.5em 0.5em;
+  margin-bottom: 1em;
+  border-radius: 5px;
+  border: 1px solid var(--color-body);
+}
+
+.condition {
+  background-color: rgb(211, 255, 211);
+}
+
+.effect {
+  background-color: rgb(188, 188, 255);
+}
+
+.condition::before {
+  content: "Preduslov: ";
+  font-style: italic;
+}
+
+.effect::before {
+  content: "Posledica: ";
+  font-style: italic;
+}
+
+.center {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.first-page h1 {
+  font-size: 2.25em;
+}
+
+.first-page h2 {
+  color: var(--body-font);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead,
+tbody {
+  border: 1px solid black;
+}
+
+thead {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+tbody {
+  background-color: white;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 0.25em;
+}

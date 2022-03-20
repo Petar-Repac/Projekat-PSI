@@ -1,0 +1,44 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+}
+
+body {
+  background-color: gray;
+  width: 21cm;
+}
+
+.page {
+  background-color: var(--color-paper);
+  color: var(--color-body);
+  font-family: var(--body-font);
+  width: 21cm;
+  height: 29.7cm;
+  padding: var(--page-margin);
+}
+
+@media screen {
+  .page + .page {
+    margin-top: 1cm;
+  }
+
+  body {
+    margin: 2cm auto;
+  }
+}
+
+@media print {
+  a:visited {
+    color: var(--color-link);
+  }
+
+  body {
+    color-adjust: exact;
+  }
+}
