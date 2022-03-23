@@ -63,13 +63,9 @@
     document.getElementById("form").addEventListener("submit", e => {
       e.preventDefault();
       const username = document.getElementById("username").value;
-      const res = Auth.register(username);
+      const password = document.getElementById("password").value;
+      const res = Auth.register(username, password);
       alert(res ? "Uspešna registracija!" : "Korisnik već postoji.");
-    });
-
-    document.getElementById("odjavi-se").addEventListener("click", e => {
-      Auth.logOut();
-      location.reload();
     });
   </script>
 </body>

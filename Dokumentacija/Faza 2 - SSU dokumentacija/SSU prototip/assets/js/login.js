@@ -12,35 +12,58 @@
     return { username, password, role };
   }
 
-  const users = [
+  const Storage = {
+    get(key, fallback = null) {
+      const val = sessionStorage.getItem(key);
+      return val === null ? fallback : JSON.parse(val);
+    },
+
+    set(key, value) {
+      sessionStorage.setItem(key, JSON.stringify(value));
+    },
+
+    remove(key) {
+      sessionStorage.removeItem(key);
+    },
+  };
+
+  const defaultUsers = [
     user("User", "123", Role.user),
     user("Mod", "456", Role.mod),
     user("Admin", "789", Role.admin),
   ];
 
+  const users = Storage.get("users", defaultUsers);
+
   const Auth = {
     getLoggedInUser() {
-      const user = sessionStorage.getItem("user");
-      return user && JSON.parse(user);
+      return Storage.get("user");
     },
 
-    register(username) {
-      const user = users.find(x => x.username === username);
-      return !user;
+    register(username, password) {
+      if (users.find(x => x.username === username)) {
+        return null;
+      }
+
+      const newUser = user(username, password, Role.user);
+      users.push(newUser);
+      Storage.set("users", users);
+      Auth.logIn(username, password);
+      return newUser;
     },
 
     logIn(username, password) {
       const user = users.find(x => x.username === username);
       if (!user || user.password !== password) {
-        return false;
+        return null;
       }
 
-      sessionStorage.setItem("user", JSON.stringify(user));
-      return true;
+      Storage.set("user", user);
+      return user;
     },
 
     logOut() {
-      sessionStorage.removeItem("user");
+      Storage.remove("user");
     },
   };
 
@@ -66,6 +89,12 @@
       .join("\n");
 
     document.head.appendChild(banStyle);
+
+    if (user) {
+      document
+        .querySelectorAll("._username")
+        .forEach(x => (x.textContent = user.username));
+    }
   }
 
   window.Auth = Auth;
