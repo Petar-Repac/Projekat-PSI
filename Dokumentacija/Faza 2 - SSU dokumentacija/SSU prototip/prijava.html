@@ -1,0 +1,82 @@
+<!-- Autor: Vukašin Stepanović -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Prijavi se</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body class="is-preload">
+
+  <header id="header">
+    <a class="logo" href="index.html">TOBAGO</a>
+    <nav id="nav">
+      <ul>
+        <li><a href="registracija.html">Registracija</a></li>
+        <li class="current"><a href="prijava.html">Prijava</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="main" class="wrapper">
+    <div class="inner" style="max-width: 30em">
+      <h3>Prijava</h3>
+      <form id="form">
+        <div class="row gtr-uniform">
+          <div class="col-12">
+            <input type="text" name="username" required autocomplete="off" id="username" value=""
+              placeholder="Korisničko ime" />
+          </div>
+          <div class="col-12">
+            <input type="password" name="password" required id="password" value="" placeholder="Lozinka" />
+          </div>
+
+          <div class="col-12">
+            <ul class="actions">
+              <li>
+                <button type="submit" class="primary">Prijavi se</button>
+              </li>
+              <li>
+                <button id="odjavi-se" class="user">Odjavi se</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.dropotron.min.js"></script>
+  <script src="assets/js/jquery.scrollex.min.js"></script>
+  <script src="assets/js/jquery.scrolly.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script src="assets/js/login.js"></script>
+  <script>
+    document.getElementById("form").addEventListener("submit", e => {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const res = Auth.logIn(username, password);
+      alert(res ? "Uspešno prijavljen!" : "Netačno korisničko ime/lozinka.");
+      location.reload();
+    });
+
+    document.getElementById("odjavi-se").addEventListener("click", () => {
+      Auth.logOut();
+      location.reload();
+    });
+  </script>
+</body>
+
+</html>
