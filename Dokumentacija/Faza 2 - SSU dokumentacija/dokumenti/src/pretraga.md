@@ -47,7 +47,7 @@ Verzija: 1.0
 
 ## Rezime
 
-Akcije vezane za postavljanje komentara na definiciju.
+Akcije vezane za pretragu definicija.
 
 ## Namena dokumenta i ciljne grupe
 
@@ -63,11 +63,11 @@ Nema
 
 ===
 
-# Scenario pristupa stranici sa formom za pisanje definicije
+# Scenario pretrage definicija po različitim kriterijumima
 
 ## Kratak opis
 
-Svi korisnici na platformi imaju mogućnost pretrage definicija na stranicama "Dvorana slavnih" (definicije koje su prošle eliminaciju) i "Čistilište" (definicije koje nisu prošle eliminaciju) po sledećim kriterijumima:
+Svi korisnici na platformi imaju mogućnost pretrage definicija na stranicama "Dvorana slavnih" (definicije koje su prošle eliminaciju) i "Čistilište" (definicije koje su kandidati za "Dvoranu slavnih") po sledećim kriterijumima:
 
 - Najbolje
 - Najgore

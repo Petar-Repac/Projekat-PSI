@@ -63,7 +63,7 @@ Nema
 
 ===
 
-# Scenario pristupa stranici sa formom za pisanje definicije
+# Scenario postavljanja komentara na definiciju
 
 ## Kratak opis
 
@@ -76,7 +76,7 @@ Autorizovani korisnici (standardni korisnik, moderator i administrator) imaju pr
 1. Korisnik klikom na link otvara stranicu definicije.
 2. Korisnik u odeljku "Komentari" klikne na dugme "Komentariši".
 3. Korisnik popunjava polje za komentar i klikne na dugme "Postavi".
-4. Komentar se prikazuje u odeljku "Komentari" date definicije 
+4. Komentar se prikazuje u odeljku "Komentari" date definicije. 
 
 <div class="condition">Korisnik je prijavljen na platformi.</div> 
 

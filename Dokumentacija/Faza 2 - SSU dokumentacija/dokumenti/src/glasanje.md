@@ -48,7 +48,7 @@ Verzija: 1.0
 
 ## Rezime
 
-Akcije vezane za postavljanje komentara na definiciju.
+Akcije vezane za glasanje na platformi
 
 ## Namena dokumenta i ciljne grupe
 
@@ -64,7 +64,7 @@ Nema
 
 ===
 
-# Scenario pristupa stranici sa formom za pisanje definicije
+# Scenario postavljanja glasa na definiciju
 
 ## Kratak opis
 
@@ -78,7 +78,7 @@ Autorizovani korisnici (standardni korisnik, moderator i administrator) imaju pr
 2. Broj odgovarajućih glasova na datoj definiciji se uvećava za 1.
 
 <div class="condition">Korisnik je prijavljen na platformi.</div> 
-<div class="condition">Korisnik nema postavljen glas na datoj definiciji</div> 
+<div class="condition">Korisnik nema postavljen glas na datoj definiciji.</div> 
 
 ### Korisnik uklanja glas sa definicije
 
@@ -86,7 +86,7 @@ Autorizovani korisnici (standardni korisnik, moderator i administrator) imaju pr
 2. Broj odgovarajućih glasova na datoj definiciji se umanjuje za 1.
 
 <div class="condition">Korisnik je prijavljen na platformi.</div> 
-<div class="condition">Korisnik ima postavljen glas na datoj definiciji</div> 
+<div class="condition">Korisnik ima postavljen glas na datoj definiciji./div> 
 
 ### Korisnik menja glas na definiciji
 
@@ -94,7 +94,7 @@ Autorizovani korisnici (standardni korisnik, moderator i administrator) imaju pr
 2. Broj odgovarajućih glasova na datoj definiciji se umanjuje za 1, a drugih uvećava za 1.
 
 <div class="condition">Korisnik je prijavljen na platformi.</div> 
-<div class="condition">Korisnik ima postavljen glas na datoj definiciji</div> 
+<div class="condition">Korisnik ima postavljen glas na datoj definiciji.</div> 
 
 
 ### Gost pokušava da glasa na definiciji

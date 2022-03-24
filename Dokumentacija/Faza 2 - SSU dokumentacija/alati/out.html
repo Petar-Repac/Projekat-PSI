@@ -12,7 +12,7 @@
   <body>
     <div class="page"><header class="first-page center">
 <h1><a href="#specifikacija-scenarija-upotrebe" aria-hidden="true" class="anchor" id="specifikacija-scenarija-upotrebe"></a>Specifikacija scenarija upotrebe</h1>
-<h2><a href="#glasanje-za-definicije" aria-hidden="true" class="anchor" id="glasanje-za-definicije"></a>Glasanje za definicije</h2>
+<h2><a href="#pretraga-definicija-na-platformi" aria-hidden="true" class="anchor" id="pretraga-definicija-na-platformi"></a>Pretraga definicija na platformi</h2>
 <p>Autor: Petar Repac</p>
 <p>Verzija: 1.0</p>
 </header>
@@ -58,13 +58,12 @@
 <li><a href="#kratak-opis">Kratak opis</a></li>
 <li><a href="#tok-doga%C4%91aja">Tok događaja</a>
 <ul>
-<li><a href="#korisnik-postavlja-glas-na-definiciju">Korisnik postavlja glas na definiciju</a></li>
-<li><a href="#korisnik-uklanja-glas-sa-definicije">Korisnik uklanja glas sa definicije</a></li>
-<li><a href="#korisnik-menja-glas-na-definiciji">Korisnik menja glas na definiciji</a></li>
-<li><a href="#gost-poku%C5%A1ava-da-glasa-na-definiciji">Gost pokušava da glasa na definiciji</a></li>
+<li><a href="#korisnik-vr%C5%A1i-pretragu-po-kriterijumu-najbolje">Korisnik vrši pretragu po kriterijumu &quot;Najbolje&quot;</a></li>
+<li><a href="#korisnik-vr%C5%A1i-pretragu-po-kriterijumu-najgore">Korisnik vrši pretragu po kriterijumu &quot;Najgore&quot;</a></li>
+<li><a href="#korisnik-vr%C5%A1i-pretragu-po-kriterijumu-kontroverzne">Korisnik vrši pretragu po kriterijumu &quot;Kontroverzne&quot;</a></li>
+<li><a href="#korisnik-vr%C5%A1i-pretragu-po-klju%C4%8Dnoj-re%C4%8Di">Korisnik vrši pretragu po ključnoj reči</a></li>
 </ul>
 </li>
-<li><a href="#posebni-zahtevi">Posebni zahtevi</a></li>
 </ul>
 </li>
 </ul>
@@ -74,7 +73,7 @@
 <div class="page">
 <h1><a href="#uvod" aria-hidden="true" class="anchor" id="uvod"></a>Uvod</h1>
 <h2><a href="#rezime" aria-hidden="true" class="anchor" id="rezime"></a>Rezime</h2>
-<p>Akcije vezane za postavljanje komentara na definiciju.</p>
+<p>Akcije vezane za pretragu definicija.</p>
 <h2><a href="#namena-dokumenta-i-ciljne-grupe" aria-hidden="true" class="anchor" id="namena-dokumenta-i-ciljne-grupe"></a>Namena dokumenta i ciljne grupe</h2>
 <p>Dokument služi članovima tima kao pomoć u izradi projekta.</p>
 <h2><a href="#reference" aria-hidden="true" class="anchor" id="reference"></a>Reference</h2>
@@ -86,35 +85,35 @@
 </div>
 
 <div class="page">
-<h1><a href="#scenario-pristupa-stranici-sa-formom-za-pisanje-definicije" aria-hidden="true" class="anchor" id="scenario-pristupa-stranici-sa-formom-za-pisanje-definicije"></a>Scenario pristupa stranici sa formom za pisanje definicije</h1>
+<h1><a href="#scenario-pretrage-definicija-po-različitim-kriterijumima" aria-hidden="true" class="anchor" id="scenario-pretrage-definicija-po-različitim-kriterijumima"></a>Scenario pretrage definicija po različitim kriterijumima</h1>
 <h2><a href="#kratak-opis" aria-hidden="true" class="anchor" id="kratak-opis"></a>Kratak opis</h2>
-<p>Autorizovani korisnici (standardni korisnik, moderator i administrator) imaju pravo glasanja na definicijama (lajk: + | dislajk: - ).</p>
+<p>Svi korisnici na platformi imaju mogućnost pretrage definicija na stranicama &quot;Dvorana slavnih&quot; (definicije koje su prošle eliminaciju) i &quot;Čistilište&quot; (definicije koje su kandidati za &quot;Dvoranu slavnih&quot;) po sledećim kriterijumima:</p>
+<ul>
+<li>Najbolje</li>
+<li>Najgore</li>
+<li>Kontroverzne</li>
+<li>Po ključnoj reči</li>
+</ul>
 <h2><a href="#tok-događaja" aria-hidden="true" class="anchor" id="tok-događaja"></a>Tok događaja</h2>
-<h3><a href="#korisnik-postavlja-glas-na-definiciju" aria-hidden="true" class="anchor" id="korisnik-postavlja-glas-na-definiciju"></a>Korisnik postavlja glas na definiciju</h3>
+<h3><a href="#korisnik-vrši-pretragu-po-kriterijumu-najbolje" aria-hidden="true" class="anchor" id="korisnik-vrši-pretragu-po-kriterijumu-najbolje"></a>Korisnik vrši pretragu po kriterijumu &quot;Najbolje&quot;</h3>
 <ol>
-<li>Korisnik klikne na dugme &quot;+&quot; ili na dugme &quot;-&quot;.</li>
-<li>Broj odgovarajućih glasova na datoj definiciji se uvećava za 1.</li>
+<li>Korisnik u odeljku &quot;pretraga&quot; na stranici klikne na dugme &quot;Sortiraj najbolje&quot;.</li>
+<li>Na stranici se prikazuju definicije sa najviše &quot;+&quot;, a najmanje &quot;-&quot; glasova.</li>
 </ol>
-<div class="condition">Korisnik je prijavljen na platformi.</div> 
-<div class="condition">Korisnik nema postavljen glas na datoj definiciji</div> 
-<h3><a href="#korisnik-uklanja-glas-sa-definicije" aria-hidden="true" class="anchor" id="korisnik-uklanja-glas-sa-definicije"></a>Korisnik uklanja glas sa definicije</h3>
+<h3><a href="#korisnik-vrši-pretragu-po-kriterijumu-najgore" aria-hidden="true" class="anchor" id="korisnik-vrši-pretragu-po-kriterijumu-najgore"></a>Korisnik vrši pretragu po kriterijumu &quot;Najgore&quot;</h3>
 <ol>
-<li>Korisnik klikne na dugme &quot;+&quot; ili na dugme &quot;-&quot; u zavisnosti od toga da li je glasao &quot;+&quot; ili &quot;-&quot; ranije.</li>
-<li>Broj odgovarajućih glasova na datoj definiciji se umanjuje za 1.</li>
+<li>Korisnik u odeljku &quot;pretraga&quot; na stranici klikne na dugme &quot;Sortiraj najgore&quot;.</li>
+<li>Na stranici se prikazuju definicije sa najviše &quot;-&quot;, a najmanje &quot;+&quot; glasova.</li>
 </ol>
-<div class="condition">Korisnik je prijavljen na platformi.</div> 
-<div class="condition">Korisnik ima postavljen glas na datoj definiciji</div> 
-<h3><a href="#korisnik-menja-glas-na-definiciji" aria-hidden="true" class="anchor" id="korisnik-menja-glas-na-definiciji"></a>Korisnik menja glas na definiciji</h3>
+<h3><a href="#korisnik-vrši-pretragu-po-kriterijumu-kontroverzne" aria-hidden="true" class="anchor" id="korisnik-vrši-pretragu-po-kriterijumu-kontroverzne"></a>Korisnik vrši pretragu po kriterijumu &quot;Kontroverzne&quot;</h3>
 <ol>
-<li>Korisnik klikne na dugme &quot;+&quot; ili na dugme &quot;-&quot; u zavisnosti od toga da li je glasao &quot;-&quot; ili &quot;+&quot;.</li>
-<li>Broj odgovarajućih glasova na datoj definiciji se umanjuje za 1, a drugih uvećava za 1.</li>
+<li>Korisnik u odeljku &quot;pretraga&quot; na stranici klikne na dugme &quot;Sortiraj kontroverzne&quot;.</li>
+<li>Na stranici se prikazuju definicije gde je odnos &quot;+&quot; i &quot;-&quot; glasova približan 50%, gde prednost dobijaju one sa više sveukupnih glasova.</li>
 </ol>
-<div class="condition">Korisnik je prijavljen na platformi.</div> 
-<div class="condition">Korisnik ima postavljen glas na datoj definiciji</div> 
-<h3><a href="#gost-pokušava-da-glasa-na-definiciji" aria-hidden="true" class="anchor" id="gost-pokušava-da-glasa-na-definiciji"></a>Gost pokušava da glasa na definiciji</h3>
+<h3><a href="#korisnik-vrši-pretragu-po-ključnoj-reči" aria-hidden="true" class="anchor" id="korisnik-vrši-pretragu-po-ključnoj-reči"></a>Korisnik vrši pretragu po ključnoj reči</h3>
 <ol>
-<li>Gost klikne na dugme &quot;+&quot; ili na dugme &quot;-&quot; u zavisnosti od toga da li je glasao &quot;-&quot; ili &quot;+&quot;.</li>
-<li>Prikazuje se obaveštenje: &quot;Morate se prijaviti kako biste glasali za definiciju dana!&quot;.</li>
+<li>Korisnik u odeljku &quot;pretraga&quot; u polju za pretragu po ključnoj reči unosi argument pretrage.</li>
+<li>Na stranici se prikazuju definicije koje po sadržaju, naslovu ili nazivu autora najviše odgovaraju datom argumentu.</li>
 </ol>
 </main>
 </div>
