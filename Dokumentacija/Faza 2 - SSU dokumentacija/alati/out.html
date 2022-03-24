@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/setup.css" />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <div class="page"><header class="first-page center">
+<h1><a href="#specifikacija-scenarija-upotrebe" aria-hidden="true" class="anchor" id="specifikacija-scenarija-upotrebe"></a>Specifikacija scenarija upotrebe</h1>
+<h2><a href="#glasanje-za-definicije" aria-hidden="true" class="anchor" id="glasanje-za-definicije"></a>Glasanje za definicije</h2>
+<p>Autor: Petar Repac</p>
+<p>Verzija: 1.0</p>
+</header>
+</div>
+
+<div class="page">
+<h1><a href="#istorija-izmena" aria-hidden="true" class="anchor" id="istorija-izmena"></a>Istorija izmena</h1>
+<table>
+<thead>
+<tr>
+<th>Redni broj</th>
+<th>Verzija</th>
+<th>Kratak opis</th>
+<th>Autor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1.0</td>
+<td>Inicijalna verzija</td>
+<td>Petar Repac</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="page">
+<main>
+<h1><a href="#sadržaj" aria-hidden="true" class="anchor" id="sadržaj"></a>Sadržaj</h1>
+<div class="toc"> 
+<ul>
+<li><a href="#uvod">Uvod</a>
+<ul>
+<li><a href="#rezime">Rezime</a></li>
+<li><a href="#namena-dokumenta-i-ciljne-grupe">Namena dokumenta i ciljne grupe</a></li>
+<li><a href="#reference">Reference</a></li>
+<li><a href="#otvorena-pitanja">Otvorena pitanja</a></li>
+</ul>
+</li>
+<li><a href="#scenario-pristupa-stranici-sa-formom-za-pisanje-definicije">Scenario pristupa stranici sa formom za pisanje definicije</a>
+<ul>
+<li><a href="#kratak-opis">Kratak opis</a></li>
+<li><a href="#tok-doga%C4%91aja">Tok događaja</a>
+<ul>
+<li><a href="#korisnik-postavlja-glas-na-definiciju">Korisnik postavlja glas na definiciju</a></li>
+<li><a href="#korisnik-uklanja-glas-sa-definicije">Korisnik uklanja glas sa definicije</a></li>
+<li><a href="#korisnik-menja-glas-na-definiciji">Korisnik menja glas na definiciji</a></li>
+<li><a href="#gost-poku%C5%A1ava-da-glasa-na-definiciji">Gost pokušava da glasa na definiciji</a></li>
+</ul>
+</li>
+<li><a href="#posebni-zahtevi">Posebni zahtevi</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div class="page">
+<h1><a href="#uvod" aria-hidden="true" class="anchor" id="uvod"></a>Uvod</h1>
+<h2><a href="#rezime" aria-hidden="true" class="anchor" id="rezime"></a>Rezime</h2>
+<p>Akcije vezane za postavljanje komentara na definiciju.</p>
+<h2><a href="#namena-dokumenta-i-ciljne-grupe" aria-hidden="true" class="anchor" id="namena-dokumenta-i-ciljne-grupe"></a>Namena dokumenta i ciljne grupe</h2>
+<p>Dokument služi članovima tima kao pomoć u izradi projekta.</p>
+<h2><a href="#reference" aria-hidden="true" class="anchor" id="reference"></a>Reference</h2>
+<ol>
+<li>Projektni zadatak</li>
+</ol>
+<h2><a href="#otvorena-pitanja" aria-hidden="true" class="anchor" id="otvorena-pitanja"></a>Otvorena pitanja</h2>
+<p>Nema</p>
+</div>
+
+<div class="page">
+<h1><a href="#scenario-pristupa-stranici-sa-formom-za-pisanje-definicije" aria-hidden="true" class="anchor" id="scenario-pristupa-stranici-sa-formom-za-pisanje-definicije"></a>Scenario pristupa stranici sa formom za pisanje definicije</h1>
+<h2><a href="#kratak-opis" aria-hidden="true" class="anchor" id="kratak-opis"></a>Kratak opis</h2>
+<p>Autorizovani korisnici (standardni korisnik, moderator i administrator) imaju pravo glasanja na definicijama (lajk: + | dislajk: - ).</p>
+<h2><a href="#tok-događaja" aria-hidden="true" class="anchor" id="tok-događaja"></a>Tok događaja</h2>
+<h3><a href="#korisnik-postavlja-glas-na-definiciju" aria-hidden="true" class="anchor" id="korisnik-postavlja-glas-na-definiciju"></a>Korisnik postavlja glas na definiciju</h3>
+<ol>
+<li>Korisnik klikne na dugme &quot;+&quot; ili na dugme &quot;-&quot;.</li>
+<li>Broj odgovarajućih glasova na datoj definiciji se uvećava za 1.</li>
+</ol>
+<div class="condition">Korisnik je prijavljen na platformi.</div> 
+<div class="condition">Korisnik nema postavljen glas na datoj definiciji</div> 
+<h3><a href="#korisnik-uklanja-glas-sa-definicije" aria-hidden="true" class="anchor" id="korisnik-uklanja-glas-sa-definicije"></a>Korisnik uklanja glas sa definicije</h3>
+<ol>
+<li>Korisnik klikne na dugme &quot;+&quot; ili na dugme &quot;-&quot; u zavisnosti od toga da li je glasao &quot;+&quot; ili &quot;-&quot; ranije.</li>
+<li>Broj odgovarajućih glasova na datoj definiciji se umanjuje za 1.</li>
+</ol>
+<div class="condition">Korisnik je prijavljen na platformi.</div> 
+<div class="condition">Korisnik ima postavljen glas na datoj definiciji</div> 
+<h3><a href="#korisnik-menja-glas-na-definiciji" aria-hidden="true" class="anchor" id="korisnik-menja-glas-na-definiciji"></a>Korisnik menja glas na definiciji</h3>
+<ol>
+<li>Korisnik klikne na dugme &quot;+&quot; ili na dugme &quot;-&quot; u zavisnosti od toga da li je glasao &quot;-&quot; ili &quot;+&quot;.</li>
+<li>Broj odgovarajućih glasova na datoj definiciji se umanjuje za 1, a drugih uvećava za 1.</li>
+</ol>
+<div class="condition">Korisnik je prijavljen na platformi.</div> 
+<div class="condition">Korisnik ima postavljen glas na datoj definiciji</div> 
+<h3><a href="#gost-pokušava-da-glasa-na-definiciji" aria-hidden="true" class="anchor" id="gost-pokušava-da-glasa-na-definiciji"></a>Gost pokušava da glasa na definiciji</h3>
+<ol>
+<li>Gost klikne na dugme &quot;+&quot; ili na dugme &quot;-&quot; u zavisnosti od toga da li je glasao &quot;-&quot; ili &quot;+&quot;.</li>
+<li>Prikazuje se obaveštenje: &quot;Morate se prijaviti kako biste glasali za definiciju dana!&quot;.</li>
+</ol>
+</main>
+</div>
+  </body>
+</html>
