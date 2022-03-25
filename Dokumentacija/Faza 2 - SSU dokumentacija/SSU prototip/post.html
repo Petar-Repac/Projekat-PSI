@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/custom.css">
   <link rel="stylesheet" href="assets/css/pocetna.css" />
+  <script src="assets/js/login.js"></script>
 </head>
 
 <body class="is-preload">
@@ -120,6 +121,14 @@
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById("post-comment").addEventListener("submit", e => {
+      e.preventDefault();
+      if (!Auth.getLoggedInUser()) {
+        alert("Niste prijavljeni!");
+      }
+    });
+  </script>
 
 </body>
 
