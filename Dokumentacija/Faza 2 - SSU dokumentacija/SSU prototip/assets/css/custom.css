@@ -15,3 +15,9 @@
   width: auto;
   height: 100%;
 }
+
+.button.like span,
+.button.dislike span,
+.button.comment span {
+  margin-right: 0.5em;
+}
