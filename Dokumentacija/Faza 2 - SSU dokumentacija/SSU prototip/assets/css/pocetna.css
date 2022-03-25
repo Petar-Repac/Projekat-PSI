@@ -1,0 +1,48 @@
+/* Autor: Petar Repac*/
+
+#search h1 {
+    margin: 1em;
+}
+
+
+
+/* Pagination */
+ul.pagination {
+  padding: 0.5em;
+  text-align: center;
+  list-style-type: none;
+  background-color: #1f1f24;
+}
+
+ul.pagination li:first-child {
+  padding-right: 0.75em;
+} 
+ul.pagination li {
+  display: inline-block;
+  padding-left: 0.5em;
+  vertical-align: middle;
+}
+
+ul.pagination li a{
+  font-weight: bold;
+  font-size: 1.8em;
+  text-decoration: none;
+}
+
+ul.pagination li a.button{ 
+  font-size: 1em; 
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+   
+  ::-webkit-scrollbar-track {
+    background: #333;
+  }
+   
+  ::-webkit-scrollbar-thumb {
+    background: #ff1a87; 
+  }
+   
