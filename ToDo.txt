@@ -5,7 +5,10 @@
 5) Izlistavanje opcionalnosti objave za administratora/moderatora
 5) ToDo, ToDo, Todotodotdotodooooodooodoooo (pink panter muzika)
 
-
+- posebna stranica za korisnika
+- stranica "o kavujliji"
+- dugme za promociju/demociju u moda
+- dugme za banovanje korisnika
 
 
 
