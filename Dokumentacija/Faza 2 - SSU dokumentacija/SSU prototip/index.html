@@ -1,245 +1,248 @@
 <!DOCTYPE HTML>
+<!--
+  AUTOR: Petar Repac
+-->
 <html>
 
 <head>
-  <title>Untitled</title>
+  <title>Početna</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/custom.css">
+  
+  <link rel="stylesheet" href="assets/css/pocetna.css" />
+  <!-- <script src="assets/js/login.js"></script> -->
 </head>
 
 <body class="is-preload">
 
   <!-- Header -->
   <header id="header" class="alt">
-    <a class="logo" href="index.html">Threshold</a>
+    <a class="logo" href="index.html">
+      <img src="images/tobago-white-stroke.png" alt="Tobago">
+    </a>
+
     <nav id="nav">
       <ul>
-        <li class="current"><a href="index.html">Home</a></li>
-        <li>
-          <a href="#" class="icon fa-angle-down">Dropdown</a>
-          <ul>
-            <li><a href="#">Option One</a></li>
-            <li><a href="#">Option Two</a></li>
-            <li><a href="#">Option Three</a></li>
-            <li>
-              <a href="#">Submenu</a>
-              <ul>
-                <li><a href="#">Option One</a></li>
-                <li><a href="#">Option Two</a></li>
-                <li><a href="#">Option Three</a></li>
-                <li><a href="#">Option Four</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="generic.html">Generic</a></li>
-        <li><a href="elements.html">Elements</a></li>
+        <li class="current"><a href="index.html">Početna</a></li>
+        <li><a href="elements.html">O Kavujliji</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Banner -->
-  <div id="banner" class="wrapper">
-    <div class="inner">
-      <div class="content">
-        <h1>Donec amet justo magna facilisis</h1>
-        <p>Cestibulum auctor dapibus neque euismod sed et consequat etra ultricies indiamed lorem ipsum dolor sit amet
-        </p>
-        <ul class="actions">
-          <li><a href="#one" class="button large primary scrolly">Learn More</a></li>
-        </ul>
-      </div>
-      <div class="image-wrapper">
-        <img src="images/frame.png" class="frame" alt="" />
-        <div class="image">
-          <img src="images/pic01.jpg" alt="" />
-        </div>
-      </div>
-    </div>
-  </div>
+ 
 
   <!-- Wrapper -->
-  <div id="wrapper">
-
-    <!-- One -->
-    <section id="one" class="wrapper style1">
+  <div id="wrapper"> <!-- Search -->
+    <section id="search" class="wrapper style2">
       <div class="inner">
         <div class="spotlights">
           <div class="spotlight">
-            <div class="image fit">
-              <img src="images/pic02.jpg" alt="" />
-            </div>
-            <div class="content">
-              <h2>Ipsum dolor feugiat</h2>
-              <p>Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec tortor nibh sed augue.
-                Integer eu magna sit amet metus ferment. Pellentesque a diam sit amet mi ullamcorper vehicula. Lorem
-                ipsum dolor sit amet nullam.</p>
-              <ul class="actions">
-                <li><a href="#" class="button primary">Learn More</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="spotlight">
-            <div class="image fit alt">
-              <img src="images/pic03.jpg" alt="" />
-            </div>
-            <div class="content">
-              <h2>Metus interdum dolore</h2>
-              <p>Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec tortor nibh sed augue.
-                Integer eu magna sit amet metus ferment. Pellentesque a diam sit amet mi ullamcorper vehicula. Lorem
-                ipsum dolor sit amet nullam.</p>
-              <ul class="actions">
-                <li><a href="#" class="button primary">Learn More</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="spotlight">
-            <div class="image fit">
-              <img src="images/pic04.jpg" alt="" />
-            </div>
-            <div class="content">
-              <h2>Augue diam vehicula</h2>
-              <p>Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec tortor nibh sed augue.
-                Integer eu magna sit amet metus ferment. Pellentesque a diam sit amet mi ullamcorper vehicula. Lorem
-                ipsum dolor sit amet nullam.</p>
-              <ul class="actions">
-                <li><a href="#" class="button primary">Learn More</a></li>
-              </ul>
-            </div>
+            <h1>Pretraga</h1>
+            
+         
+              <form method="get" action="#">
+                <div class="row gtr-uniform">
+               
+                  <!-- Break -->
+                  <div class="col-3 col-12-small">
+                    <input type="radio" id="radio-1" name="demo-radio" checked>
+                    <label for="radio-1">Najnovije</label>
+                  </div>
+                  <div class="col-3 col-12-small">
+                    <input type="radio" id="radio-2" name="demo-radio" checked>
+                    <label for="radio-2">Najbolje</label>
+                  </div>
+                  <div class="col-3 col-12-small">
+                    <input type="radio" id="radio-3" name="demo-radio">
+                    <label for="radio-3">Kontroverzno</label>
+                  </div>
+                  <div class="col-3 col-12-small">
+                    <input type="radio" id="radio-4" name="demo-radio">
+                    <label for="radio-4">Najgore</label>
+                  </div> 
+                    <!-- Break -->
+                    <div class="col-4 col-12-small">
+                      <input type="radio" id="radio-ds" name="demo-radio1" checked>
+                      <label for="radio-ds">Dvorana slavnih</label>
+                    </div>
+                    <div class="col-4 col-12-small">
+                      <input type="radio" id="radio-ci" name="demo-radio1">
+                      <label for="radio-ci">Čistilište</label>
+                    </div>
+                    <div class="col-4 col-12-small">
+                      <input type="radio" id="radio-sv" name="demo-radio1">
+                      <label for="radio-sv">Sve</label>
+                    </div>
+                  <!-- Break -->
+                  <div class="col-6 col-12-xsmall">
+                    <input type="text" name="demo-name" id="demo-name" value="" placeholder="Ključne reči" />
+                  </div>
+                  <div class="col-6">
+                    <ul class="actions">
+                      <li><button type="submit" class="primary">Pretraži</button></li> 
+                    </ul>
+                  </div>
+                </div>
+              </form> 
+           
+       
+          </header>
+         
           </div>
         </div>
+        
+        
       </div>
     </section>
+    <!-- One -->
+    <div class="row">
+      <div class="col-9">
+        <!-- One -->
+        <section id="one" class="wrapper">
+          <div class="inner">
+            <div class="spotlights">
 
-    <!-- Two -->
-    <section id="two" class="wrapper style1">
-      <div class="inner">
-        <div class="features">
-          <div class="feature">
-            <span class="icon alt major fa-cube"></span>
-            <h2>Etiam consequat</h2>
-            <p>Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed
-              augue. Integer eu magna sit amet.</p>
-          </div>
-          <div class="feature">
-            <span class="icon alt major fa-camera-retro"></span>
-            <h2>Dolor vehicula</h2>
-            <p>Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed
-              augue. Integer eu magna sit amet.</p>
-          </div>
-          <div class="feature">
-            <span class="icon alt major fa-sitemap"></span>
-            <h2>Nibh convallis</h2>
-            <p>Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed
-              augue. Integer eu magna sit amet.</p>
-          </div>
-          <div class="feature">
-            <span class="icon alt major fa-laptop"></span>
-            <h2>Amet interdum</h2>
-            <p>Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed
-              augue. Integer eu magna sit amet.</p>
-          </div>
-          <div class="feature">
-            <span class="icon alt major fa-battery"></span>
-            <h2>Nec augue etiam</h2>
-            <p>Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed
-              augue. Integer eu magna sit amet.</p>
-          </div>
-          <div class="feature">
-            <span class="icon alt major fa-paper-plane"></span>
-            <h2>Aliquam veroeros</h2>
-            <p>Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed
-              augue. Integer eu magna sit amet.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+              <!-- Definicija -->
+              <div class="spotlight post">
+                <div class="content">
+                  <h2> <a href="post.html">Razumna pretpostavka</a></h2>
+                  <p>Kada osoba koja je sastavljala zahteve zadatka ne želi da snosi odgovornost za
+                     dvosmislena i nedovoljno konkretna objašnjenja.
+                  </p>
+                  <p>Uvek pretpostaviti najgore, bilo koja pretpostavka koja je zapravo razumna 
+                    neće biti tako tretirana pri ocenjivanju rešenja.
+                  </p>
+                  <ul class="actions">
+                    <li><a href="#" class="button like"><span class="icon fa-plus-circle"></span>12</a></li>
+                    <li><a href="#" class="button dislike"><span class="icon fa-minus-circle"></span>3</a></li>
+                    <li><a href="#" class="button comment"><span class="icon fa-comment"></span>3</a></li>
+                    <li class="mod"><a href="#" class="button lock"><span class="icon fa-lock"></span>Zaključaj</a></li>
 
-    <!-- Three -->
-    <section id="three" class="wrapper style1">
-      <div class="inner">
-        <div class="box cta">
-          <div class="content">
-            <h2>Odio dapibus adipiscing</h2>
-            <p>Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed
-              augue. Integer eu magna sit amet metus ferment. Pellentesque a diam sit amet amet dolor ullamcorper
-              vehicula. Lorem ipsum dolor sit amet dolor sit amet consequat.</p>
+                  </ul>
+                </div>
+              </div>
+
+
+              <!-- Definicija -->
+              <div class="spotlight post">
+                <div class="content">
+                  <h2> <a href="post.html">Računarski centar</a></h2>
+                  <p>Pogrešno ime za Računski centar :)
+                  </p> 
+                  <ul class="actions">
+                    <li><a href="#" class="button like"><span class="icon fa-plus-circle"></span>1</a></li>
+                    <li><a href="#" class="button dislike"><span class="icon fa-minus-circle"></span>5</a></li>
+                    <li><a href="#" class="button comment"><span class="icon fa-comment"></span>0</a></li>
+                    <li class="mod"><a href="#" class="button lock"><span class="icon fa-lock"></span>Zaključaj</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Definicija -->
+              <div class="spotlight post">
+                <div class="content">
+                  <h2> <a href="post.html">Operativni sistemi 1</a></h2>
+                  <p> Subjektivni osećaj albanske golgote koji sebi možete prirediti bez 450km pešačenja u dizenteričnom stanju.
+                  </p> 
+                  <ul class="actions">
+                    <li><a href="#" class="button like"><span class="icon fa-plus-circle"></span>2</a></li>
+                    <li><a href="#" class="button dislike"><span class="icon fa-minus-circle"></span>3</a></li>
+                    <li><a href="#" class="button comment"><span class="icon fa-comment"></span>0</a></li>
+                    <li class="mod"><a href="#" class="button lock"><span class="icon fa-lock"></span>Zaključaj</a></li>
+                  </ul>
+                </div>
+              </div>
+
+
+            </div>
           </div>
-          <ul class="actions stacked">
-            <li><a href="#" class="button primary large fit">Get Started</a></li>
-            <li><a href="#" class="button large fit">Learn More</a></li>
-          </ul>
-        </div>
+        </section>
+    
+       
+    
+       
       </div>
-    </section>
+      <div class="col-3">
+         <!-- Three -->
+         <section id="two" class="wrapper">
+          <div class="inner">
+            <div class="box">
+             
+              <ul class="actions stacked">
+                <li><a href="pisanje-post.html" class="button primary medium fit">Napiši definiciju</a></li>
+                <li class="guest"><a href="registracija.html" class="button medium fit">Registracija</a></li>
+                <li class="guest"><a href="prijava.html" class="button medium fit">Prijava</a></li>
+                <li class="user"><a href="#" id="odjavi" class="button medium fit">Odjavi me</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-9">
+        <ul class="pagination">
+          <li><span class="button disabled">Prethodna</span></li>
+          <li><a href="#" class="page active">1</a></li>
+          <li><a href="#" class="page">2</a></li>
+          <li><a href="#" class="page">3</a></li>
+          <li><span>…</span></li>
+          <li><a href="#" class="page">8</a></li>
+          <li><a href="#" class="page">9</a></li>
+          <li><a href="#" class="page">10</a></li>
+          <li><a href="#" class="button">Sledeća</a></li>
+        </ul>
+      </div>
+    </div>
+    
+  
   </div>
 
   <!-- Footer -->
   <div id="footer" class="wrapper">
     <div class="inner">
       <header>
-        <h2>Get in touch</h2>
-        <p>Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed augue.
-          Integer eu magna sit amet metus ferment. Pellentesque a diam sit amet amet dolor ullamcorper vehicula. Lorem
-          ipsum dolor sit amet dolor sit amet consequat.</p>
+        <h2>Kontaktirajte nas</h2>
+        <p>Kad ste već do ovde stigli, zapratite nas i na društvenim mrežama!</p> <br>
       </header>
-      <section class="contact-form">
-        <form method="post" action="#">
-          <div class="fields">
-            <div class="field half">
-              <input name="name" id="name" placeholder="Name" type="text" />
-            </div>
-            <div class="field half">
-              <input name="email" id="email" placeholder="Email" type="email" />
-            </div>
-            <div class="field">
-              <textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
-            </div>
-            <div class="field">
-              <ul class="actions special">
-                <li><button type="submit" class="button primary">Send Message</button></li>
-              </ul>
-            </div>
-          </div>
-        </form>
-      </section>
+     
       <section class="contact-info">
         <div class="item">
           <span class="icon alt fa-home"></span>
           <p>
-            1234 Fictional Rd #789<br />
-            Nashville, TN 00000
+            Preko puta, kod "Tri kaputa", pored auto puta, 
+            kod Skendera na voće pa levo, broj 37
           </p>
         </div>
         <div class="item">
           <span class="icon alt fa-phone"></span>
           <p>
-            (000) 000-0000 ext. 000
+            +381 XX / XXXX - XXX
           </p>
         </div>
         <div class="item">
           <span class="icon alt fa-envelope"></span>
-          <a href="mailto:information@untitled.ext">information@untitled.ext</a>
+          <a href="mailto:information@untitled.ext">tobago@tobago.co.yu</a>
         </div>
         <div class="item">
-          <span class="icon alt fa-twitter"></span>
-          <a href="#">twitter.com/untitled</a>
+          <span class="icon alt fa-instagram"></span>
+          <a href="#">instagram.com/tobago</a>
         </div>
         <div class="item">
           <span class="icon alt fa-facebook"></span>
-          <a href="#">facebook.com/untitled</a>
+          <a href="#">facebook.com/tobago</a>
         </div>
         <div class="item">
           <span class="icon alt fa-linkedin"></span>
-          <a href="#">linkedin.com/untitled</a>
+          <a href="#">linkedin.com/teamTobago</a>
         </div>
       </section>
       <p class="copyright">
-        &copy; Untitled Corp. All rights reserved. Lorem ipsum dolor sit amet.
+        &copy; TOBAGO. Sva prava zadržana.
       </p>
     </div>
   </div>
@@ -253,6 +256,13 @@
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById("odjavi").addEventListener("click", () => {
+      Auth.logOut();
+      alert("Odjava uspešna.");
+      location.reload();
+    });
+  </script>
 
 </body>
 
