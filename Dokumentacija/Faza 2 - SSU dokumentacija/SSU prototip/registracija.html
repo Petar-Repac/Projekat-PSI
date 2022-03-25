@@ -70,6 +70,9 @@
       const password = document.getElementById("password").value;
       const res = Auth.register(username, password);
       alert(res ? "Uspešna registracija!" : "Korisnik već postoji.");
+      if (res) {
+        location.href = location.href = location.href.replace("registracija.html", "index.html");
+      }
     });
   </script>
 </body>

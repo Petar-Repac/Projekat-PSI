@@ -45,19 +45,12 @@
               <li>
                 <button type="submit" class="primary">Prijavi se</button>
               </li>
-              <li>
-                <button id="odjavi-se" class="user">Odjavi se</button>
-              </li>
             </ul>
           </div>
         </div>
       </form>
     </div>
   </div>
-
-  <p class="user">Pozdrav, <span class="_username">ime</span></p>
-  <p class="mod">Mod text</p>
-  <p class="admin">Admin text</p>
 
 
   <script src="assets/js/jquery.min.js"></script>
@@ -77,12 +70,9 @@
       const password = document.getElementById("password").value;
       const res = Auth.logIn(username, password);
       alert(res ? "Uspešno prijavljen!" : "Netačno korisničko ime/lozinka.");
-      location.reload();
-    });
-
-    document.getElementById("odjavi-se").addEventListener("click", () => {
-      Auth.logOut();
-      location.reload();
+      if (res) {
+        location.href = location.href.replace("prijava.html", "index.html");
+      }
     });
   </script>
 </body>
