@@ -1,0 +1,5 @@
+1) Responsive sidebar - implementirati prelamanje na pocetnoj
+2) Menu generator - reupotrebljive delove html-a uvoziti na strane (najbolje u back-endu)
+3) SweetAlert za notifikacije i upozorenja
+4) Autorizacija back end, upozorenja front-end
+5) ToDo, ToDo, Todotodotdotodooooodooodoooo (pink panter muzika)
