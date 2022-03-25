@@ -3,6 +3,7 @@
 
 (function main() {
   const Role = {
+    guest: "guest",
     user: "user",
     mod: "mod",
     admin: "admin",
@@ -70,11 +71,11 @@
   function getBans(role) {
     switch (role) {
       case Role.user:
-        return [Role.mod, Role.admin];
+        return [Role.guest, Role.mod, Role.admin];
       case Role.mod:
-        return [Role.admin];
+        return [Role.guest, Role.admin];
       case Role.admin:
-        return [];
+        return [Role.guest];
       default:
         return [Role.user, Role.mod, Role.admin];
     }
