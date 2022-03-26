@@ -29,9 +29,9 @@
   };
 
   const defaultUsers = [
-    user("User", "123", Role.user),
-    user("Mod", "456", Role.mod),
-    user("Admin", "789", Role.admin),
+    user("User", "user", Role.user),
+    user("Mod", "mod", Role.mod),
+    user("Admin", "admin", Role.admin),
   ];
 
   const users = Storage.get("users", defaultUsers);
@@ -42,7 +42,9 @@
     },
 
     register(username, password) {
-      if (users.find(x => x.username === username)) {
+      if (
+        users.find(x => x.username.toLowerCase() === username.toLowerCase())
+      ) {
         return null;
       }
 
@@ -54,7 +56,9 @@
     },
 
     logIn(username, password) {
-      const user = users.find(x => x.username === username);
+      const user = users.find(
+        x => x.username.toLowerCase() === username.toLowerCase(),
+      );
       if (!user || user.password !== password) {
         return null;
       }
