@@ -35,8 +35,8 @@ Verzija: 1.0
 - [Scenario zabrane prijave korisnika](#scenario-zabrane-prijave-korisnika)
   - [Kratak opis](#kratak-opis)
   - [Tok događaja](#tok-događaja)
-    - [Administrator zabranjuje pristup](#administrator-zabranjuje-pristup)
-    - [Administrator otklanja zabranu pristupa](#administrator-otklanja-zabranu-pristupa)
+    - [Moderator zabranjuje pristup](#moderator-zabranjuje-pristup)
+    - [Moderator otklanja zabranu pristupa](#moderator-otklanja-zabranu-pristupa)
 
 </div>
 
@@ -46,7 +46,7 @@ Verzija: 1.0
 
 ## Rezime
 
-Ovo je privilegija dostupna administratoru koja mu dozvoljava da nekom korisniku zabrani pristup nalogu, najčešće usled kršenja pravila foruma.
+Ovo je privilegija dostupna moderatoru koja mu dozvoljava da nekom korisniku zabrani pristup nalogu, najčešće usled kršenja pravila foruma.
 
 ## Namena dokumenta i ciljne grupe
 
@@ -68,22 +68,22 @@ Dokument služi članovima tima kao pomoć u izradi projekta.
 
 ## Kratak opis
 
-Administrator stavlja, odnosno uklanja zabranu pristupa korisniku.
+Moderator stavlja, odnosno uklanja zabranu pristupa korisniku.
 
 ## Tok događaja
 
-### Administrator zabranjuje pristup
+### Moderator zabranjuje pristup
 
-1. Administrator otvara stranicu dotičnog korisnika.
-2. Administrator pritiska dugme "Zabrani pristup nalogu".
+1. Moderator otvara stranicu dotičnog korisnika.
+2. Moderator pritiska dugme "Zabrani pristup nalogu".
 3. Dotični korisnik gubi pristup svom nalogu.
 
 <div class="condition">Pristup korisničkom nalogu nije zabranjen.</div>
 
-### Administrator otklanja zabranu pristupa
+### Moderator otklanja zabranu pristupa
 
-1. Administrator otvara stranicu dotičnog korisnika.
-2. Administrator pritiska dugme "Ukloni zabranu pristupa nalogu".
+1. Moderator otvara stranicu dotičnog korisnika.
+2. Moderator pritiska dugme "Ukloni zabranu pristupa nalogu".
 3. Dotični korisnik ponovo dobija mogućnost pristupa nalogu.
 
 <div class="condition">Pristup korisničkom nalogu je zabranjen.</div>
