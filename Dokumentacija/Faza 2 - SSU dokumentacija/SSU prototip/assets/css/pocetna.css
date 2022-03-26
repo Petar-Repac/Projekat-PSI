@@ -121,6 +121,27 @@ ul.pagination li a.button{
   font-size: 1em; 
 }
 
+/* Footer author rainbow */
+
+.rainbow { 
+  font-size: 2rem;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  background: -webkit-linear-gradient(45deg, red, red, red, orange, yellow, green, blue, indigo, violet);
+  font-weight: bold;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hotpink { 
+  color: #ff1a87;
+  font-size: 2rem;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  font-weight: bold; 
+}
+
+
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
