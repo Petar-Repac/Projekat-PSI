@@ -1,0 +1,81 @@
+<!-- Autor: Vukašin Stepanović -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Registruj se</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <link rel="stylesheet" href="assets/vendor/css/main.css" />
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <script src="assets/js/login.js"></script>
+</head>
+
+<body class="is-preload">
+
+  <header id="header">
+    <a class="logo" href="index.html">
+      <img src="images/tobago-white-stroke.png" alt="Tobago">
+    </a>
+
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html">Početna</a></li>
+        <li><a href="uputstvo.html">Uputstvo za korišćenje prototipa</a></li>
+        <li><a href="o-nama.html">O Kavujliji</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="main" class="wrapper">
+    <div class="inner" style="max-width: 30em">
+      <h3>Registracija</h3>
+      <form id="form">
+        <div class="row gtr-uniform">
+          <div class="col-12">
+            <input type="text" name="username" required autocomplete="off" id="username" value=""
+              placeholder="Korisničko ime" />
+          </div>
+          <div class="col-12">
+            <input type="password" name="password" required id="password" value="" placeholder="Lozinka" />
+          </div>
+
+          <div class="col-12">
+            <ul class="actions">
+              <li>
+                <button id="registruj-se" type="submit" class="primary">Registruj se</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <script src="assets/vendor/js/jquery.min.js"></script>
+  <script src="assets/vendor/js/jquery.dropotron.min.js"></script>
+  <script src="assets/vendor/js/jquery.scrollex.min.js"></script>
+  <script src="assets/vendor/js/jquery.scrolly.min.js"></script>
+  <script src="assets/vendor/js/browser.min.js"></script>
+  <script src="assets/vendor/js/breakpoints.min.js"></script>
+  <script src="assets/vendor/js/util.js"></script>
+  <script src="assets/vendor/js/main.js"></script>
+
+  <script>
+    document.getElementById("form").addEventListener("submit", e => {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const res = Auth.register(username, password);
+      alert(res ? "Uspešna registracija!" : "Korisnik već postoji.");
+      if (res) {
+        location.href = location.href = location.href.replace("registracija.html", "index.html");
+      }
+    });
+  </script>
+</body>
+
+</html>

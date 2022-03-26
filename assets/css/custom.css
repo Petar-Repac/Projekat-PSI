@@ -1,0 +1,24 @@
+/* Autor: Vukašin Stepanović */
+
+:root {
+  --c-primary: #ff1a87;
+  --c-primary-tint-1: #ff489f;
+  --c-primary-shade-1: #e6177a;
+  --c-primary-shade-2: #cc156c;
+  --c-primary-shade-3: #b3125f;
+}
+
+.logo img {
+  display: block;
+  margin-top: 5px;
+  padding: 10px;
+  width: auto;
+  height: 100%;
+}
+
+.button.like span,
+.button.dislike span,
+.button.comment span,
+.button.lock span {
+  margin-right: 0.5em;
+}
