@@ -12,8 +12,8 @@
   <body>
     <div class="page"><header class="first-page center">
 <h1><a href="#specifikacija-scenarija-upotrebe" aria-hidden="true" class="anchor" id="specifikacija-scenarija-upotrebe"></a>Specifikacija scenarija upotrebe</h1>
-<h2><a href="#pretraga-definicija-na-platformi" aria-hidden="true" class="anchor" id="pretraga-definicija-na-platformi"></a>Pretraga definicija na platformi</h2>
-<p>Autor: Petar Repac</p>
+<h2><a href="#zabrana-prijave-korisnika" aria-hidden="true" class="anchor" id="zabrana-prijave-korisnika"></a>Zabrana prijave korisnika</h2>
+<p>Autor: Vukašin Stepanović</p>
 <p>Verzija: 1.0</p>
 </header>
 </div>
@@ -34,7 +34,7 @@
 <td>1</td>
 <td>1.0</td>
 <td>Inicijalna verzija</td>
-<td>Petar Repac</td>
+<td>Vukašin Stepanović</td>
 </tr>
 </tbody>
 </table>
@@ -43,8 +43,9 @@
 <div class="page">
 <main>
 <h1><a href="#sadržaj" aria-hidden="true" class="anchor" id="sadržaj"></a>Sadržaj</h1>
-<div class="toc"> 
+<div class="toc">
 <ul>
+<li><a href="#sadr%C5%BEaj">Sadržaj</a></li>
 <li><a href="#uvod">Uvod</a>
 <ul>
 <li><a href="#rezime">Rezime</a></li>
@@ -53,15 +54,13 @@
 <li><a href="#otvorena-pitanja">Otvorena pitanja</a></li>
 </ul>
 </li>
-<li><a href="#scenario-pristupa-stranici-sa-formom-za-pisanje-definicije">Scenario pristupa stranici sa formom za pisanje definicije</a>
+<li><a href="#scenario-zabrane-prijave-korisnika">Scenario zabrane prijave korisnika</a>
 <ul>
 <li><a href="#kratak-opis">Kratak opis</a></li>
 <li><a href="#tok-doga%C4%91aja">Tok događaja</a>
 <ul>
-<li><a href="#korisnik-vr%C5%A1i-pretragu-po-kriterijumu-najbolje">Korisnik vrši pretragu po kriterijumu &quot;Najbolje&quot;</a></li>
-<li><a href="#korisnik-vr%C5%A1i-pretragu-po-kriterijumu-najgore">Korisnik vrši pretragu po kriterijumu &quot;Najgore&quot;</a></li>
-<li><a href="#korisnik-vr%C5%A1i-pretragu-po-kriterijumu-kontroverzne">Korisnik vrši pretragu po kriterijumu &quot;Kontroverzne&quot;</a></li>
-<li><a href="#korisnik-vr%C5%A1i-pretragu-po-klju%C4%8Dnoj-re%C4%8Di">Korisnik vrši pretragu po ključnoj reči</a></li>
+<li><a href="#administrator-zabranjuje-pristup">Administrator zabranjuje pristup</a></li>
+<li><a href="#administrator-otklanja-zabranu-pristupa">Administrator otklanja zabranu pristupa</a></li>
 </ul>
 </li>
 </ul>
@@ -73,7 +72,7 @@
 <div class="page">
 <h1><a href="#uvod" aria-hidden="true" class="anchor" id="uvod"></a>Uvod</h1>
 <h2><a href="#rezime" aria-hidden="true" class="anchor" id="rezime"></a>Rezime</h2>
-<p>Akcije vezane za pretragu definicija.</p>
+<p>Ovo je privilegija dostupna administratoru koja mu dozvoljava da nekom korisniku zabrani pristup nalogu, najčešće usled kršenja pravila foruma.</p>
 <h2><a href="#namena-dokumenta-i-ciljne-grupe" aria-hidden="true" class="anchor" id="namena-dokumenta-i-ciljne-grupe"></a>Namena dokumenta i ciljne grupe</h2>
 <p>Dokument služi članovima tima kao pomoć u izradi projekta.</p>
 <h2><a href="#reference" aria-hidden="true" class="anchor" id="reference"></a>Reference</h2>
@@ -81,40 +80,43 @@
 <li>Projektni zadatak</li>
 </ol>
 <h2><a href="#otvorena-pitanja" aria-hidden="true" class="anchor" id="otvorena-pitanja"></a>Otvorena pitanja</h2>
-<p>Nema</p>
+<table>
+<thead>
+<tr>
+<th>Redni broj</th>
+<th>Opis</th>
+<th>Rešenje</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Pored zabrane pristupa, da li je dodatno potrebno i ukloniti sve privilegije korisnika?</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </div>
 
 <div class="page">
-<h1><a href="#scenario-pretrage-definicija-po-različitim-kriterijumima" aria-hidden="true" class="anchor" id="scenario-pretrage-definicija-po-različitim-kriterijumima"></a>Scenario pretrage definicija po različitim kriterijumima</h1>
+<h1><a href="#scenario-zabrane-prijave-korisnika" aria-hidden="true" class="anchor" id="scenario-zabrane-prijave-korisnika"></a>Scenario zabrane prijave korisnika</h1>
 <h2><a href="#kratak-opis" aria-hidden="true" class="anchor" id="kratak-opis"></a>Kratak opis</h2>
-<p>Svi korisnici na platformi imaju mogućnost pretrage definicija na stranicama &quot;Dvorana slavnih&quot; (definicije koje su prošle eliminaciju) i &quot;Čistilište&quot; (definicije koje su kandidati za &quot;Dvoranu slavnih&quot;) po sledećim kriterijumima:</p>
-<ul>
-<li>Najbolje</li>
-<li>Najgore</li>
-<li>Kontroverzne</li>
-<li>Po ključnoj reči</li>
-</ul>
+<p>Administrator stavlja, odnosno uklanja zabranu pristupa korisniku.</p>
 <h2><a href="#tok-događaja" aria-hidden="true" class="anchor" id="tok-događaja"></a>Tok događaja</h2>
-<h3><a href="#korisnik-vrši-pretragu-po-kriterijumu-najbolje" aria-hidden="true" class="anchor" id="korisnik-vrši-pretragu-po-kriterijumu-najbolje"></a>Korisnik vrši pretragu po kriterijumu &quot;Najbolje&quot;</h3>
+<h3><a href="#administrator-zabranjuje-pristup" aria-hidden="true" class="anchor" id="administrator-zabranjuje-pristup"></a>Administrator zabranjuje pristup</h3>
 <ol>
-<li>Korisnik u odeljku &quot;pretraga&quot; na stranici klikne na dugme &quot;Sortiraj najbolje&quot;.</li>
-<li>Na stranici se prikazuju definicije sa najviše &quot;+&quot;, a najmanje &quot;-&quot; glasova.</li>
+<li>Administrator otvara stranicu dotičnog korisnika.</li>
+<li>Administrator pritiska dugme &quot;Zabrani pristup nalogu&quot;.</li>
+<li>Dotični korisnik gubi pristup svom nalogu.</li>
 </ol>
-<h3><a href="#korisnik-vrši-pretragu-po-kriterijumu-najgore" aria-hidden="true" class="anchor" id="korisnik-vrši-pretragu-po-kriterijumu-najgore"></a>Korisnik vrši pretragu po kriterijumu &quot;Najgore&quot;</h3>
+<div class="condition">Pristup korisničkom nalogu nije zabranjen.</div>
+<h3><a href="#administrator-otklanja-zabranu-pristupa" aria-hidden="true" class="anchor" id="administrator-otklanja-zabranu-pristupa"></a>Administrator otklanja zabranu pristupa</h3>
 <ol>
-<li>Korisnik u odeljku &quot;pretraga&quot; na stranici klikne na dugme &quot;Sortiraj najgore&quot;.</li>
-<li>Na stranici se prikazuju definicije sa najviše &quot;-&quot;, a najmanje &quot;+&quot; glasova.</li>
+<li>Administrator otvara stranicu dotičnog korisnika.</li>
+<li>Administrator pritiska dugme &quot;Ukloni zabranu pristupa nalogu&quot;.</li>
+<li>Dotični korisnik ponovo dobija mogućnost pristupa nalogu.</li>
 </ol>
-<h3><a href="#korisnik-vrši-pretragu-po-kriterijumu-kontroverzne" aria-hidden="true" class="anchor" id="korisnik-vrši-pretragu-po-kriterijumu-kontroverzne"></a>Korisnik vrši pretragu po kriterijumu &quot;Kontroverzne&quot;</h3>
-<ol>
-<li>Korisnik u odeljku &quot;pretraga&quot; na stranici klikne na dugme &quot;Sortiraj kontroverzne&quot;.</li>
-<li>Na stranici se prikazuju definicije gde je odnos &quot;+&quot; i &quot;-&quot; glasova približan 50%, gde prednost dobijaju one sa više sveukupnih glasova.</li>
-</ol>
-<h3><a href="#korisnik-vrši-pretragu-po-ključnoj-reči" aria-hidden="true" class="anchor" id="korisnik-vrši-pretragu-po-ključnoj-reči"></a>Korisnik vrši pretragu po ključnoj reči</h3>
-<ol>
-<li>Korisnik u odeljku &quot;pretraga&quot; u polju za pretragu po ključnoj reči unosi argument pretrage.</li>
-<li>Na stranici se prikazuju definicije koje po sadržaju, naslovu ili nazivu autora najviše odgovaraju datom argumentu.</li>
-</ol>
+<div class="condition">Pristup korisničkom nalogu je zabranjen.</div>
 </main>
 </div>
   </body>
