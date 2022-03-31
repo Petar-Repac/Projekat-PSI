@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Test</title>
+  <title>Zabrana prijave korisnika</title>
   <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
   <link rel="stylesheet" href="assets/setup.css" />
   <link rel="stylesheet" href="assets/style.css" />
@@ -14,7 +14,7 @@
 <body>
   <div class="page"><header class="first-page center">
 <h1><a href="#specifikacija-scenarija-upotrebe" aria-hidden="true" class="anchor" id="specifikacija-scenarija-upotrebe"></a>Specifikacija scenarija upotrebe</h1>
-<h2><a href="#zabrana-prijave-korisnika" aria-hidden="true" class="anchor" id="zabrana-prijave-korisnika"></a>Zabrana prijave korisnika</h2>
+<h2><a href="#automatski-odabir-objave-dana" aria-hidden="true" class="anchor" id="automatski-odabir-objave-dana"></a>Automatski odabir objave dana</h2>
 <p>Autor: Vukašin Stepanović</p>
 <p>Verzija: 1.0</p>
 </header>
@@ -47,7 +47,6 @@
 <h1><a href="#sadržaj" aria-hidden="true" class="anchor" id="sadržaj"></a>Sadržaj</h1>
 <div class="toc">
 <ul>
-<li><a href="#sadr%C5%BEaj">Sadržaj</a></li>
 <li><a href="#uvod">Uvod</a>
 <ul>
 <li><a href="#rezime">Rezime</a></li>
@@ -56,13 +55,12 @@
 <li><a href="#otvorena-pitanja">Otvorena pitanja</a></li>
 </ul>
 </li>
-<li><a href="#scenario-zabrane-prijave-korisnika">Scenario zabrane prijave korisnika</a>
+<li><a href="#scenario-prijave-korisnika-nakon-pobede">Scenario prijave korisnika nakon pobede</a>
 <ul>
 <li><a href="#kratak-opis">Kratak opis</a></li>
 <li><a href="#tok-doga%C4%91aja">Tok događaja</a>
 <ul>
-<li><a href="#moderator-zabranjuje-pristup">Moderator zabranjuje pristup</a></li>
-<li><a href="#moderator-otklanja-zabranu-pristupa">Moderator otklanja zabranu pristupa</a></li>
+<li><a href="#korisnik-se-prijavljuje">Korisnik se prijavljuje</a></li>
 </ul>
 </li>
 </ul>
@@ -74,7 +72,7 @@
 <div class="page">
 <h1><a href="#uvod" aria-hidden="true" class="anchor" id="uvod"></a>Uvod</h1>
 <h2><a href="#rezime" aria-hidden="true" class="anchor" id="rezime"></a>Rezime</h2>
-<p>Ovo je privilegija dostupna moderatoru koja mu dozvoljava da nekom korisniku zabrani pristup nalogu, najčešće usled kršenja pravila foruma.</p>
+<p>Iz skupa kandidata za objavu dana na kraju dana u 23:59 se automatski bira pobednik. Ako je prijavljeni korisnik kreirao neku kandidat-definiciju, on biva obavešten prilikom sledećeg prijavljivanja na nalog o tome da li je njegova definicija pobedila.</p>
 <h2><a href="#namena-dokumenta-i-ciljne-grupe" aria-hidden="true" class="anchor" id="namena-dokumenta-i-ciljne-grupe"></a>Namena dokumenta i ciljne grupe</h2>
 <p>Dokument služi članovima tima kao pomoć u izradi projekta.</p>
 <h2><a href="#reference" aria-hidden="true" class="anchor" id="reference"></a>Reference</h2>
@@ -82,43 +80,26 @@
 <li>Projektni zadatak</li>
 </ol>
 <h2><a href="#otvorena-pitanja" aria-hidden="true" class="anchor" id="otvorena-pitanja"></a>Otvorena pitanja</h2>
-<table>
-<thead>
-<tr>
-<th>Redni broj</th>
-<th>Opis</th>
-<th>Rešenje</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Pored zabrane pristupa, da li je dodatno potrebno i ukloniti sve privilegije korisnika?</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>Nema</p>
 </div>
 
 <div class="page">
-<h1><a href="#scenario-zabrane-prijave-korisnika" aria-hidden="true" class="anchor" id="scenario-zabrane-prijave-korisnika"></a>Scenario zabrane prijave korisnika</h1>
+<h1><a href="#scenario-prijave-korisnika-nakon-pobede" aria-hidden="true" class="anchor" id="scenario-prijave-korisnika-nakon-pobede"></a>Scenario prijave korisnika nakon pobede</h1>
 <h2><a href="#kratak-opis" aria-hidden="true" class="anchor" id="kratak-opis"></a>Kratak opis</h2>
-<p>Moderator stavlja, odnosno uklanja zabranu pristupa korisniku.</p>
+<p>Korisnik dobija obaveštenje.</p>
 <h2><a href="#tok-događaja" aria-hidden="true" class="anchor" id="tok-događaja"></a>Tok događaja</h2>
-<h3><a href="#moderator-zabranjuje-pristup" aria-hidden="true" class="anchor" id="moderator-zabranjuje-pristup"></a>Moderator zabranjuje pristup</h3>
+<h3><a href="#korisnik-jeste-pobedio" aria-hidden="true" class="anchor" id="korisnik-jeste-pobedio"></a>Korisnik jeste pobedio</h3>
 <ol>
-<li>Moderator otvara stranicu dotičnog korisnika.</li>
-<li>Moderator pritiska dugme &quot;Zabrani pristup nalogu&quot;.</li>
-<li>Dotični korisnik gubi pristup svom nalogu.</li>
+<li>Gost se prijavljuje na svoj korisnički nalog.</li>
+<li>Korisnik dobija obaveštenje koje mu govori da je njegova definicija izabrana kao pobednik. Ova poruka se prikazuje samo jednom prilikom prijavljivanja.</li>
 </ol>
-<div class="condition">Pristup korisničkom nalogu nije zabranjen.</div>
-<h3><a href="#moderator-otklanja-zabranu-pristupa" aria-hidden="true" class="anchor" id="moderator-otklanja-zabranu-pristupa"></a>Moderator otklanja zabranu pristupa</h3>
+<div class="condition">Korisnikova definicija je izabrana kao pobednička.</div>
+<h3><a href="#korisnik-nije-pobedio" aria-hidden="true" class="anchor" id="korisnik-nije-pobedio"></a>Korisnik nije pobedio</h3>
 <ol>
-<li>Moderator otvara stranicu dotičnog korisnika.</li>
-<li>Moderator pritiska dugme &quot;Ukloni zabranu pristupa nalogu&quot;.</li>
-<li>Dotični korisnik ponovo dobija mogućnost pristupa nalogu.</li>
+<li>Gost se prijavljuje na svoj korisnički nalog.</li>
+<li>Korisnik dobija obaveštenje koje mu govori da njegova definicija nije izabrana kao pobednik. Ova poruka se prikazuje samo jednom prilikom prijavljivanja. Korisnikova kandidat-definicija biva obrisana od strane sistema.</li>
 </ol>
-<div class="condition">Pristup korisničkom nalogu je zabranjen.</div>
+<div class="condition">Korisnikova definicija nije izabrana kao pobednička.</div>
 </main>
 </div>
 </body>
