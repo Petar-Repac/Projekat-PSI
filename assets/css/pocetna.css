@@ -5,10 +5,13 @@
 
 #search h1 {
     margin:2rem;
-}
-#search{
+} 
 
+.spotlights .spotlight {
+  padding:1rem;
 }
+
+
 #posts, #sidebar {
  padding-top: 0rem;
 }
