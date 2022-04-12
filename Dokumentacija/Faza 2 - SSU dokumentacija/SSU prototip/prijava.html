@@ -70,6 +70,12 @@
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
       const res = Auth.logIn(username, password);
+
+      if (res?.meta?.banned) {
+        alert("Ovom nalogu je zabranjen pristup!");
+        return;
+      }
+
       alert(res ? "Uspešno prijavljen!" : "Netačno korisničko ime/lozinka.");
       if (res) {
         location.href = location.href.replace("prijava.html", "index.html");

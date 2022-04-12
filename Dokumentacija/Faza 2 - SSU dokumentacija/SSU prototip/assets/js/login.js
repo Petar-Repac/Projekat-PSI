@@ -9,8 +9,8 @@
     admin: "admin",
   };
 
-  function user(username, password, role) {
-    return { username, password, role };
+  function user(username, password, role, meta) {
+    return { username, password, role, meta };
   }
 
   const Storage = {
@@ -32,6 +32,7 @@
     user("User", "user", Role.user),
     user("Mod", "mod", Role.mod),
     user("Admin", "admin", Role.admin),
+    user("Banned", "banned", Role.user, { banned: true }),
   ];
 
   const users = Storage.get("users", defaultUsers);
@@ -63,7 +64,10 @@
         return null;
       }
 
-      Storage.set("user", user);
+      if (!user.meta?.banned) {
+        Storage.set("user", user);
+      }
+
       return user;
     },
 
