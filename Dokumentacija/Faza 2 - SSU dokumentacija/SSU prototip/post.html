@@ -45,9 +45,14 @@
         neće biti tako tretirana pri ocenjivanju rešenja.
       </p>
       <ul class="actions">
-        <li><a href="#" class="button like"><span class="icon fa-plus-circle"></span>12</a></li>
-        <li><a href="#" class="button dislike"><span class="icon fa-minus-circle"></span>3</a></li>
-        <li class="mod"><a href="#" class="button lock"><span class="icon fa-lock"></span>Zaključaj</a></li>
+        <li><button id="post-like" href="#" class="button like"><span class="icon fa-plus-circle"></span>12</button></li>
+        <li><button id="post-dislike" href="#" class="button dislike"><span class="icon fa-minus-circle"></span>3</button></li>
+        <li class="mod">
+          <button id="toggle-lock" href="#" class="button lock">
+            <span class="icon fa-lock"></span>
+            <span id="toggle-lock-text">Zaključaj</span>
+          </button>
+        </li>
       </ul>
 
 
@@ -95,7 +100,7 @@
             </div>
             <div class="col-12 col-12-xsmall">
               <ul class="actions">
-                <li><button type="submit" class="button comment">Postavi komentar</button></li>
+                <li><button id="submit-komentar" type="submit" class="button comment">Postavi komentar</button></li>
               </ul>
             </div>
 
@@ -131,6 +136,17 @@
       if (!Auth.getLoggedInUser()) {
         alert("Niste prijavljeni!");
       }
+    });
+
+    const toggleLock = document.getElementById("toggle-lock");
+    const toggleLockText = document.getElementById("toggle-lock-text");
+    const interactive = ["komentar", "submit-komentar", "post-like", "post-dislike"].map(x => document.getElementById(x));
+
+    toggleLock.addEventListener("click", e => {
+      toggleLockText.textContent = toggleLockText.textContent === "Zaključaj" ? "Otključaj" : "Zaključaj";
+      const locked = toggleLockText.textContent === "Otključaj";
+
+      interactive.forEach(el => el.disabled = locked);
     });
   </script>
 

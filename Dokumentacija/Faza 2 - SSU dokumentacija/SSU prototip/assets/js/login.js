@@ -107,7 +107,10 @@
 
   window.addEventListener("click", e => {
     const user = Auth.getLoggedInUser();
-    if (!user && e.target.closest("a.like, a.dislike, a.comment")) {
+    if (
+      !user &&
+      e.target.closest(".button.like, .button.dislike, .button.comment")
+    ) {
       alert("Morate se prijaviti kako biste mogli to da uradite!");
       e.preventDefault();
     }
