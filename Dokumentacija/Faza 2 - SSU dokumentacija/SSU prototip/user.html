@@ -40,8 +40,8 @@
       </header>
       <p>Korisnikov status ovde</p>
       <ul class="actions">
-        <li class="mod"><a href="#" class="button">Zabrani pristup nalogu</a></li>
-        <li class="admin"><a href="#" class="button">Unapredi u moderatora</a></li>
+        <li class="mod"><button id="toggle-ban" href="#" class="button">Zabrani pristup nalogu</button></li>
+        <li class="admin"><button id="toggle-promote" href="#" class="button">Unapredi u moderatora</button></li>
       </ul>
 
     </div>
@@ -66,6 +66,24 @@
   <script src="assets/vendor/js/breakpoints.min.js"></script>
   <script src="assets/vendor/js/util.js"></script>
   <script src="assets/vendor/js/main.js"></script>
+
+  <script>
+    let banActive = false;
+    let promoteActive = false;
+
+    const ban = document.getElementById("toggle-ban");
+    const promote = document.getElementById("toggle-promote");
+
+    ban.addEventListener("click", () => {
+      banActive = !banActive;
+      ban.textContent = banActive ? "Dozvoli pristup nalogu": "Zabrani pristup nalogu";
+    });
+
+    promote.addEventListener("click", () => {
+      promoteActive = !promoteActive;
+      promote.textContent = promoteActive ? "Ražaluj u korisnika": "Unapredi u moderatora";
+    })
+  </script>
 
 </body>
 
