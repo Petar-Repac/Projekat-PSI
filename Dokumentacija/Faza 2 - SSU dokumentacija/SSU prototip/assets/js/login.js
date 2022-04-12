@@ -109,7 +109,9 @@
     const user = Auth.getLoggedInUser();
     if (
       !user &&
-      e.target.closest(".button.like, .button.dislike, .button.comment")
+      e.target.closest(
+        ".button.like, .button.dislike, .button.comment, .js-forbid-guest",
+      )
     ) {
       alert("Morate se prijaviti kako biste mogli to da uradite!");
       e.preventDefault();
