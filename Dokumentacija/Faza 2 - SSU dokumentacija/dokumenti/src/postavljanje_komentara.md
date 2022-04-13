@@ -74,18 +74,18 @@ Autorizovani korisnici (standardni korisnik, moderator i administrator) imaju pr
 ### Korisnik uspešno postavlja komentar na definiciju
 
 1. Korisnik klikom na link otvara stranicu definicije.
-2. Korisnik u odeljku "Komentari" klikne na dugme "Komentariši".
-3. Korisnik popunjava polje za komentar i klikne na dugme "Postavi".
-4. Komentar se prikazuje u odeljku "Komentari" date definicije. 
+1. Korisnik u odeljku "Komentari" klikne na žuto dugme sa belim oblačićem koje označava funkciju komentarisanja.
+2. Korisnik popunjava polje za komentar i klikne na dugme "Postavi komentar".
+3. Komentar se prikazuje u odeljku "Komentari" date definicije. 
 
 <div class="condition">Korisnik je prijavljen na platformi.</div> 
 
 ### Korisnik pokušava da postavi prazan komentar
 
 1. Korisnik klikom na link otvara stranicu definicije.
-2. Korisnik u odeljku "Komentari" klikne na dugme "Komentariši".
-3. Korisnik popunjava polje za komentar i klikne na dugme "Postavi".
-4. Komentar se prikazuje u odeljku "Komentari" date definicije, korisnik
+1. Korisnik u odeljku "Komentari" klikne na žuto dugme sa belim oblačićem koje označava funkciju komentarisanja.
+2. Korisnik popunjava polje za komentar i klikne na dugme "Postavi komentar".
+3. Komentar se prikazuje u odeljku "Komentari" date definicije, korisnik
    dobija obaveštenje: "Komentar uspešno postavljen!". 
 
 <div class="condition">Korisnik je prijavljen na platformi.</div> 
@@ -93,13 +93,13 @@ Autorizovani korisnici (standardni korisnik, moderator i administrator) imaju pr
 ### Prekoračeno ograničenje karaktera za komentar
 
 1. Korisnik klikom na link otvara stranicu definicije.
-2. Korisnik u odeljku "Komentari" klikne na dugme "Komentariši".
-3. Korisnik popunjava polje za komentar i klikne na dugme "Postavi".
+1. Korisnik u odeljku "Komentari" klikne na žuto dugme sa belim oblačićem koje označava funkciju komentarisanja.
+2. Korisnik popunjava polje za komentar i klikne na dugme "Postavi komentar".
 3. Pojavljuje se obaveštenje: "Sadržaj/naslov Vaše definicije ima previše karaktera. Dozvoljen broj  karaktera je XXXX".
 
 <div class="condition">Korisnik je prijavljen na platformi.</div> 
 
 ## Posebni zahtevi
-1. Potrebno je obezbediti da gostu ne bude dostupno dugme "Komentariši".
+1. Potrebno je obezbediti da gostu ne bude dostupno žuto dugme sa belim oblačićem koje označava funkciju komentarisanja.
 
 </main>
