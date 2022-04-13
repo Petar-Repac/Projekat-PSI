@@ -71,8 +71,9 @@ Administrator dodeljuje, odnosno uklanja status moderatora nekog korisnika.
 
 ### Administrator dodaje ulogu moderatora
 
-1. Administrator otvara stranicu dotičnog korisnika.
-2. Administrator pritiska dugme "Dodeli ulogu moderatora".
+1. Administrator otvara stranicu dotičnog korisnika klikom na korisničko ime koje se vidi uz objavu ili komentar 
+   postavljen od strane korisnika.
+2. Administrator pritiska dugme "Unapredi u moderatora".
 3. Korisnik postaje moderator i dobija dodatne privilegije.
 
 <div class="condition">Korisnik nije bio moderator.</div>

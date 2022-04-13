@@ -14,8 +14,8 @@
 <body>
   <div class="page"><header class="first-page center">
 <h1><a href="#specifikacija-scenarija-upotrebe" aria-hidden="true" class="anchor" id="specifikacija-scenarija-upotrebe"></a>Specifikacija scenarija upotrebe</h1>
-<h2><a href="#postavljanje-komentara-na-definicije" aria-hidden="true" class="anchor" id="postavljanje-komentara-na-definicije"></a>Postavljanje komentara na definicije</h2>
-<p>Autor: Petar Repac</p>
+<h2><a href="#promena-moderatorskog-statusa" aria-hidden="true" class="anchor" id="promena-moderatorskog-statusa"></a>Promena moderatorskog statusa</h2>
+<p>Autor: Vukašin Stepanović</p>
 <p>Verzija: 1.0</p>
 </header>
 </div>
@@ -36,7 +36,7 @@
 <td>1</td>
 <td>1.0</td>
 <td>Inicijalna verzija</td>
-<td>Petar Repac</td>
+<td>Vukašin Stepanović</td>
 </tr>
 </tbody>
 </table>
@@ -45,7 +45,7 @@
 <div class="page">
 <main>
 <h1><a href="#sadržaj" aria-hidden="true" class="anchor" id="sadržaj"></a>Sadržaj</h1>
-<div class="toc"> 
+<div class="toc">
 <ul>
 <li><a href="#uvod">Uvod</a>
 <ul>
@@ -55,17 +55,15 @@
 <li><a href="#otvorena-pitanja">Otvorena pitanja</a></li>
 </ul>
 </li>
-<li><a href="#scenario-pristupa-stranici-sa-formom-za-pisanje-definicije">Scenario pristupa stranici sa formom za pisanje definicije</a>
+<li><a href="#scenario-dodeljivanja-uloge-moderatora">Scenario dodeljivanja uloge moderatora</a>
 <ul>
 <li><a href="#kratak-opis">Kratak opis</a></li>
 <li><a href="#tok-doga%C4%91aja">Tok događaja</a>
 <ul>
-<li><a href="#korisnik-uspe%C5%A1no-postavlja-komentar-na-definiciju">Korisnik uspešno postavlja komentar na definiciju</a></li>
-<li><a href="#korisnik-poku%C5%A1ava-da-postavi-prazan-komentar">Korisnik pokušava da postavi prazan komentar</a></li>
-<li><a href="#prekora%C4%8Deno-ograni%C4%8Denje-karaktera-za-komentar">Prekoračeno ograničenje karaktera za komentar</a></li>
+<li><a href="#administrator-dodaje-ulogu-moderatora">Administrator dodaje ulogu moderatora</a></li>
+<li><a href="#administrator-uklanja-ulogu-moderatora">Administrator uklanja ulogu moderatora</a></li>
 </ul>
 </li>
-<li><a href="#posebni-zahtevi">Posebni zahtevi</a></li>
 </ul>
 </li>
 </ul>
@@ -75,7 +73,7 @@
 <div class="page">
 <h1><a href="#uvod" aria-hidden="true" class="anchor" id="uvod"></a>Uvod</h1>
 <h2><a href="#rezime" aria-hidden="true" class="anchor" id="rezime"></a>Rezime</h2>
-<p>Akcije vezane za postavljanje komentara na definiciju.</p>
+<p>Administrator ima sposobnost da korisniku dodeli, odnosno ukloni status moderatora.</p>
 <h2><a href="#namena-dokumenta-i-ciljne-grupe" aria-hidden="true" class="anchor" id="namena-dokumenta-i-ciljne-grupe"></a>Namena dokumenta i ciljne grupe</h2>
 <p>Dokument služi članovima tima kao pomoć u izradi projekta.</p>
 <h2><a href="#reference" aria-hidden="true" class="anchor" id="reference"></a>Reference</h2>
@@ -87,39 +85,25 @@
 </div>
 
 <div class="page">
-<h1><a href="#scenario-postavljanja-komentara-na-definiciju" aria-hidden="true" class="anchor" id="scenario-postavljanja-komentara-na-definiciju"></a>Scenario postavljanja komentara na definiciju</h1>
+<h1><a href="#scenario-dodeljivanja-uloge-moderatora" aria-hidden="true" class="anchor" id="scenario-dodeljivanja-uloge-moderatora"></a>Scenario dodeljivanja uloge moderatora</h1>
 <h2><a href="#kratak-opis" aria-hidden="true" class="anchor" id="kratak-opis"></a>Kratak opis</h2>
-<p>Autorizovani korisnici (standardni korisnik, moderator i administrator) imaju pravo komentarisanja na definicijama. Komentari nemaju nikakav uticaj na metriku objave dana, već samo služe kao način interakcije među korisnicima.</p>
+<p>Administrator dodeljuje, odnosno uklanja status moderatora nekog korisnika.</p>
 <h2><a href="#tok-događaja" aria-hidden="true" class="anchor" id="tok-događaja"></a>Tok događaja</h2>
-<h3><a href="#korisnik-uspešno-postavlja-komentar-na-definiciju" aria-hidden="true" class="anchor" id="korisnik-uspešno-postavlja-komentar-na-definiciju"></a>Korisnik uspešno postavlja komentar na definiciju</h3>
+<h3><a href="#administrator-dodaje-ulogu-moderatora" aria-hidden="true" class="anchor" id="administrator-dodaje-ulogu-moderatora"></a>Administrator dodaje ulogu moderatora</h3>
 <ol>
-<li>Korisnik klikom na link otvara stranicu definicije.</li>
-<li>Korisnik u odeljku &quot;Komentari&quot; klikne na žuto dugme sa belim oblačićem koje označava funkciju komentarisanja.</li>
-<li>Korisnik popunjava polje za komentar i klikne na dugme &quot;Postavi komentar&quot;.</li>
-<li>Komentar se prikazuje u odeljku &quot;Komentari&quot; date definicije.</li>
+<li>Administrator otvara stranicu dotičnog korisnika klikom na korisničko ime koje se vidi uz objavu ili komentar
+postavljen od strane korisnika.</li>
+<li>Administrator pritiska dugme &quot;Unapredi u moderatora&quot;.</li>
+<li>Korisnik postaje moderator i dobija dodatne privilegije.</li>
 </ol>
-<div class="condition">Korisnik je prijavljen na platformi.</div> 
-<h3><a href="#korisnik-pokušava-da-postavi-prazan-komentar" aria-hidden="true" class="anchor" id="korisnik-pokušava-da-postavi-prazan-komentar"></a>Korisnik pokušava da postavi prazan komentar</h3>
+<div class="condition">Korisnik nije bio moderator.</div>
+<h3><a href="#administrator-uklanja-ulogu-moderatora" aria-hidden="true" class="anchor" id="administrator-uklanja-ulogu-moderatora"></a>Administrator uklanja ulogu moderatora</h3>
 <ol>
-<li>Korisnik klikom na link otvara stranicu definicije.</li>
-<li>Korisnik u odeljku &quot;Komentari&quot; klikne na žuto dugme sa belim oblačićem koje označava funkciju komentarisanja.</li>
-<li>Korisnik popunjava polje za komentar i klikne na dugme &quot;Postavi komentar&quot;.</li>
-<li>Komentar se prikazuje u odeljku &quot;Komentari&quot; date definicije, korisnik
-dobija obaveštenje: &quot;Komentar uspešno postavljen!&quot;.</li>
+<li>Administrator otvara stranicu dotičnog moderatora.</li>
+<li>Administrator pritiska dugme &quot;Ukloni ulogu moderatora&quot;.</li>
+<li>Moderator gubi dodatne privilegije i postaje običan korisnik.</li>
 </ol>
-<div class="condition">Korisnik je prijavljen na platformi.</div> 
-<h3><a href="#prekoračeno-ograničenje-karaktera-za-komentar" aria-hidden="true" class="anchor" id="prekoračeno-ograničenje-karaktera-za-komentar"></a>Prekoračeno ograničenje karaktera za komentar</h3>
-<ol>
-<li>Korisnik klikom na link otvara stranicu definicije.</li>
-<li>Korisnik u odeljku &quot;Komentari&quot; klikne na žuto dugme sa belim oblačićem koje označava funkciju komentarisanja.</li>
-<li>Korisnik popunjava polje za komentar i klikne na dugme &quot;Postavi komentar&quot;.</li>
-<li>Pojavljuje se obaveštenje: &quot;Sadržaj/naslov Vaše definicije ima previše karaktera. Dozvoljen broj  karaktera je XXXX&quot;.</li>
-</ol>
-<div class="condition">Korisnik je prijavljen na platformi.</div> 
-<h2><a href="#posebni-zahtevi" aria-hidden="true" class="anchor" id="posebni-zahtevi"></a>Posebni zahtevi</h2>
-<ol>
-<li>Potrebno je obezbediti da gostu ne bude dostupno žuto dugme sa belim oblačićem koje označava funkciju komentarisanja.</li>
-</ol>
+<div class="condition">Dotični korisnik je imao status moderatora.</div>
 </main>
 </div>
 </body>
