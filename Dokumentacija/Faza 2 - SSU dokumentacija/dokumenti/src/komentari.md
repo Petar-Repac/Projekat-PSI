@@ -2,15 +2,15 @@
 
 <main>
 
-1. Rešeno.
+1. Promenjen naziv dugmeta u SSU.
 2. Nije stavljena poruka, već prosto required atribut na tekst polju.
-3. Promenjen opis dugmeta.
+3. Promenjen opis dugmeta u SSU.
 4. Rešeno.
-5. Rešeno.
-6. Pravopisna greška ne postoji.
-7. Bukvalno piše tekstualni status profila korisnika.
-8. Pravopisna greška ne postoji.
-9. SSU dokumenti služe upravo opisu navedenih funkcionalnosti.
+5. Greška u kucanju ispravljena.
+6. Pravopisna greška ne postoji, nema potrebe za izmenama.
+7. Jasno je definisano u projektnom zadatku, nema potrebe za izmenama.
+8. Pravopisna greška ne postoji, nema potrebe za izmenama.
+9. SSU dokumenti služe upravo opisu navedenih funkcionalnosti, nema potrebe za izmenama.
 10. Rešeno.
 11. Rešeno.
 12. Rešeno.
