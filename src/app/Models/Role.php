@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Role extends Model
 {
-	protected $table = 'role';
+	protected $table = 'Role';
 	protected $primaryKey = 'idRole';
 	public $timestamps = false;
 

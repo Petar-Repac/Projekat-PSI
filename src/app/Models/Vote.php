@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Vote extends Model
 {
-	protected $table = 'vote';
+	protected $table = 'Vote';
 	public $incrementing = false;
 	public $timestamps = false;
 
