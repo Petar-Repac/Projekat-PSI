@@ -1,3 +1,5 @@
+<!-- Autor: Vukašin Stepanović -->
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -19,8 +21,15 @@ return new class extends Migration
             $table->timestamp('timePosted');
             $table->string('heading', 100);
             $table->string('content', 1000);
-            $table->unsignedBigInteger('author');
+            $table->unsignedBigInteger('author')->nullable();
             $table->boolean('isLocked');
+
+            $table->index('author');
+            $table
+                ->foreign('author')
+                ->references('idUser')->on('User')
+                ->nullOnDelete()
+                ->cascadeOnUpdate();
         });
     }
 
@@ -31,6 +40,12 @@ return new class extends Migration
      */
     public function down()
     {
+        if (Schema::hasTable('Post')) {
+            Schema::table('Post', function (Blueprint $table) {
+                $table->dropIndex(['author']);
+                $table->dropForeign(['author']);
+            });
+        }
         Schema::dropIfExists('Post');
     }
 };

@@ -1,3 +1,5 @@
+<!-- Autor: Vukašin Stepanović -->
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -15,10 +17,24 @@ return new class extends Migration
     {
         Schema::create('Comment', function (Blueprint $table) {
             $table->id('idComment');
-            $table->unsignedBigInteger('commenter');
+            $table->unsignedBigInteger('commenter')->nullable();
             $table->unsignedBigInteger('post');
             $table->string('content', 1000);
             $table->timestamp('timeCreated');
+
+            $table->index('commenter');
+            $table
+                ->foreign('commenter')
+                ->references('idUser')->on('User')
+                ->nullOnDelete()
+                ->cascadeOnUpdate();
+
+            $table->index('post');
+            $table
+                ->foreign('post')
+                ->references('idPost')->on('Post')
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
         });
     }
 
@@ -29,6 +45,12 @@ return new class extends Migration
      */
     public function down()
     {
+        if (Schema::hasTable('Comment')) {
+            Schema::table('Comment', function (Blueprint $table) {
+                $table->dropIndex(['commenter', 'post']);
+                $table->dropForeign(['commenter', 'post']);
+            });
+        }
         Schema::dropIfExists('Comment');
     }
 };

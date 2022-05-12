@@ -1,3 +1,5 @@
+<!-- Autor: Vukašin Stepanović -->
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -17,10 +19,17 @@ return new class extends Migration
             $table->id('idUser');
             $table->string('username')->unique();
             $table->string('password');
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->unsignedBigInteger('role');
             $table->boolean('isBanned');
             $table->rememberToken();
+
+            $table->index('role');
+            $table
+                ->foreign('role')
+                ->references('idRole')->on('Role')
+                ->restrictOnDelete()
+                ->cascadeOnUpdate();
         });
     }
 
@@ -31,6 +40,12 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tables');
+        if (Schema::hasTable('User')) {
+            Schema::table('User', function (Blueprint $table) {
+                $table->dropIndex(['role']);
+                $table->dropForeign(['role']);
+            });
+        }
+        Schema::dropIfExists('User');
     }
 };

@@ -1,3 +1,5 @@
+<!-- Autor: Vukašin Stepanović -->
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;

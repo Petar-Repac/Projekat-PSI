@@ -1,3 +1,5 @@
+<!-- Autor: Vukašin Stepanović -->
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -18,6 +20,19 @@ return new class extends Migration
             $table->unsignedBigInteger('voter');
             $table->unsignedBigInteger('post');
             $table->boolean('value');
+
+            $table->index('voter');
+            $table
+                ->foreign('voter')
+                ->references('idUser')->on('User')
+                ->cascadeOnUpdate();
+
+            $table->index('post');
+            $table
+                ->foreign('post')
+                ->references('idPost')->on('Post')
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
         });
     }
 
@@ -28,6 +43,12 @@ return new class extends Migration
      */
     public function down()
     {
+        if (Schema::hasTable('Vote')) {
+            Schema::table('Vote', function (Blueprint $table) {
+                $table->dropIndex(['voter', 'post']);
+                $table->dropForeign(['voter', 'post']);
+            });
+        }
         Schema::dropIfExists('Vote');
     }
 };
