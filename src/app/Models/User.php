@@ -46,7 +46,7 @@ class User extends Authenticatable
 
 	public function role()
 	{
-		return $this->belongsTo(Role::class, 'role');
+		return $this->belongsTo(Role::class, 'role', 'idRole');
 	}
 
 	public function comments()
@@ -62,5 +62,33 @@ class User extends Authenticatable
 	public function votes()
 	{
 		return $this->hasMany(Vote::class, 'voter');
+	}
+
+
+	/**
+	 * Proverava da li je korisnik običan korisnik.
+	 * @return boolean
+	 */
+	public function isUser()
+	{
+		return $this->role == Role::user()->idRole;
+	}
+
+	/**
+	 * Proverava da li je korisnik moderator.
+	 * @return boolean
+	 */
+	public function isMod()
+	{
+		return $this->role == Role::mod()->idRole;
+	}
+
+	/**
+	 * Proverava da li je korisnik administrator.
+	 * @return boolean
+	 */
+	public function isAdmin()
+	{
+		return $this->role == Role::admin()->idRole;
 	}
 }

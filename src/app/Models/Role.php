@@ -39,4 +39,19 @@ class Role extends Model
 	{
 		return $this->hasMany(User::class, 'role');
 	}
+
+	public static function user()
+	{
+		return Role::where('name', '=', 'user')->first();
+	}
+
+	public static function mod()
+	{
+		return Role::where('name', '=', 'moderator')->first();
+	}
+
+	public static function admin()
+	{
+		return Role::where('name', '=', 'administrator')->first();
+	}
 }
