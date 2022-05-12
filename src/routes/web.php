@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,11 +20,11 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-// // Authentication Routes...
-// Route::get('login', 'LoginController@showLoginForm')->name('login');
-// Route::post('login', 'LoginController@login');
-// Route::post('logout', 'LoginController@logout')->name('logout');
+// Authentication Routes...
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-// // Registration Routes...
-// Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
-// Route::post('register', 'RegisterController@register');
+// Registration Routes...
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [RegisterController::class, 'register']);

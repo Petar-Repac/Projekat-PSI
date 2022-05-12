@@ -31,11 +31,6 @@ class User extends Authenticatable
 	protected $primaryKey = 'idUser';
 	public $timestamps = false;
 
-	protected $casts = [
-		'role' => 'int',
-		'isBanned' => 'int'
-	];
-
 	protected $hidden = [
 		'password',
 		'remember_token'

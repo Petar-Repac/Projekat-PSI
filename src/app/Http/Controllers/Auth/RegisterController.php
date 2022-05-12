@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -65,6 +66,8 @@ class RegisterController extends Controller
         return User::create([
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
+            'role' => Role::user()->idRole,
+            'isBanned' => false,
         ]);
     }
 }
