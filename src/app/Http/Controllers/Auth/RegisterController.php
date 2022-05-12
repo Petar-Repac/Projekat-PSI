@@ -1,4 +1,5 @@
 <?php
+/* Autor: Vukašin Stepanović */
 
 namespace App\Http\Controllers\Auth;
 

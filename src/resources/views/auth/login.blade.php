@@ -1,3 +1,5 @@
+<!-- Autor: Vukašin Stepanović -->
+
 @extends('layouts.app')
 
 @section('content')
