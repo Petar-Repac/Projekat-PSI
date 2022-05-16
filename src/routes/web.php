@@ -24,6 +24,7 @@ Route::get('/', function () {
 });
 
 Route::get('/user/{username}', [UserController::class, 'get']);
+Route::patch('/user/{username}', [UserController::class, 'patch']);
 
 // Authentication Routes...
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');

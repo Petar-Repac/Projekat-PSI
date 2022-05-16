@@ -1,0 +1,9 @@
+/* Autor: Vukašin Stepanović */
+
+.hidden {
+  display: none;
+}
+
+.invisible {
+    visibility: hidden;
+}
