@@ -1,6 +1,6 @@
-<!-- Autor: Vukašin Stepanović -->
-
 <?php
+
+// Autor: Vukašin Stepanović
 
 use App\Models\Role;
 use Illuminate\Database\Migrations\Migration;

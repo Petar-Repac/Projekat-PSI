@@ -1,6 +1,6 @@
-<!-- Autor: Vukašin Stepanović -->
-
 <?php
+
+// Autor: Vukašin Stepanović
 
 use Illuminate\Support\Facades\Route;
 
