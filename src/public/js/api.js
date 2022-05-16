@@ -17,8 +17,16 @@ const API = (function () {
         });
     }
 
+    function updateRole(username, role) {
+        return xfetch.patch(`/user/${username}`, {
+            key: "role",
+            value: role,
+        });
+    }
+
     return {
         updateStatus,
         updateIsBanned,
+        updateRole,
     };
 })();

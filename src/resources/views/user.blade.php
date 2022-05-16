@@ -43,6 +43,8 @@
     @if (Auth::user()->isAdmin())
         <div class="admin-panel invisible">
             <button class="js-ban">Ban</button>
+
+            <button class="js-promote">Promote</button>
         </div>
     @endif
   @endauth

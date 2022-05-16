@@ -21,6 +21,7 @@
         admin: {
             panel: document.querySelector(".admin-panel"),
             ban: document.querySelector(".js-ban"),
+            promote: document.querySelector(".js-promote"),
         },
     };
 
@@ -30,6 +31,10 @@
 
     function updateBanButton(banned) {
         DOM.admin.ban.textContent = banned ? "Unban" : "Ban";
+    }
+
+    function updateRoleButton(role) {
+        DOM.admin.promote.textContent = role === "mod" ? "Demote" : "Promote";
     }
 
     function initStatusEdit() {
@@ -66,7 +71,16 @@
             updateBanButton(__user.isBanned);
         });
 
+        DOM.admin.promote.addEventListener("click", async () => {
+            const newRole = __user.role === "user" ? "mod" : "user";
+
+            const result = await API.updateRole(__user.username, newRole);
+            __user.role = result.value;
+            updateRoleButton(__user.role);
+        });
+
         updateBanButton(__user.isBanned);
+        updateRoleButton(__user.role);
         DOM.admin.panel.classList.remove("invisible");
     }
 
