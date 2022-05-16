@@ -10,7 +10,15 @@ const API = (function () {
         });
     }
 
+    function updateIsBanned(username, isBanned) {
+        return xfetch.patch(`/user/${username}`, {
+            key: "isBanned",
+            value: isBanned,
+        });
+    }
+
     return {
         updateStatus,
+        updateIsBanned,
     };
 })();

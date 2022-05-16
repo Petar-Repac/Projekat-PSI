@@ -17,34 +17,69 @@
             form: document.querySelector("form.status"),
             edit: document.querySelector(".js-edit-status"),
         },
+
+        admin: {
+            panel: document.querySelector(".admin-panel"),
+            ban: document.querySelector(".js-ban"),
+        },
     };
 
     function updateStatus(status) {
         DOM.status.display.textContent = status ?? "No status.";
     }
 
-    DOM.status.edit.addEventListener("click", () => {
-        setEditing(true);
-        prevStatus = __user.status;
-    });
+    function updateBanButton(banned) {
+        DOM.admin.ban.textContent = banned ? "Unban" : "Ban";
+    }
 
-    DOM.status.form.addEventListener("submit", async (e) => {
-        e.preventDefault();
+    function initStatusEdit() {
+        DOM.status.edit.addEventListener("click", () => {
+            setEditing(true);
+            prevStatus = __user.status;
+        });
 
-        const status = new FormData(e.target).get("status") || null;
+        DOM.status.form.addEventListener("submit", async (e) => {
+            e.preventDefault();
 
-        if (status == prevStatus) {
+            const status = new FormData(e.target).get("status") || null;
+
+            if (status == prevStatus) {
+                setEditing(false);
+                return;
+            }
+
+            const result = await API.updateStatus(__user.username, status);
+
+            __user.status = result.value;
+            updateStatus(__user.status);
             setEditing(false);
-            return;
+        });
+    }
+
+    function initAdminPanel() {
+        DOM.admin.ban.addEventListener("click", async () => {
+            const result = await API.updateIsBanned(
+                __user.username,
+                !__user.isBanned
+            );
+            __user.isBanned = result.value;
+            updateBanButton(__user.isBanned);
+        });
+
+        updateBanButton(__user.isBanned);
+        DOM.admin.panel.classList.remove("invisible");
+    }
+
+    function init() {
+        if (DOM.status.form) {
+            initStatusEdit();
         }
-
-        const result = await API.updateStatus(__user.username, status);
-
-        __user.status = result.value;
-        updateStatus(__user.status);
-        setEditing(false);
-    });
+        if (DOM.admin.panel) {
+            initAdminPanel();
+        }
+    }
 
     updateStatus(__user.status);
     DOM.status.display.classList.remove("invisible");
+    init();
 })();

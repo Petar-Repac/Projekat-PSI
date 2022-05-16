@@ -20,12 +20,8 @@ class UserController extends Controller
 
         $req = json_decode($request->getContent(), true);
 
-        switch ($req['key']) {
-            case 'status':
-                $user->status = $req['value'];
-                $user->save();
-                break;
-        }
+        $user->{$req['key']} = $req['value'];
+        $user->save();
 
         return response()->json($req);
     }
