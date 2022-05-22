@@ -40,11 +40,13 @@
 
 
 
-    @if (Auth::user()->isAdmin())
+    @if (Auth::user()->isMod())
         <div class="admin-panel invisible">
             <button class="js-ban">Ban</button>
 
-            <button class="js-promote">Promote</button>
+            @if (Auth::user()->isAdmin())
+              <button class="js-promote">Promote</button>
+            @endif
         </div>
     @endif
   @endauth

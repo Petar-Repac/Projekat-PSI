@@ -22,6 +22,10 @@ window.xfetch = (function () {
         }).then((res) => {
             if (res.ok) {
                 return res.json();
+            } else if (res.status === 405) {
+                // Method Not Allowed; user was banned in the middle of action
+                location.replace("/login?banned");
+                throw new Error(res.statusText);
             } else {
                 throw new Error(res.statusText);
             }

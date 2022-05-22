@@ -61,16 +61,7 @@
         });
     }
 
-    function initAdminPanel() {
-        DOM.admin.ban.addEventListener("click", async () => {
-            const result = await API.updateIsBanned(
-                __user.username,
-                !__user.isBanned
-            );
-            __user.isBanned = result.value;
-            updateBanButton(__user.isBanned);
-        });
-
+    function initPromoteButton() {
         DOM.admin.promote.addEventListener("click", async () => {
             const newRole = __user.role === "user" ? "mod" : "user";
 
@@ -79,21 +70,35 @@
             updateRoleButton(__user.role);
         });
 
-        updateBanButton(__user.isBanned);
         updateRoleButton(__user.role);
-        DOM.admin.panel.classList.remove("invisible");
+    }
+
+    function initBanButton() {
+        DOM.admin.ban.addEventListener("click", async () => {
+            const result = await API.updateIsBanned(
+                __user.username,
+                !__user.isBanned
+            );
+            __user.isBanned = result.value;
+            updateBanButton(__user.isBanned);
+        });
+        updateBanButton(__user.isBanned);
     }
 
     function init() {
         if (DOM.status.form) {
             initStatusEdit();
         }
-        if (DOM.admin.panel) {
-            initAdminPanel();
+        if (DOM.admin.ban) {
+            initBanButton();
         }
+        if (DOM.admin.promote) {
+            initPromoteButton();
+        }
+        updateStatus(__user.status);
+        DOM.status.display.classList.remove("invisible");
+        DOM.admin.panel.classList.remove("invisible");
     }
 
-    updateStatus(__user.status);
-    DOM.status.display.classList.remove("invisible");
     init();
 })();

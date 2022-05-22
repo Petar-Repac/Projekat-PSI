@@ -19,11 +19,7 @@ class Banned
     public function handle($request, Closure $next)
     {
         if (auth()->check() && auth()->user()->isBanned) {
-
-            if (auth()->user()->banned_till == 0) {
-                $message = 'Your account has been banned.';
-            }
-
+            $message = 'Your account has been banned.';
             auth()->logout();
             return redirect()->route('login')->with('message', $message);
         }
