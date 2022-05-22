@@ -96,8 +96,8 @@
             initPromoteButton();
         }
         updateStatus(__user.status);
-        DOM.status.display.classList.remove("invisible");
-        DOM.admin.panel.classList.remove("invisible");
+        DOM.status.display?.classList.remove("invisible");
+        DOM.admin.panel?.classList.remove("invisible");
     }
 
     init();

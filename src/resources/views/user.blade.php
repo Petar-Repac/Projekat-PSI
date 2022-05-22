@@ -40,9 +40,11 @@
 
 
 
-    @if (Auth::user()->isMod())
+    @if (Auth::user()->isMod() && Auth::user()->username != $user->username)
         <div class="admin-panel invisible">
-            <button class="js-ban">Ban</button>
+            @unless (Auth::user()->isMod() && $user->isAdmin())
+              <button class="js-ban">Ban</button>
+            @endunless
 
             @if (Auth::user()->isAdmin())
               <button class="js-promote">Promote</button>

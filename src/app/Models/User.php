@@ -72,7 +72,7 @@ class User extends Authenticatable
 	 */
 	public function isUser()
 	{
-		return $this->role == Role::user()->idRole;
+		return true;
 	}
 
 	/**
@@ -81,7 +81,7 @@ class User extends Authenticatable
 	 */
 	public function isMod()
 	{
-		return $this->role == Role::mod()->idRole;
+		return $this->role == Role::mod()->idRole || $this->role == Role::admin()->idRole;
 	}
 
 	/**
