@@ -9,6 +9,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Auth;
 use Carbon\Carbon;
 
 
@@ -20,14 +21,23 @@ class PostController extends Controller
     {
         //Uzima pageSize broj objava - paginacija
         $posts = Post::all(); //->skip($page * PostController::$pageSize)->take(PostController::$pageSize);
-
-        return view('posts', ['posts' => $posts] );
+        $data['posts'] = $posts;
+        return view('posts', ['data' => $data] );
 
     }
 
 
     protected function showPostForm(Request $request){
         return view('write', []);
+    }
+
+
+    protected function showSpecificPost($id){
+        $post = Post::find($id);
+        $author = User::find($post->author);
+        $data['post'] = $post;
+        $data['author'] = $author;
+        return view('postpage', ['data' => $data]);
     }
 
 
@@ -54,14 +64,16 @@ class PostController extends Controller
      */
     protected function writePost(Request $request)
     {
-        
-        return Post::create([
+        Post::create([
             'heading' => $request->input('heading'),
             'content' => $request->input('content'),
             'timePosted' => Carbon::now()->timestamp,
             'isPermanent' => false,
             'isLocked' => false,
-            'author' => auth()->user()->id
+            'author' => Auth::user()->idUser
         ]);
+
+
+       return redirect('/posts');
     }
 }

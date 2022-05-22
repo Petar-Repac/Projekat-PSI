@@ -2,19 +2,18 @@
 
 @extends('layouts.app')
 
-@section('title', 'Posts')
+@section('title', 'Post page')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                @foreach ($data['posts'] as $post)
                     <section> 
-                       <a href="/posts/{{$post->idPost}}"> <h1>{{ $post->heading}}</h1>  </a>
-                        <p>{{ $post->content }}</p>
+                       <h1>{{ $data['post']->heading}}</h1>
+                        <p>{{ $data['post']->content }}</p>
                     </section>
-                @endforeach
+                    <p> Author: <a href="/user/{{$data['author']->username}}"> {{$data['author']->username}}</a>
             </div>
         </div>
     </div>

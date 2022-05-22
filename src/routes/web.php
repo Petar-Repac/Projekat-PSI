@@ -42,5 +42,6 @@ Route::post('register', [RegisterController::class, 'register']);
 
 //Post-related routes
 Route::get('/posts', [PostController::class, 'showPosts'])->name('posts');
+Route::get('/posts/{id}', [PostController::class, 'showSpecificPost'])->name('posts');
 Route::get('/writepost', [PostController::class, 'showPostForm'])->name('writeform');
 Route::post('/writepost', [PostController::class, 'writePost'])->name('write');
