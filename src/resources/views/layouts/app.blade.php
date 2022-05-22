@@ -83,6 +83,7 @@
         @yield("content")
 
 
+        <script src="{{ asset('js/util.js') }}"></script>
         <script src="{{ asset('js/xfetch.js') }}"></script>
         <script src="{{ asset('js/api.js') }}"></script>
         @yield("scripts")

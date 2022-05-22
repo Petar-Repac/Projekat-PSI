@@ -1,6 +1,6 @@
-<!-- Autor: Vukašin Stepanović -->
-
 <?php
+
+// Autor: Vukašin Stepanović
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;

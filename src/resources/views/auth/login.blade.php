@@ -69,3 +69,9 @@
     </div>
 </div>
 @endsection
+
+@section('scripts')
+  <script>
+    showDialog({!! json_encode(session('message')) !!});
+  </script>
+@endsection
