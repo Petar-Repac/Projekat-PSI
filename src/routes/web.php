@@ -1,12 +1,13 @@
 <?php
 
-// Autor: Vukašin Stepanović
+// Autor: Vukašin Stepanović & Petar Repac
 
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Posts\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('/', function () {
   return view('welcome');
 });
 
+// Autor: Vukašin Stepanović
 Route::get('/user/{username}', [UserController::class, 'get']);
 Route::patch('/user/{username}', [UserController::class, 'patch']);
 
@@ -34,3 +36,11 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 // Registration Routes...
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
+
+
+// Autor: Petar Repac
+
+//Post-related routes
+Route::get('/posts', [PostController::class, 'showPosts'])->name('posts');
+Route::get('/writepost', [PostController::class, 'showPostForm'])->name('writeform');
+Route::post('/writepost', [PostController::class, 'writePost'])->name('write');
