@@ -40,6 +40,7 @@
 
 
                         <a href="{{ url('/') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                        <a href="{{ url('/writepost') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Write a post</a>
                         <form method="POST" action="{{ route('logout') }}">
                           @csrf
                           <input type="submit" value="Log out" />
