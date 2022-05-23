@@ -33,6 +33,7 @@ return new class extends Migration
                 ->references('idPost')->on('Post')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
+           $table->unique(['voter', 'post']);
         });
     }
 

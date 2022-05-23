@@ -33,7 +33,9 @@ class Vote extends Model
 	];
 
 	protected $fillable = [
-		'value'
+		'value',
+		'voter',
+		'post',
 	];
 
 	public function post()
