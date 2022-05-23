@@ -8,7 +8,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Posts\PostController;
-
+use App\Http\Controllers\Posts\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,5 +43,6 @@ Route::post('register', [RegisterController::class, 'register']);
 //Post-related routes
 Route::get('/posts', [PostController::class, 'showPosts'])->name('posts');
 Route::get('/posts/{id}', [PostController::class, 'showSpecificPost'])->name('posts');
-Route::get('/writepost', [PostController::class, 'showPostForm'])->name('writeform');
-Route::post('/writepost', [PostController::class, 'writePost'])->name('write');
+Route::get('/writepost', [PostController::class, 'showPostForm'])->name('writeform')->middleware('auth');
+Route::post('/writepost', [PostController::class, 'writePost'])->name('write')->middleware('auth');
+Route::post('/comment', [CommentController::class, 'writeComment'])->name('comment')->middleware('auth');

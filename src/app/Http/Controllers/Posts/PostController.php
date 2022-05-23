@@ -5,39 +5,57 @@ namespace App\Http\Controllers\Posts;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Posts\CommentController;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Post;
-use Illuminate\Http\Request;
-use Auth;
-use Carbon\Carbon;
+use App\Models\Comment;
 
+
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
    public static $pageSize = 10;
-
     public function showPosts(Request $request)
     {
         //Uzima pageSize broj objava - paginacija
         $posts = Post::all(); //->skip($page * PostController::$pageSize)->take(PostController::$pageSize);
         $data['posts'] = $posts;
-        return view('posts', ['data' => $data] );
+        $data['msg'] = [
+            'title' => 'asajisa',
+            'content' => 'efijsef',
+            'type' => 'success',
+        ];
+        return view('posts.all', ['data' => $data] );
 
     }
 
 
     protected function showPostForm(Request $request){
-        return view('write', []);
+        return view('posts.write', []);
     }
 
 
     protected function showSpecificPost($id){
         $post = Post::find($id);
         $author = User::find($post->author);
+        $comments = CommentController::getComments($id);
+
+        foreach($comments as $comment){
+            $username = User::all()->where('idUser', $comment->commenter)->first()->username;
+
+            $comment->username= $username;
+        }
+ 
         $data['post'] = $post;
         $data['author'] = $author;
-        return view('postpage', ['data' => $data]);
+        $data['comments'] = $comments;
+ 
+        return view('posts.post', ['data' => $data]);
     }
 
 
