@@ -75,23 +75,32 @@ class PostController extends Controller
 
 
     /**
-     * Create a new post
+     * Pisanje nove objave
      *
      * @param  array  $data
      * @return \App\Post
      */
     protected function writePost(Request $request)
     {
-        Post::create([
-            'heading' => $request->input('heading'),
-            'content' => $request->input('content'),
-            'timePosted' => Carbon::now()->timestamp,
-            'isPermanent' => false,
-            'isLocked' => false,
-            'author' => Auth::user()->idUser
-        ]);
+        $currTime = Carbon::now();
+        $idUser =Auth::user()->idUser;
+        $prevPost = Post::all()->where('author', $idUser)->first();
 
-
+        //Jedna objava dnevno
+        if($currTime->diffInDays($prevPost->timePosted)){
+            //Ne moze vise, obavestenje
+        }
+        else{
+            Post::create([
+                'heading' => $request->input('heading'),
+                'content' => $request->input('content'),
+                'timePosted' => $currTime,
+                'isPermanent' => false,
+                'isLocked' => false,
+                'author' => $idUser
+            ]);
+        }
+        
        return redirect('/posts');
     }
 }

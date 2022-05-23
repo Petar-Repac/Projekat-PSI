@@ -41,7 +41,7 @@ Route::post('register', [RegisterController::class, 'register']);
 // Autor: Petar Repac
 
 //Post-related routes
-Route::get('/posts', [PostController::class, 'showPosts'])->name('posts');
+Route::get('/all', [PostController::class, 'showPosts'])->name('posts');
 Route::get('/posts/{id}', [PostController::class, 'showSpecificPost'])->name('posts');
 Route::get('/writepost', [PostController::class, 'showPostForm'])->name('writeform')->middleware('auth');
 Route::post('/writepost', [PostController::class, 'writePost'])->name('write')->middleware('auth');
