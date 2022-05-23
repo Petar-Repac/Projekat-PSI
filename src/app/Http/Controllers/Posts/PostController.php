@@ -23,34 +23,48 @@ class PostController extends Controller
     public function showPosts(Request $request)
     {
         $posts = Post::all(); 
-
+        $idUser = Auth::user()->idUser;
         //Dohvatanje lajkova
         foreach($posts as $post){
             $upvotes = count(Vote::all()->where('post', $post->idPost)->where('value', 1));
             $downvotes = count(Vote::all()->where('post', $post->idPost)->where('value', -1));
 
+            $userVote = Vote::where('voter', Auth::user()->idUser)->where('post', $post->idPost)->first();
+            $userVote =isset($userVote)?$userVote->value:null;
 
+
+            $post->userVote = $userVote;
             $post->upvotes = $upvotes;
             $post->downvotes = $downvotes;
         }
 
 
-        return view('posts.all', ['posts' => $posts] );
+        return view('posts.all', compact('posts', 'idUser') );
 
     }
 
 
     protected function vote(Request $request){
 
-        $user = $request->input('idUser');
+        $voter = Auth::user()->idUser;
         $post = $request->input('idPost');
         $value = $request->input('value');
+ 
+        if($value == 0){
+            Vote::where('voter', $voter)->where('post', $post)->delete();
+        }
+        else{
+            Vote::where('voter', $voter)->where('post', $post)->delete();
 
-        
-        Post::create([
-            'heading' => $request->input('heading'),
-            'content' => $request->input('content'),
-        ]);
+            Vote::create([
+                'post' => intval($post),
+                'value' => intval($value),
+                'voter' => intval($voter),
+            ]);
+        } 
+       
+
+        return redirect('all');
     }
 
     protected function showPostForm(Request $request){
@@ -69,7 +83,6 @@ class PostController extends Controller
             $comment->username= $username;
         }
  
-        // return view('posts.post', ['post' => $post, 'author' => $author, 'comments' => $comments]);
         return view('posts.post', compact(["post", "author", "comments"]));
     }
 
@@ -86,6 +99,8 @@ class PostController extends Controller
             'heading' => ['required', 'string', 'min:3' , 'max:255'],
             'content' => ['required', 'string', 'min:5', 'max:8192'],
         ]);
+
+
     }
 
 
@@ -99,7 +114,6 @@ class PostController extends Controller
     {
         $user = Auth::user();
         $currTime = Carbon::now(); 
-        $prevPost = Post::all()->where('author', $user->idUser)->first();
 
         //Jedna objava dnevno
         if(Auth::user()->postStatus == 1){
@@ -121,7 +135,7 @@ class PostController extends Controller
        //Flash poruka
        Session::flash('flashHeading' , 'Uspeh');
        Session::flash('flashContent' , 'Objava uspesno postavljena!');
-       Session::flash('flashType' , 'success');
+       Session::flash('flashType', 'success');
 
        return redirect('all');
     }

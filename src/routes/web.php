@@ -45,4 +45,5 @@ Route::get('/all', [PostController::class, 'showPosts'])->name('all');
 Route::get('/posts/{id}', [PostController::class, 'showSpecificPost'])->name('posts');
 Route::get('/writepost', [PostController::class, 'showPostForm'])->name('writeform')->middleware('auth');
 Route::post('/writepost', [PostController::class, 'writePost'])->name('write')->middleware('auth');
+Route::post('/vote', [PostController::class, 'vote'])->name('vote')->middleware('auth');
 Route::post('/comment', [CommentController::class, 'writeComment'])->name('comment')->middleware('auth');

@@ -1,5 +1,8 @@
-<!-- Autor: Vukašin Stepanović -->
+<!-- Autor: Vukašin Stepanović & Petar Repac -->
 
+
+
+<!-- Autor: Vukašin Stepanović -->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -88,7 +91,7 @@
         <script src="{{ asset('js/xfetch.js') }}"></script>
         <script src="{{ asset('js/api.js') }}"></script>
 
-
+        <!-- Autor: Petar Repac -->
         @if(Session::has('flashHeading'))
             <script>
             Swal.fire(
