@@ -9,7 +9,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                @foreach ($data['posts'] as $post)
+                @foreach ($posts as $post)
                     <section> 
                        <a href="/posts/{{$post->idPost}}"> <h1>{{ $post->heading}}</h1>  </a>
                         <p>{{ $post->content }}</p>

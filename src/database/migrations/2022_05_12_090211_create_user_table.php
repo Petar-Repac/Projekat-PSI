@@ -3,12 +3,11 @@
 
 // Autor: Vukašin Stepanović
 
-use App\Models\Role;
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB; 
 
 return new class extends Migration
 {
@@ -23,6 +22,7 @@ return new class extends Migration
             $table->id('idUser');
             $table->string('username')->unique();
             $table->string('password');
+            $table->integer('postStatus');
             $table->string('status')->nullable();
             $table->unsignedBigInteger('role');
             $table->boolean('isBanned');
@@ -36,14 +36,7 @@ return new class extends Migration
                 ->cascadeOnUpdate();
         });
 
-        DB::table('User')->insert([
-            [
-                'username' => env('TOBAGO_ADMIN_USERNAME'),
-                'password' => Hash::make(env('TOBAGO_ADMIN_PASSWORD')),
-                'role' => Role::admin()->idRole,
-                'isBanned' => false,
-            ],
-        ]);
+       
     }
 
     /**

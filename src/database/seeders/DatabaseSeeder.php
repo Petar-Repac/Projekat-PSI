@@ -1,9 +1,13 @@
 <?php
-
+//Autor: Petar Repac
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Role;
+use  \App\Models\User;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,11 +18,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+    
+        //Create admin
+        User::create([
+            'username' => env('TOBAGO_ADMIN_USERNAME'),
+            'password' => Hash::make(env('TOBAGO_ADMIN_PASSWORD')),
+            'role' => Role::admin()->idRole,
+            'isBanned' => false,
+            'postStatus' => 0,
+        ]);
     }
 }

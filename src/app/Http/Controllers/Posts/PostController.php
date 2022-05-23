@@ -6,10 +6,9 @@ namespace App\Http\Controllers\Posts;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Posts\CommentController;
-use App\Models\Role;
 use App\Models\User;
 use App\Models\Post;
-use App\Models\Comment;
+use App\Models\Vote; 
 
 
 use Carbon\Carbon;
@@ -19,21 +18,39 @@ use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
-   public static $pageSize = 10;
+    
     public function showPosts(Request $request)
     {
-        //Uzima pageSize broj objava - paginacija
-        $posts = Post::all(); //->skip($page * PostController::$pageSize)->take(PostController::$pageSize);
-        $data['posts'] = $posts;
-        $data['msg'] = [
-            'title' => 'asajisa',
-            'content' => 'efijsef',
-            'type' => 'success',
-        ];
-        return view('posts.all', ['data' => $data] );
+        $posts = Post::all(); 
+
+        //Dohvatanje lajkova
+        foreach($posts as $post){
+            $upvotes = count(Vote::all()->where('post', $post->idPost)->where('value', 1));
+            $downvotes = count(Vote::all()->where('post', $post->idPost)->where('value', -1));
+
+
+            $post->upvotes = $upvotes;
+            $post->downvotes = $downvotes;
+        }
+
+
+        return view('posts.all', ['posts' => $posts] );
 
     }
 
+
+    protected function vote(Request $request){
+
+        $user = $request->input('idUser');
+        $post = $request->input('idPost');
+        $value = $request->input('value');
+
+        
+        Post::create([
+            'heading' => $request->input('heading'),
+            'content' => $request->input('content'),
+        ]);
+    }
 
     protected function showPostForm(Request $request){
         return view('posts.write', []);
@@ -51,11 +68,8 @@ class PostController extends Controller
             $comment->username= $username;
         }
  
-        $data['post'] = $post;
-        $data['author'] = $author;
-        $data['comments'] = $comments;
- 
-        return view('posts.post', ['data' => $data]);
+        // return view('posts.post', ['post' => $post, 'author' => $author, 'comments' => $comments]);
+        return view('posts.post', compact(["post", "author", "comments"]));
     }
 
 
@@ -82,12 +96,12 @@ class PostController extends Controller
      */
     protected function writePost(Request $request)
     {
-        $currTime = Carbon::now();
-        $idUser =Auth::user()->idUser;
-        $prevPost = Post::all()->where('author', $idUser)->first();
+        $user = Auth::user();
+        $currTime = Carbon::now(); 
+        $prevPost = Post::all()->where('author', $user->idUser)->first();
 
         //Jedna objava dnevno
-        if($currTime->diffInDays($prevPost->timePosted)){
+        if(Auth::user()->postStatus == 1){
             //Ne moze vise, obavestenje
         }
         else{
@@ -97,10 +111,13 @@ class PostController extends Controller
                 'timePosted' => $currTime,
                 'isPermanent' => false,
                 'isLocked' => false,
-                'author' => $idUser
+                'author' => $user->idUser
             ]);
+
+            User::where('idUser', $user->idUser)->update(['postStatus' => 1]);
         }
         
-       return redirect('/posts');
+       return redirect('all');
     }
 }
+

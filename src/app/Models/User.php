@@ -16,6 +16,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property int $idUser
  * @property string $username
  * @property string $password
+ * @property int $postStatus
  * @property string|null $status
  * @property int $role
  * @property int $isBanned
@@ -34,15 +35,16 @@ class User extends Authenticatable
 
 	protected $hidden = [
 		'password',
-		'remember_token'
+		'remember_token',
 	];
 
 	protected $fillable = [
 		'username',
 		'password',
+		'postStatus',
 		'status',
 		'role',
-		'isBanned'
+		'isBanned',
 	];
 
 	public function role()

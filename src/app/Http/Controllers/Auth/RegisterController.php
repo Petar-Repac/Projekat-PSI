@@ -69,6 +69,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role' => Role::user()->idRole,
             'isBanned' => false,
+            'postStatus' => 0,
         ]);
     }
 }
