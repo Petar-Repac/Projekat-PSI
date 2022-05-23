@@ -83,10 +83,25 @@
     <body>
         @yield("content")
 
-
+        <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
         <script src="{{ asset('js/util.js') }}"></script>
         <script src="{{ asset('js/xfetch.js') }}"></script>
         <script src="{{ asset('js/api.js') }}"></script>
+
+
+        @if(Session::has('flashHeading'))
+            <script>
+            Swal.fire(
+                "{{ Session::get('flashHeading') }}",
+                "{{ Session::get('flashContent') }}",
+                "{{ Session::get('flashType') }}",
+                ) ;
+            </script>
+            
+
+        @endif
+
+
         @yield("scripts")
     </body>
 </html>
