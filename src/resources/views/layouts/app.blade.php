@@ -83,7 +83,7 @@
     <body>
         @yield("content")
 
-        <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+        <script src="{{ asset('vendor/js/sweetalert2.all.min.js') }}"></script>
         <script src="{{ asset('js/util.js') }}"></script>
         <script src="{{ asset('js/xfetch.js') }}"></script>
         <script src="{{ asset('js/api.js') }}"></script>
