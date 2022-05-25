@@ -76,7 +76,5 @@
     if (params.get("banned")) {
       showDialog({ content: "Vašem nalogu je zabranjen pristup.", type: "error" });
     }
-
-    showDialog({!! json_encode(session('message')) !!});
   </script>
 @endsection

@@ -19,6 +19,7 @@ window.xfetch = (function () {
             headers: {
                 "Content-Type": "application/json",
                 "X-CSRF-Token": csrfToken,
+                "X-Sender": "xfetch",
             },
         }).then((res) => {
             if (res.ok) {
