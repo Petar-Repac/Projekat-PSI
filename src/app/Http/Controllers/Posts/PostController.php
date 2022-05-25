@@ -13,9 +13,8 @@ use App\Utilities;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -132,11 +131,8 @@ class PostController extends Controller
 
             User::where('idUser', $user->idUser)->update(['postStatus' => 1]);
         }
-    
-       //Flash poruka
-       Session::flash('flashHeading' , 'Uspeh');
-       Session::flash('flashContent' , 'Objava uspesno postavljena!');
-       Session::flash('flashType', 'success');
+
+       Utilities::showDialog("Uspeh", "Objava uspešno postavljena!");
 
        return redirect('all');
     }

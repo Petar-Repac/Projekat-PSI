@@ -74,7 +74,7 @@
   <script>
     const params = new URLSearchParams(location.search);
     if (params.get("banned")) {
-      showDialog("Your account has been banned.");
+      showDialog({ content: "Vašem nalogu je zabranjen pristup.", type: "error" });
     }
 
     showDialog({!! json_encode(session('message')) !!});

@@ -88,9 +88,10 @@
 
     function initSelectionButton() {
         DOM.admin.selection.addEventListener("click", async () => {
-            const result = await API.triggerSelection();
-            console.log({ result });
-            showDialog("Selekcija je izvrsena!");
+            try {
+                const result = await API.triggerSelection();
+                showDialog({ content: "Selekcija je izvršena!" });
+            } catch (e) {}
         });
     }
 

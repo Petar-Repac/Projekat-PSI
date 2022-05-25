@@ -4,6 +4,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Utilities;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -19,9 +20,9 @@ class Banned
     public function handle($request, Closure $next)
     {
         if (auth()->check() && auth()->user()->isBanned) {
-            $message = 'Your account has been banned.';
             auth()->logout();
-            return redirect()->route('login')->with('message', $message);
+            Utilities::showDialog('Obaveštenje', 'Vašem nalogu je zabranjen pristup.', 'error');
+            return redirect()->route('login');
         }
 
         return $next($request);
