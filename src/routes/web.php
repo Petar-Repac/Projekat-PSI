@@ -27,8 +27,8 @@ Route::get('/', function () {
 
 // Autor: Vukašin Stepanović
 Route::get('/user/{username}', [UserController::class, 'get']);
-Route::patch('/user/{username}', [UserController::class, 'patch']);
-Route::post("/trigger-selection", [AdminController::class, 'triggerSelection']);
+Route::patch('/user/{username}', [UserController::class, 'patch'])->middleware('auth');
+Route::post("/trigger-selection", [AdminController::class, 'triggerSelection'])->middleware('auth');
 
 // Authentication Routes...
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');

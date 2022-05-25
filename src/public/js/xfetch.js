@@ -15,6 +15,7 @@ window.xfetch = (function () {
         return fetch(endpoint, {
             method,
             ...(body ? { body: JSON.stringify(body) } : {}),
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
                 "X-CSRF-Token": csrfToken,
