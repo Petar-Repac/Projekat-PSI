@@ -22,6 +22,7 @@
             panel: document.querySelector(".admin-panel"),
             ban: document.querySelector(".js-ban"),
             promote: document.querySelector(".js-promote"),
+            selection: document.querySelector(".js-selection"),
         },
     };
 
@@ -85,6 +86,14 @@
         updateBanButton(__user.isBanned);
     }
 
+    function initSelectionButton() {
+        DOM.admin.selection.addEventListener("click", async () => {
+            const result = await API.triggerSelection();
+            console.log({ result });
+            showDialog("Selekcija je izvrsena!");
+        });
+    }
+
     function init() {
         if (DOM.status.form) {
             initStatusEdit();
@@ -94,6 +103,9 @@
         }
         if (DOM.admin.promote) {
             initPromoteButton();
+        }
+        if (DOM.admin.selection) {
+            initSelectionButton();
         }
         updateStatus(__user.status);
         DOM.status.display?.classList.remove("invisible");

@@ -24,9 +24,16 @@ const API = (function () {
         });
     }
 
+    function triggerSelection() {
+        return xfetch.post(`/trigger-selection`).catch((e) => {
+            console.dir(e);
+        });
+    }
+
     return {
         updateStatus,
         updateIsBanned,
         updateRole,
+        triggerSelection,
     };
 })();

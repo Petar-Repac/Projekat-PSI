@@ -8,14 +8,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Posts\CommentController;
 use App\Models\User;
 use App\Models\Post;
-use App\Models\Vote; 
-
-
+use App\Models\Vote;
+use App\Utilities;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class PostController extends Controller
 {
@@ -117,7 +117,8 @@ class PostController extends Controller
 
         //Jedna objava dnevno
         if(Auth::user()->postStatus == 1){
-            //Ne moze vise, obavestenje
+            Utilities::showDialog("Greška", "Moguće je napraviti samo jedan post pre selekcije!", "error");
+            return Redirect::back();
         }
         else{
             Post::create([

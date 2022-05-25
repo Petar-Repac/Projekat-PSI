@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Posts\PostController;
 use App\Http\Controllers\Posts\CommentController;
 /*
@@ -27,6 +28,7 @@ Route::get('/', function () {
 // Autor: Vukašin Stepanović
 Route::get('/user/{username}', [UserController::class, 'get']);
 Route::patch('/user/{username}', [UserController::class, 'patch']);
+Route::post("/trigger-selection", [AdminController::class, 'triggerSelection']);
 
 // Authentication Routes...
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
