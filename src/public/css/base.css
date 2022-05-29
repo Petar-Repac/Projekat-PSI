@@ -1,9 +1,13 @@
 /* Autor: Vukašin Stepanović */
 
 .hidden {
-  display: none;
+    display: none;
 }
 
 .invisible {
     visibility: hidden;
+}
+
+.is-invalid {
+    border-color: red !important;
 }
