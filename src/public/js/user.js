@@ -13,13 +13,13 @@
 
     const DOM = {
         status: {
-            display: document.querySelector(".status-display"),
-            form: document.querySelector("form.status"),
+            display: document.querySelector(".js-status-display"),
+            form: document.querySelector("form.js-status"),
             edit: document.querySelector(".js-edit-status"),
         },
 
         admin: {
-            panel: document.querySelector(".admin-panel"),
+            panel: document.querySelector(".js-admin-panel"),
             ban: document.querySelector(".js-ban"),
             promote: document.querySelector(".js-promote"),
             selection: document.querySelector(".js-selection"),

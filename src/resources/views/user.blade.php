@@ -17,41 +17,44 @@
 @endsection
 
 @section('content')
-    <h1>Username: {{ $user->username }}</h1>
+    <header>
+        <h1>{{ $user->username }}</h1>
+    </header>
 
-    <p class="status-display invisible">No status</p>
+    <p class="js-status-display invisible">No status</p>
 
     @auth
         @if (Auth::user()->idUser == $user->idUser)
-            <button class="js-edit-status">Edit status</button>
+            <button class="js-edit-status">Izmeni status</button>
 
-            <form class="status hidden">
+            <form class="js-status hidden">
                 @csrf
-                <textarea name="status">{{ $user->status }}</textarea>
-                <input type="submit" value="Izmeni status">
+
+                <div class="row gtr-uniform">
+                    <div class="col-12">
+                        <input type="text" name="status" required autocomplete="off" value="{{ $user->status }}" />
+                    </div>
+                </div>
+                <button class="button" type="submit">Izmeni status</button>
             </form>
         @endif
 
-
-
         @if (Auth::user()->isMod())
-            <div class="admin-panel invisible">
+            <ul class="js-admin-panel invisible actions">
                 @if (Auth::user()->username != $user->username)
                     @unless(Auth::user()->isMod() && $user->isAdmin())
-                        <button class="js-ban">Ban</button>
+                        <li>
+                            <button class="js-ban button">Zabrani pristup nalogu</button>
+                        </li>
                     @endunless
 
                     @if (Auth::user()->isAdmin())
-                        <button class="js-promote">Promote</button>
+                        <li>
+                            <button class="js-promote button">Unapredi u moderatora</button>
+                        </li>
                     @endif
                 @endif
-
-                @if (Auth::user()->isAdmin())
-                    <button class="js-selection">Trigger selection</button>
-                @endif
-            </div>
+            </ul>
         @endif
     @endauth
-
-
 @endsection
