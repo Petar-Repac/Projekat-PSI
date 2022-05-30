@@ -4,6 +4,16 @@
 
 @section('title', 'Post page')
 
+@section('scripts')
+    <script>
+        window.__post = {
+            id: {!! json_encode($post->idPost) !!},
+            isLocked: {!! json_encode($post->isLocked) !!},
+        };
+    </script>
+    <script src="{{ asset('js/post.js') }}"></script>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -14,6 +24,12 @@
                         <p>{{ $post->content }}</p>
                     </section>
                     <p> Author: <a href="/user/{{ $author->username }}"> {{ $author->username }}</a> </p>
+
+                    @auth
+                        @if (Auth::user()->isMod())
+                            <button class="button js-lock">Zaključaj</button>
+                        @endif
+                    @endauth
                 </div>
                 <!-- Comment section -->
                 <div class="card">

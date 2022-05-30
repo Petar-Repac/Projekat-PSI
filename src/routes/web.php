@@ -45,6 +45,8 @@ Route::post('register', [RegisterController::class, 'register']);
 //Post-related routes
 Route::get('/all', [PostController::class, 'showPosts'])->name('all');
 Route::get('/posts/{id}', [PostController::class, 'showSpecificPost'])->name('posts');
+Route::patch('/posts/{id}', [PostController::class, 'lockPost'])->name('posts')->middleware('auth');
+
 Route::get('/writepost', [PostController::class, 'showPostForm'])->name('writeform')->middleware('auth');
 Route::post('/writepost', [PostController::class, 'writePost'])->name('write')->middleware('auth');
 Route::post('/vote', [PostController::class, 'vote'])->name('vote')->middleware('auth');

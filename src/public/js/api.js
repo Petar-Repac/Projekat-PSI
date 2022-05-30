@@ -24,6 +24,12 @@ const API = (function () {
         });
     }
 
+    function setPostLocked(postId, value) {
+        return xfetch.patch(`/posts/${postId}`, {
+            value,
+        });
+    }
+
     function triggerSelection() {
         return xfetch.post(`/trigger-selection`).catch((e) => {
             console.dir(e);
@@ -35,5 +41,6 @@ const API = (function () {
         updateIsBanned,
         updateRole,
         triggerSelection,
+        setPostLocked,
     };
 })();

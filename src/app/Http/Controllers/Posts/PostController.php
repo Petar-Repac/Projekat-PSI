@@ -1,5 +1,5 @@
 <?php
-//Autor: Petar Repac
+//Autor: Petar Repac & Vukašin Stepanović
 
 namespace App\Http\Controllers\Posts;
 
@@ -136,5 +136,18 @@ class PostController extends Controller
         Utilities::showDialog("Uspeh", "Objava uspešno postavljena!");
 
         return redirect('all');
+    }
+
+
+    protected function lockPost(Request $request, $id)
+    {
+        $post = Post::findOrFail($id);
+        $req = json_decode($request->getContent(), true);
+
+        $value = $req['value'];
+        $post->isLocked = $value;
+        $post->save();
+
+        return response()->json($req);
     }
 }
