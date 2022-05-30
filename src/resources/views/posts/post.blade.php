@@ -52,7 +52,7 @@
 
                                 <div class="col-md-6">
                                     <textarea id="content" cols="50" rows="4" placeholder='comment'
-                                        class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}"
+                                        class="js-comment-text form-control{{ $errors->has('content') ? ' is-invalid' : '' }}"
                                         name="content"> </textarea>
 
                                     @if ($errors->has('content'))
@@ -70,7 +70,7 @@
                                     <input type="hidden" id="postId" name="postId" value="{{ $post->idPost }}" />
 
 
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary js-comment-submit">
                                         Comment
                                     </button>
                                 </div>

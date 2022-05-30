@@ -6,24 +6,22 @@ namespace App\Http\Controllers\Posts;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
-use App\Models\Role;
-use App\Models\User;
 use App\Models\Post;
+use App\Utilities;
 use Illuminate\Http\Request;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 
 class CommentController extends Controller
 {
-   
+
     public static function getComments($postId)
     {
-        
-        $comments = Comment::all()->where('post', $postId); 
-        return $comments;
 
+        $comments = Comment::all()->where('post', $postId);
+        return $comments;
     }
 
 
@@ -35,23 +33,22 @@ class CommentController extends Controller
      */
     protected function writeComment(Request $request)
     {
+        $post = Post::findOrFail($request->input('postId'));
+
+        if ($post->isLocked) {
+            Utilities::showDialog("Greška", "Ne možete postaviti komentar jer je post zaključan.", "error");
+            return Redirect::back();
+        }
 
         $data = [
-            'commenter'=> Auth::user()->idUser,
-            'content'=> $request->input('content'),
-            'post'=> $request->input('postId'),
-            'timeCreated'=> Carbon::now()->timestamp,
+            'commenter' => Auth::user()->idUser,
+            'content' => $request->input('content'),
+            'post' => $request->input('postId'),
+            'timeCreated' => Carbon::now()->timestamp,
         ];
 
         Comment::create($data);
-        /*
 
-       $data = Validator::make($data, [
-            'content' => ['required', 'string', 'min:1', 'max:8192'],
-        ]);
-        */
-
-
-       return redirect('/posts/'. $data['post'] );
+        return redirect('/posts/' . $data['post']);
     }
 }

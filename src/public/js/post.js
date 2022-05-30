@@ -5,10 +5,16 @@
 (function main() {
     const DOM = {
         lock: document.querySelector(".js-lock"),
+        comment: {
+            text: document.querySelector(".js-comment-text"),
+            submit: document.querySelector(".js-comment-submit"),
+        },
     };
 
     function redrawLocked(value) {
         DOM.lock.textContent = value ? "Otključaj" : "Zaključaj";
+        DOM.comment.text.disabled = value;
+        DOM.comment.submit.disabled = value;
     }
 
     function initLock() {
