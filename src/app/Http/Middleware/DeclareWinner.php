@@ -29,7 +29,7 @@ class DeclareWinner
               Utilities::showDialog("Obaveštenje", "Vaš post nije prošao selekciju.", "info");
             }
             $user->postStatus = 0;
-
+            
             if ($user instanceof User) {
               $user->save();
             }
