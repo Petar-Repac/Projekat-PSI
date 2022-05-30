@@ -18,18 +18,22 @@ use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
-    
+
     public function showPosts(Request $request)
     {
-        $posts = Post::all(); 
-        $idUser = Auth::user()->idUser;
+        $posts = Post::all();
+        $authUser = Auth::user();
+        
         //Dohvatanje lajkova
-        foreach($posts as $post){
+        foreach ($posts as $post) {
             $upvotes = count(Vote::all()->where('post', $post->idPost)->where('value', 1));
             $downvotes = count(Vote::all()->where('post', $post->idPost)->where('value', -1));
 
-            $userVote = Vote::where('voter', Auth::user()->idUser)->where('post', $post->idPost)->first();
-            $userVote =isset($userVote)?$userVote->value:null;
+            $userVote = null;
+            if ($authUser) {
+                $userVote = Vote::where('voter', $authUser->idUser)->where('post', $post->idPost)->first();
+                $userVote = isset($userVote) ? $userVote->value : null;
+            }
 
 
             $post->userVote = $userVote;
@@ -37,22 +41,20 @@ class PostController extends Controller
             $post->downvotes = $downvotes;
         }
 
-
-        return view('posts.all', compact('posts', 'idUser') );
-
+        return view('posts.all', compact('posts'));
     }
 
 
-    protected function vote(Request $request){
+    protected function vote(Request $request)
+    {
 
         $voter = Auth::user()->idUser;
         $post = $request->input('idPost');
         $value = $request->input('value');
- 
-        if($value == 0){
+
+        if ($value == 0) {
             Vote::where('voter', $voter)->where('post', $post)->delete();
-        }
-        else{
+        } else {
             Vote::where('voter', $voter)->where('post', $post)->delete();
 
             Vote::create([
@@ -60,28 +62,30 @@ class PostController extends Controller
                 'value' => intval($value),
                 'voter' => intval($voter),
             ]);
-        } 
-       
+        }
+
 
         return redirect('all');
     }
 
-    protected function showPostForm(Request $request){
+    protected function showPostForm(Request $request)
+    {
         return view('posts.write', []);
     }
 
 
-    protected function showSpecificPost($id){
+    protected function showSpecificPost($id)
+    {
         $post = Post::find($id);
         $author = User::find($post->author);
         $comments = CommentController::getComments($id);
 
-        foreach($comments as $comment){
+        foreach ($comments as $comment) {
             $username = User::all()->where('idUser', $comment->commenter)->first()->username;
 
-            $comment->username= $username;
+            $comment->username = $username;
         }
- 
+
         return view('posts.post', compact(["post", "author", "comments"]));
     }
 
@@ -95,11 +99,9 @@ class PostController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'heading' => ['required', 'string', 'min:3' , 'max:255'],
+            'heading' => ['required', 'string', 'min:3', 'max:255'],
             'content' => ['required', 'string', 'min:5', 'max:8192'],
         ]);
-
-
     }
 
 
@@ -112,14 +114,13 @@ class PostController extends Controller
     protected function writePost(Request $request)
     {
         $user = Auth::user();
-        $currTime = Carbon::now(); 
+        $currTime = Carbon::now();
 
         //Jedna objava dnevno
-        if(Auth::user()->postStatus == 1){
+        if (Auth::user()->postStatus == 1) {
             Utilities::showDialog("Greška", "Moguće je napraviti samo jedan post pre selekcije!", "error");
             return Redirect::back();
-        }
-        else{
+        } else {
             Post::create([
                 'heading' => $request->input('heading'),
                 'content' => $request->input('content'),
@@ -132,9 +133,8 @@ class PostController extends Controller
             User::where('idUser', $user->idUser)->update(['postStatus' => 1]);
         }
 
-       Utilities::showDialog("Uspeh", "Objava uspešno postavljena!");
+        Utilities::showDialog("Uspeh", "Objava uspešno postavljena!");
 
-       return redirect('all');
+        return redirect('all');
     }
 }
-
