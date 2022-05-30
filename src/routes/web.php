@@ -10,6 +10,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Posts\PostController;
 use App\Http\Controllers\Posts\CommentController;
+use App\Http\Middleware\VerifyCsrfToken;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +31,7 @@ Route::get('/', function () {
 Route::get('/user/{username}', [UserController::class, 'get']);
 Route::patch('/user/{username}', [UserController::class, 'patch'])->middleware('auth');
 Route::post("/trigger-selection", [AdminController::class, 'triggerSelection'])->middleware('auth');
+Route::post("/trigger-auto-selection", [AdminController::class, 'triggerAutoSelection'])->withoutMiddleware(VerifyCsrfToken::class);
 
 // Authentication Routes...
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
