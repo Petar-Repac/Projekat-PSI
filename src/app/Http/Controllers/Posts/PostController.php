@@ -76,7 +76,7 @@ class PostController extends Controller
 
     protected function showSpecificPost($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $author = User::find($post->author);
         $comments = CommentController::getComments($id);
 
