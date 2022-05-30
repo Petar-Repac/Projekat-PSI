@@ -24,7 +24,16 @@
             @yield('content')
         </div>
     </main>
+    <style>
+        .m-b-md {
+            margin-bottom: 30px;
+        }
 
+        button.voted {
+            border: 4px solid black;
+        }
+
+    </style>
 
     <script src="{{ asset('/vendor/js/jquery.min.js') }}"></script>
     <script src="{{ asset('/vendor/js/jquery.dropotron.min.js') }}"></script>

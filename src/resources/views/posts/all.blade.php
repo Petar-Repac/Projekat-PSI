@@ -18,11 +18,9 @@
                             <hr>
                             <p>Date:{{ $post->timePosted }}</p>
                             <hr>
-                            <p>Upvotes:{{ $post->upvotes }}</p>
-                            <hr>
-                            <p>Downvotes:{{ $post->downvotes }}</p>
-                            <hr>
-                            <p>User vote:{{ $post->userVote }}</p>
+                            <p>Upvotes:{{ $post->upvotes }} Downvotes:{{ $post->downvotes }}</p>
+                         
+                          
                             <!-- Comment forma-->
                             @auth
                                 <div class="row">
@@ -31,7 +29,7 @@
                                         <input type="hidden" id="idPost" name="idPost" value="{{ $post->idPost }}" />  
                                         
                                         @if(isset($post->userVote) && $post->userVote == 1)
-                                            <button type="submit" name="value" value="0" class="btn btn-primary">
+                                            <button class="voted" type="submit" name="value" value="0" class="btn btn-primary">
                                                 +
                                             </button>
                                         @else 
@@ -42,7 +40,7 @@
                                         
 
                                         @if(isset($post->userVote) && $post->userVote == -1)
-                                            <button type="submit" name="value" value="0" class="btn btn-primary">
+                                            <button type="submit" class="voted"  name="value" value="0" class="btn btn-primary">
                                                 -
                                             </button>
                                         @else
@@ -52,7 +50,7 @@
                                         @endif
                                         
                                     </form> 
-                                     
+                                       <hr> 
                                 </div>
                             @endauth
                         </section>
