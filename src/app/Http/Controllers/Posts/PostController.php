@@ -19,11 +19,12 @@ use Illuminate\Support\Facades\Validator;
 class PostController extends Controller
 {
 
+    //Autor: Petar Repac
     public function showPosts(Request $request)
     {
         $posts = Post::all();
         $authUser = Auth::user();
-        
+
         //Dohvatanje lajkova
         foreach ($posts as $post) {
             $upvotes = count(Vote::all()->where('post', $post->idPost)->where('value', 1));
@@ -139,6 +140,7 @@ class PostController extends Controller
     }
 
 
+    //Autor: Vukašin Stepanović
     protected function lockPost(Request $request, $id)
     {
         $post = Post::findOrFail($id);
