@@ -23,3 +23,11 @@
 .button.lock span {
   margin-right: 0.5em;
 }
+
+.swal2-actions button::after {
+  content: "" !important;
+}
+
+.swal2-actions button {
+  line-height: inherit !important;
+}
