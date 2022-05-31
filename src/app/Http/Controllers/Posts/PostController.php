@@ -29,7 +29,7 @@ class PostController extends Controller
         foreach ($posts as $post) {
             $upvotes = count(Vote::all()->where('post', $post->idPost)->where('value', 1));
             $downvotes = count(Vote::all()->where('post', $post->idPost)->where('value', -1));
-
+            $author = User::find($post->author);
             $userVote = null;
             if ($authUser) {
                 $userVote = Vote::where('voter', $authUser->idUser)->where('post', $post->idPost)->first();
@@ -40,6 +40,7 @@ class PostController extends Controller
             $post->userVote = $userVote;
             $post->upvotes = $upvotes;
             $post->downvotes = $downvotes;
+            $post->authorName = $author->username;
         }
 
         return view('posts.all', compact('posts'));

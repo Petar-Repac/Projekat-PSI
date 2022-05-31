@@ -19,11 +19,9 @@
 </head>
 
 <body>
-    <main id="main" class="wrapper">
-        <div class="inner">
-            @yield('content')
-        </div>
-    </main>
+
+    @yield('content')
+
     <style>
         .m-b-md {
             margin-bottom: 30px;
