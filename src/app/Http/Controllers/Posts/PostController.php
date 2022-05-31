@@ -21,16 +21,20 @@ class PostController extends Controller
 {
 
     //Autor: Petar Repac
-    public function showPosts(Request $request)
+    public function display($posts)
     {
-        $posts = Post::all();
-        $authUser = Auth::user();
 
+        $authUser = Auth::user();
         //Dohvatanje lajkova
         foreach ($posts as $post) {
             $upvotes = count(Vote::all()->where('post', $post->idPost)->where('value', 1));
             $downvotes = count(Vote::all()->where('post', $post->idPost)->where('value', -1));
             $commentNum = count(Comment::all()->where('post', $post->idPost));
+            if (isset($authUser)) {
+                $userCommented = count(Comment::all()->where('post', $post->idPost)->where('commenter', $authUser->idUser)) > 0;
+            } else {
+                $userCommented = false;
+            }
             $author = User::find($post->author);
             $userVote = null;
             if ($authUser) {
@@ -44,9 +48,56 @@ class PostController extends Controller
             $post->downvotes = $downvotes;
             $post->authorName = $author->username;
             $post->commentNum = $commentNum;
+            $post->userCommented = $userCommented;
         }
 
         return view('posts.all', compact('posts'));
+    }
+
+    public function showPosts(Request $request)
+    {
+        $posts = Post::all();
+
+        return $this->display($posts);
+    }
+
+
+
+    public function searchPosts($type, $state, $keywords = null)
+    {
+        switch ($type) {
+            case 'best':
+            case 'worst':
+            case 'new':
+                break;
+            default:
+                $type = 'new';
+        }
+
+        switch ($state) {
+            case 'hall':
+            case 'purgatory':
+            case 'all':
+                break;
+            default:
+                $state = 'all';
+        }
+
+        if (isset($keywords)) {
+            $keywords = explode(' ', $keywords);
+        }
+
+        $typeParam = [];
+        switch ($type) {
+            case 'best':
+                $typeParam = '';
+                break;
+            case 'worst':
+                break;
+            case 'new':
+                break;
+        }
+        $posts = Post::all();
     }
 
 
