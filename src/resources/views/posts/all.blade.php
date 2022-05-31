@@ -95,7 +95,7 @@
 
                             @foreach ($posts as $post)
                                 <!-- Definicija -->
-                                <div class="spotlight post">
+                                <div class="spotlight post" id="{{ $post->idPost }}">
                                     <div class="content">
                                         <h2> <a href="/posts/{{ $post->idPost }}">{{ $post->heading }}</a></h2>
                                         <p> {{ $post->content }}
@@ -125,7 +125,7 @@
                                             <!-- Vote forma-->
                                             @auth
                                                 <div class="row">
-                                                    <form method="POST" action="{{ route('vote') }}">
+                                                    <form method="POST" class="invis" action="{{ route('vote') }}">
                                                         @csrf
                                                         <input type="hidden" id="idPost" name="idPost"
                                                             value="{{ $post->idPost }}" />
@@ -180,25 +180,55 @@
 
             </div>
             <div class="col-3 col-12-medium">
-                <!-- Three -->
+                <!-- Korisnicke akcije -->
                 <section id="two" class="wrapper">
                     <div class="inner">
                         <div class="box">
+                            @if (Route::has('login'))
+                                <div class="fixed top-0 right-0 px-6 py-4 sm:block">
+                                    <ul class="actions stacked">
+                                        @auth
+                                            @if (Auth::user()->isAdmin())
+                                                Admin:
+                                            @elseif (Auth::user()->isMod())
+                                                Mod:
+                                            @else
+                                                Korisnik:
+                                            @endif
 
-                            <ul class="actions stacked">
-                                <li><a href="pisanje-post.html" class="button primary medium fit js-forbid-guest">Napiši
-                                        definiciju</a></li>
-                                <li class="guest"><a href="registracija.html"
-                                        class="button medium fit">Registracija</a></li>
-                                <li class="guest"><a href="prijava.html" class="button medium fit">Prijava</a></li>
-                                <li class="user"><a href="#" id="odjavi" class="button medium fit">Odjavi me</a>
-                                </li>
-                            </ul>
+                                            {{ Auth::user()->username }}
+
+
+                                            <li><a href="{{ url('/writepost') }}"
+                                                    class="button primary medium fit js-forbid-guest">Napiši
+                                                    definiciju</a></li>
+                                            <li class="user">
+                                                <form method="POST" class="invis" action="{{ route('logout') }}">
+                                                    @csrf
+                                                    <input type="submit" value="Odjavi me" />
+                                                </form>
+                                            @else
+                                            <li class="guest"><a href="{{ route('login') }}"
+                                                    class="button medium fit">Prijava</a></li>
+
+                                            @if (Route::has('register'))
+                                                <li class="guest">
+                                                    <a href="{{ route('register') }}" class="button medium fit">
+                                                        Registracija</a>
+                                                </li>
+                                            @endif
+                                        @endauth
+                                    </ul>
+                                </div>
+                            @endif
+
                         </div>
                     </div>
                 </section>
             </div>
         </div>
+
+        <!-- Paginacija -->
         <div class="row">
             <div class="col-9">
                 <ul class="pagination">

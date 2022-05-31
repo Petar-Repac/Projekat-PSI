@@ -1,29 +1,28 @@
 /* Autor: Petar Repac*/
 
-
 /* Udredjenje pocetne stranice*/
 
 #search h1 {
-    margin:2rem;
-} 
+    margin: 2rem;
+}
 
 .spotlights .spotlight {
-  padding:1rem;
+    padding: 1rem;
 }
 
-
-#posts, #sidebar {
- padding-top: 0rem;
+#posts,
+#sidebar {
+    padding-top: 0rem;
 }
 
-.post .author { 
-    float:right;
+.post .author {
+    float: right;
     padding: 0em;
     margin: 0em;
     line-height: 3em;
 }
 
-.post ul{
+.post ul {
     padding: 0em;
     margin: 0em;
 }
@@ -32,148 +31,163 @@
     margin: 0 0 1.25rem 0;
 }
 .post .content {
-    width:100%;
+    width: 100%;
 }
 
 /* Uredjenje stranice definicije*/
 #comment-section h1 {
-  font-size: 2rem;
+    font-size: 2rem;
 }
 
-div.spotlight.comment{
-  border-bottom:1px solid rgb(202, 202, 202);
-  padding:0.5rem;
+div.spotlight.comment {
+    border-bottom: 1px solid rgb(202, 202, 202);
+    padding: 0.5rem;
 }
 
-div.spotlight.comment h2{
-  font-weight: 400;
-  font-size: 1.2rem;
-  padding:0;
-  margin:0;
+div.spotlight.comment h2 {
+    font-weight: 400;
+    font-size: 1.2rem;
+    padding: 0;
+    margin: 0;
 }
 
-div.spotlight.comment p{
-  padding: 0;
-  margin: 0;
+div.spotlight.comment p {
+    padding: 0;
+    margin: 0;
 }
 
-#post-comment{ 
-  text-align: center;
-  width:auto;
+#post-comment {
+    text-align: center;
+    width: auto;
 }
 
 /* Pisanje objave */
-header.major.post-form{
-  margin-bottom: 1rem;
+header.major.post-form {
+    margin-bottom: 1rem;
 }
 
-#post-form{
-  margin:0;
-  padding:0 2rem 2rem 2rem;
+#post-form {
+    margin: 0;
+    padding: 0 2rem 2rem 2rem;
 }
 
-#post-form form{
-  margin:0; 
-  padding:0;
+#post-form form {
+    margin: 0;
+    padding: 0;
 }
 
 /* Definicija - feed*/
 .spotlight.post {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 
-.post.spotlight .content{
-  padding:1.5rem;
+.post.spotlight .content {
+    padding: 1.5rem;
 }
 
-.post .button::after{
-  display: none;
+.post .button::after {
+    display: none;
 }
 .post .button {
-  font-size: 1.5rem;
-  padding: 0 1rem 0 1rem;
+    font-size: 1.5rem;
+    padding: 0 1rem 0 1rem;
 }
 .button.like {
-  background-color: #2ecc71;  
+    background-color: #2ecc71;
 }
 
 .button.like:hover {
-  background-color: #27ae60;  
+    background-color: #27ae60;
 }
 
 .button.dislike {
-  background-color: #e74c3c;
+    background-color: #e74c3c;
 }
 
 .button.dislike:hover {
-  background-color: #c0392b;
+    background-color: #c0392b;
 }
 
 .button.comment {
-  background-color: #f1c40f;
+    background-color: #f1c40f;
 }
 
 .button.comment:hover {
-  background-color: #f39c12;
+    background-color: #f39c12;
 }
 
 /* Pagination */
 ul.pagination {
-  padding: 0.5em;
-  text-align: center;
-  list-style-type: none;
+    padding: 0.5em;
+    text-align: center;
+    list-style-type: none;
 }
 
 ul.pagination li:first-child {
-  padding-right: 0.75em;
-} 
+    padding-right: 0.75em;
+}
 ul.pagination li {
-  display: inline-block;
-  padding-left: 0.5em;
-  vertical-align: middle;
+    display: inline-block;
+    padding-left: 0.5em;
+    vertical-align: middle;
 }
 
-ul.pagination li a{
-  font-weight: bold;
-  font-size: 1.8em;
-  text-decoration: none;
+ul.pagination li a {
+    font-weight: bold;
+    font-size: 1.8em;
+    text-decoration: none;
 }
 
-ul.pagination li a.button{ 
-  font-size: 1em; 
+ul.pagination li a.button {
+    font-size: 1em;
 }
 
 /* Footer author rainbow */
 
-.rainbow { 
-  font-size: 2rem;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;
-  background: -webkit-linear-gradient(45deg, red, red, red, orange, yellow, green, blue, indigo, violet);
-  font-weight: bold;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.rainbow {
+    font-size: 2rem;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    background: -webkit-linear-gradient(
+        45deg,
+        red,
+        red,
+        red,
+        orange,
+        yellow,
+        green,
+        blue,
+        indigo,
+        violet
+    );
+    font-weight: bold;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.hotpink { 
-  color: #ff1a87;
-  font-size: 2rem;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;
-  font-weight: bold; 
+.hotpink {
+    color: #ff1a87;
+    font-size: 2rem;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    font-weight: bold;
 }
-
 
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
-  }
-   
-  ::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-track {
     background: #333;
-  }
-   
-  ::-webkit-scrollbar-thumb {
-    background: #ff1a87; 
-  }
-   
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff1a87;
+}
+
+/* Nevidljive forme */
+form.invis {
+    margin: 0;
+    padding: 0;
+}
