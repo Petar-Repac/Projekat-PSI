@@ -92,24 +92,44 @@ header.major.post-form {
     font-size: 1.5rem;
     padding: 0 1rem 0 1rem;
 }
-.button.like {
+
+/* Like */
+.button.voted.like {
     background-color: #2ecc71;
+    color: white;
+}
+
+.button.like {
+    background-color: transparent;
+    box-shadow: inset 0px 0px 0px 3px #2ecc71;
 }
 
 .button.like:hover {
     background-color: #27ae60;
 }
 
-.button.dislike {
+/* Dislike */
+
+.button.voted.dislike {
     background-color: #e74c3c;
+}
+.button.dislike {
+    background-color: transparent;
+    box-shadow: inset 0px 0px 0px 3px #e74c3c;
 }
 
 .button.dislike:hover {
     background-color: #c0392b;
 }
 
-.button.comment {
+/* Comment */
+
+.button.commented.comment {
     background-color: #f1c40f;
+}
+.button.comment {
+    background-color: transparent;
+    box-shadow: inset 0px 0px 0px 3px #f1c40f;
 }
 
 .button.comment:hover {

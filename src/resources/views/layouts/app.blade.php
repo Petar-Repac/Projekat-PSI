@@ -19,19 +19,23 @@
 </head>
 
 <body>
+    <!-- Header -->
+    <header id="header" class="alt">
+        <a class="logo" href="index.html">
+            <img src="{{ asset('images/tobago-white-stroke.png') }}" alt="Tobago">
+        </a>
 
+        <nav id="nav">
+            <ul>
+                <li class="current"><a href="index.html">Početna</a></li>
+                <li><a href="uputstvo.html">Uputstvo za korišćenje prototipa</a></li>
+                <li><a href="o-nama.html">O Kavujliji</a></li>
+            </ul>
+        </nav>
+    </header>
     @yield('content')
 
-    <style>
-        .m-b-md {
-            margin-bottom: 30px;
-        }
 
-        button.voted {
-            border: 4px solid black;
-        }
-
-    </style>
 
     <script src="{{ asset('/vendor/js/jquery.min.js') }}"></script>
     <script src="{{ asset('/vendor/js/jquery.dropotron.min.js') }}"></script>

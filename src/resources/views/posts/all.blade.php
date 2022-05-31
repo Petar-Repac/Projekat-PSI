@@ -6,20 +6,7 @@
 
 @section('content')
 
-    <!-- Header -->
-    <header id="header" class="alt">
-        <a class="logo" href="index.html">
-            <img src="{{ asset('images/tobago-white-stroke.png') }}" alt="Tobago">
-        </a>
 
-        <nav id="nav">
-            <ul>
-                <li class="current"><a href="index.html">Početna</a></li>
-                <li><a href="uputstvo.html">Uputstvo za korišćenje prototipa</a></li>
-                <li><a href="o-nama.html">O Kavujliji</a></li>
-            </ul>
-        </nav>
-    </header>
 
 
     <!-- Wrapper -->
@@ -36,33 +23,29 @@
                             <div class="row gtr-uniform">
 
                                 <!-- Break -->
-                                <div class="col-3 col-12-small">
-                                    <input type="radio" id="radio-1" name="type" checked>
+                                <div class="col-4 col-12-small">
+                                    <input type="radio" id="radio-1" name="type" value="new" checked>
                                     <label for="radio-1">Najnovije</label>
                                 </div>
-                                <div class="col-3 col-12-small">
-                                    <input type="radio" id="radio-2" name="type" checked>
+                                <div class="col-4 col-12-small">
+                                    <input type="radio" id="radio-2" name="type" value="best" checked>
                                     <label for="radio-2">Najbolje</label>
                                 </div>
-                                <div class="col-3 col-12-small">
-                                    <input type="radio" id="radio-3" name="type">
-                                    <label for="radio-3">Kontroverzno</label>
-                                </div>
-                                <div class="col-3 col-12-small">
-                                    <input type="radio" id="radio-4" name="type">
+                                <div class="col-4 col-12-small">
+                                    <input type="radio" id="radio-4" name="type" value="worst">
                                     <label for="radio-4">Najgore</label>
                                 </div>
                                 <!-- Break -->
-                                <div class="col-3 col-12-small">
-                                    <input type="radio" id="radio-ds" name="state" checked>
+                                <div class="col-4 col-12-small">
+                                    <input type="radio" id="radio-ds" name="state" value="hall" checked>
                                     <label for="radio-ds">Dvorana slavnih</label>
                                 </div>
-                                <div class="col-3 col-12-small">
-                                    <input type="radio" id="radio-ci" name="state">
+                                <div class="col-4 col-12-small">
+                                    <input type="radio" id="radio-ci" name="state" value="purgatory">
                                     <label for="radio-ci">Čistilište</label>
                                 </div>
-                                <div class="col-3 col-12-small">
-                                    <input type="radio" id="radio-sv" name="state">
+                                <div class="col-4 col-12-small">
+                                    <input type="radio" id="radio-sv" name="state" value="all">
                                     <label for="radio-sv">Sve</label>
                                 </div>
                                 <!-- Break -->
@@ -86,7 +69,7 @@
         </section>
         <!-- One -->
         <div class="row">
-            <div class="col-9 col-12-medium">
+            <div class="col-8 col-12-medium">
                 <!-- One -->
                 <section id="one" class="wrapper">
                     <div class="inner">
@@ -137,11 +120,21 @@
                                                                         {{ $post->downvotes }}
                                                                     </button></li>
                                                             @endif
-                                                            <li><a href="/posts/{{ $post->idPost }}#comment"
-                                                                    class="button comment">
-                                                                    <span
-                                                                        class="icon fa-comment"></span>{{ $post->commentNum }}</a>
-                                                            </li>
+
+                                                            @if (isset($post->userCommented) && $post->userCommented)
+                                                                <li><a href="/posts/{{ $post->idPost }}#comment"
+                                                                        class="button comment commented">
+                                                                        <span
+                                                                            class="icon fa-comment"></span>{{ $post->commentNum }}</a>
+                                                                </li>
+                                                            @else
+                                                                <li><a href="/posts/{{ $post->idPost }}#comment"
+                                                                        class="button comment">
+                                                                        <span
+                                                                            class="icon fa-comment"></span>{{ $post->commentNum }}</a>
+                                                                </li>
+                                                            @endif
+
                                                         </form>
                                                     @else
                                                         <li><a href="/login/" class="button like"><span
@@ -189,7 +182,7 @@
             </div>
 
             <!-- Korisnicke akcije -->
-            <div class="col-3 col-12-medium">
+            <div class="col-4 col-12-medium">
                 <section id="two" class="wrapper">
                     <div class="inner">
                         <div class="box">
@@ -237,23 +230,23 @@
             </div>
         </div>
 
-        <!-- Paginacija -->
-        <div class="row">
-            <div class="col-9">
-                <ul class="pagination">
-                    <li><span class="button disabled">Prethodna</span></li>
-                    <li><a href="#" class="page active">1</a></li>
-                    <li><a href="#" class="page">2</a></li>
-                    <li><a href="#" class="page">3</a></li>
-                    <li><span>…</span></li>
-                    <li><a href="#" class="page">8</a></li>
-                    <li><a href="#" class="page">9</a></li>
-                    <li><a href="#" class="page">10</a></li>
-                    <li><a href="#" class="button">Sledeća</a></li>
-                </ul>
-            </div>
-        </div>
-
+        <!-- Paginacija
+                    <div class="row">
+                        <div class="col-9">
+                            <ul class="pagination">
+                                <li><span class="button disabled">Prethodna</span></li>
+                                <li><a href="#" class="page active">1</a></li>
+                                <li><a href="#" class="page">2</a></li>
+                                <li><a href="#" class="page">3</a></li>
+                                <li><span>…</span></li>
+                                <li><a href="#" class="page">8</a></li>
+                                <li><a href="#" class="page">9</a></li>
+                                <li><a href="#" class="page">10</a></li>
+                                <li><a href="#" class="button">Sledeća</a></li>
+                            </ul>
+                        </div>
+                    </div>
+            -->
 
     </div>
 
@@ -301,16 +294,5 @@
             </p>
         </div>
     </div>
-@endsection
 
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
