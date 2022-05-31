@@ -9,6 +9,7 @@ use App\Http\Controllers\Posts\CommentController;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Vote;
+use App\Models\Comment;
 use App\Utilities;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -29,6 +30,7 @@ class PostController extends Controller
         foreach ($posts as $post) {
             $upvotes = count(Vote::all()->where('post', $post->idPost)->where('value', 1));
             $downvotes = count(Vote::all()->where('post', $post->idPost)->where('value', -1));
+            $commentNum = count(Comment::all()->where('post', $post->idPost));
             $author = User::find($post->author);
             $userVote = null;
             if ($authUser) {
@@ -41,6 +43,7 @@ class PostController extends Controller
             $post->upvotes = $upvotes;
             $post->downvotes = $downvotes;
             $post->authorName = $author->username;
+            $post->commentNum = $commentNum;
         }
 
         return view('posts.all', compact('posts'));

@@ -32,43 +32,42 @@
                         <h1>Pretraga</h1>
 
 
-                        <form method="get" action="#">
+                        <form method="GET" action="#">
                             <div class="row gtr-uniform">
 
                                 <!-- Break -->
                                 <div class="col-3 col-12-small">
-                                    <input type="radio" id="radio-1" name="demo-radio" checked>
+                                    <input type="radio" id="radio-1" name="type" checked>
                                     <label for="radio-1">Najnovije</label>
                                 </div>
                                 <div class="col-3 col-12-small">
-                                    <input type="radio" id="radio-2" name="demo-radio" checked>
+                                    <input type="radio" id="radio-2" name="type" checked>
                                     <label for="radio-2">Najbolje</label>
                                 </div>
                                 <div class="col-3 col-12-small">
-                                    <input type="radio" id="radio-3" name="demo-radio">
+                                    <input type="radio" id="radio-3" name="type">
                                     <label for="radio-3">Kontroverzno</label>
                                 </div>
                                 <div class="col-3 col-12-small">
-                                    <input type="radio" id="radio-4" name="demo-radio">
+                                    <input type="radio" id="radio-4" name="type">
                                     <label for="radio-4">Najgore</label>
                                 </div>
                                 <!-- Break -->
                                 <div class="col-3 col-12-small">
-                                    <input type="radio" id="radio-ds" name="demo-radio1" checked>
+                                    <input type="radio" id="radio-ds" name="state" checked>
                                     <label for="radio-ds">Dvorana slavnih</label>
                                 </div>
                                 <div class="col-3 col-12-small">
-                                    <input type="radio" id="radio-ci" name="demo-radio1">
+                                    <input type="radio" id="radio-ci" name="state">
                                     <label for="radio-ci">Čistilište</label>
                                 </div>
                                 <div class="col-3 col-12-small">
-                                    <input type="radio" id="radio-sv" name="demo-radio1">
+                                    <input type="radio" id="radio-sv" name="state">
                                     <label for="radio-sv">Sve</label>
                                 </div>
                                 <!-- Break -->
                                 <div class="col-6 col-12-xsmall">
-                                    <input type="text" name="demo-name" id="demo-name" value=""
-                                        placeholder="Ključne reči" />
+                                    <input type="text" name="keywords" id="demo-name" value="" placeholder="Ključne reči" />
                                 </div>
                                 <div class="col-6">
                                     <ul class="actions">
@@ -98,20 +97,65 @@
                                 <div class="spotlight post" id="{{ $post->idPost }}">
                                     <div class="content">
                                         <h2> <a href="/posts/{{ $post->idPost }}">{{ $post->heading }}</a></h2>
-                                        <p> {{ $post->content }}
-                                        </p>
+                                        <p> {{ $post->content }} </p>
                                         <div class='row'>
                                             <div class="col-8">
                                                 <ul class="actions">
-                                                    <li><a href="#" class="button like"><span
-                                                                class="icon fa-plus-circle"></span>{{ $post->upvotes }}</a>
-                                                    </li>
-                                                    <li><a href="#" class="button dislike"><span
-                                                                class="icon fa-minus-circle"></span>{{ $post->downvotes }}</a>
-                                                    </li>
-                                                    <li><a href="/posts/{{ $post->idPost }}#comment"
-                                                            class="button comment"><span class="icon fa-comment"></span></a>
-                                                    </li>
+                                                    <!-- Vote forma-->
+                                                    @if (Auth::check())
+                                                        <form method="POST" class="invis"
+                                                            action="{{ route('vote') }}">
+                                                            @csrf
+                                                            <li><input type="hidden" id="idPost" name="idPost"
+                                                                    value="{{ $post->idPost }}" /> </li>
+
+                                                            @if (isset($post->userVote) && $post->userVote == 1)
+                                                                <li> <button class="voted button like" type="submit"
+                                                                        name="value" value="0" class="btn btn-primary">
+                                                                        <span class="icon fa-plus-circle"></span>
+                                                                        {{ $post->upvotes }}
+                                                                    </button></li>
+                                                            @else
+                                                                <li> <button type="submit" class="button like"
+                                                                        name="value" value="1" class="btn btn-primary">
+                                                                        <span class="icon fa-plus-circle"></span>
+                                                                        {{ $post->upvotes }}
+                                                                    </button> </li>
+                                                            @endif
+
+
+                                                            @if (isset($post->userVote) && $post->userVote == -1)
+                                                                <li> <button type="submit" class="voted button dislike"
+                                                                        name="value" value="0" class="btn btn-primary">
+                                                                        <span class="icon fa-minus-circle"></span>
+                                                                        {{ $post->downvotes }}
+                                                                    </button></li>
+                                                            @else
+                                                                <li> <button type="submit" class="button dislike"
+                                                                        name="value" value="-1" class="btn btn-primary">
+                                                                        <span class="icon fa-minus-circle"></span>
+                                                                        {{ $post->downvotes }}
+                                                                    </button></li>
+                                                            @endif
+                                                            <li><a href="/posts/{{ $post->idPost }}#comment"
+                                                                    class="button comment">
+                                                                    <span
+                                                                        class="icon fa-comment"></span>{{ $post->commentNum }}</a>
+                                                            </li>
+                                                        </form>
+                                                    @else
+                                                        <li><a href="/login/" class="button like"><span
+                                                                    class="icon fa-plus-circle"></span>
+                                                                {{ $post->upvotes }}</a></li>
+                                                        <li><a href="/login/" class="button dislike"><span
+                                                                    class="icon fa-minus-circle"></span>
+                                                                {{ $post->downvotes }}</a></li>
+                                                        <li><a href="/posts/{{ $post->idPost }}#comment"
+                                                                class="button comment"><span
+                                                                    class="icon fa-comment"></span>{{ $post->commentNum }}</a>
+                                                        </li>
+                                                    @endif
+
                                                 </ul>
                                             </div>
                                             <div class="col-4">
@@ -122,43 +166,7 @@
                                                 </p>
                                             </div>
 
-                                            <!-- Vote forma-->
-                                            @auth
-                                                <div class="row">
-                                                    <form method="POST" class="invis" action="{{ route('vote') }}">
-                                                        @csrf
-                                                        <input type="hidden" id="idPost" name="idPost"
-                                                            value="{{ $post->idPost }}" />
 
-                                                        @if (isset($post->userVote) && $post->userVote == 1)
-                                                            <button class="voted" type="submit" name="value" value="0"
-                                                                class="btn btn-primary">
-                                                                +
-                                                            </button>
-                                                        @else
-                                                            <button type="submit" name="value" value="1"
-                                                                class="btn btn-primary">
-                                                                +
-                                                            </button>
-                                                        @endif
-
-
-                                                        @if (isset($post->userVote) && $post->userVote == -1)
-                                                            <button type="submit" class="voted" name="value" value="0"
-                                                                class="btn btn-primary">
-                                                                -
-                                                            </button>
-                                                        @else
-                                                            <button type="submit" name="value" value="-1"
-                                                                class="btn btn-primary">
-                                                                -
-                                                            </button>
-                                                        @endif
-
-                                                    </form>
-                                                    <hr>
-                                                </div>
-                                            @endauth
                                         </div>
 
                                     </div>
@@ -179,8 +187,9 @@
 
 
             </div>
+
+            <!-- Korisnicke akcije -->
             <div class="col-3 col-12-medium">
-                <!-- Korisnicke akcije -->
                 <section id="two" class="wrapper">
                     <div class="inner">
                         <div class="box">
