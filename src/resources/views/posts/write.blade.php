@@ -5,57 +5,62 @@
 @section('title', 'Write a post')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Write a post</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('write') }}">
-                        @csrf
+    <!-- Main -->
+    <div id="main" class="wrapper style1">
+        <div class="inner">
+            <header class="major post-form">
+                <h1>Napiši definiciju</h1>
+                <p>
+                    Ne zaboravi, dozvoljeno je postavljanje samo jedne definicije dnevno!
+                </p>
+            </header>
 
-                        <div class="form-group row">
-                            <label for="heading" class="col-md-4 col-form-label text-md-right">Heading</label>
+        </div>
+        <!-- forma -->
+        <section id="post-form" class="contact-form">
 
-                            <div class="col-md-6">
-                                <input id="heading" type="text" class="form-control{{ $errors->has('heading') ? ' is-invalid' : '' }}" name="heading" placeholder="Naslov" autocomplete="heading">
+            <form method="POST" action="{{ route('write') }}">
+                @csrf
+                <div class="fields">
+                    <div class="field half">
+                        <label for="heading" class="col-md-4 col-form-label text-md-right">Naslov</label>
+                        <input id="heading" type="text"
+                            class="form-control{{ $errors->has('heading') ? ' is-invalid' : '' }}" name="heading"
+                            placeholder="Naslov">
+                        @if ($errors->has('heading'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('heading') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="field">
 
-                                @if ($errors->has('heading'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('heading') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="content" class="col-md-4 col-form-label text-md-right">Content</label>
-
-                            <div class="col-md-6">
-                                <textarea id="content" cols="50" rows="4"  class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}" name="content" > </textarea>
-
-                                @if ($errors->has('content'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('content') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Write
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                        <label for="heading" class="col-md-4 col-form-label text-md-right">Sadržaj</label>
+                        <textarea id="content" cols="50" rows="4" class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}"
+                            name="content"> </textarea>
+                        @if ($errors->has('content'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('content') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="field">
+                        <ul class="actions special">
+                            <li><button type="submit" class="button primary">Postavi</button></li>
+                        </ul>
+                    </div>
                 </div>
+            </form>
+        </section>
+        <!-- Footer -->
+        <div id="footer" class="wrapper post-page">
+            <div class="inner">
+
+                <p class="copyright">
+                    &copy; <span class="rainbow">TOBAGO</span>. Sva prava zadržana.
+                </p>
             </div>
         </div>
-    </div>
-</div>
-@endsection
+
+    @endsection
