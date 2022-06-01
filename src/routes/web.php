@@ -44,7 +44,7 @@ Route::post('register', [RegisterController::class, 'register']);
 //Post-related routes
 Route::get('/', [PostController::class, 'showPosts'])->name('home');
 Route::get('/all', [PostController::class, 'showPosts'])->name('all');
-Route::get('/search/{state}/{type}/{keywords?}', [PostController::class, 'searchPosts'])->name('search');
+Route::get('/search/{state?}/{type?}/{keywords?}', [PostController::class, 'searchPosts'])->name('search');
 Route::get('/posts/{id}', [PostController::class, 'showSpecificPost'])->name('posts');
 Route::patch('/posts/{id}', [PostController::class, 'lockPost'])->name('posts')->middleware('auth');
 

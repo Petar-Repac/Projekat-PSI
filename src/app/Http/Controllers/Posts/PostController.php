@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class PostController extends Controller
 {
@@ -61,42 +63,63 @@ class PostController extends Controller
     }
 
 
-
-    public function searchPosts($type, $state, $keywords = null)
+    public function searchPosts(Request $request)
     {
+        $type = $request->get('type', null);
+        $state = $request->get('state', null);
+        $keywords = $request->get('keywords', null);
+
+
+        $posts = DB::table('Post')
+            ->select('idPost', 'isPermanent', 'timePosted', 'heading', 'content', 'author', 'isLocked')
+            ->selectRaw('SUM(V.value) as score')
+            ->Join('Vote as V', 'idPost', '=', 'post', 'left outer')
+            ->groupBy('idPost', 'isPermanent', 'timePosted', 'heading', 'content', 'author', 'isLocked');
+
+
         switch ($type) {
             case 'best':
+                $posts = $posts->orderBy('score', 'DESC');
+                break;
             case 'worst':
+                $posts = $posts->orderBy('score', 'ASC');
+                break;
             case 'new':
+                $posts = $posts->orderBy('timePosted', 'DESC');
                 break;
             default:
-                $type = 'new';
+                $posts = $posts->orderBy('timePosted', 'DESC');
         }
 
         switch ($state) {
             case 'hall':
+                $posts = $posts->where('isPermanent',  1);
+                break;
             case 'purgatory':
+                $posts = $posts->where('isPermanent',  0);
+                break;
             case 'all':
                 break;
             default:
-                $state = 'all';
+                break;
         }
+
 
         if (isset($keywords)) {
+            //Za svaku rec odvojenu razmakom
             $keywords = explode(' ', $keywords);
+            foreach ($keywords as $keyword) {
+                //Logicko grupisanje where klauzula
+                $posts = $posts->where(function ($query) use ($keyword) {
+                    $query->orWhere('content', 'like', '%' . $keyword . '%');
+                    $query->orWhere('heading', 'like', '%' . $keyword . '%');
+                });
+            }
         }
 
-        $typeParam = [];
-        switch ($type) {
-            case 'best':
-                $typeParam = '';
-                break;
-            case 'worst':
-                break;
-            case 'new':
-                break;
-        }
-        $posts = Post::all();
+
+
+        return $this->display($posts->get());
     }
 
 
