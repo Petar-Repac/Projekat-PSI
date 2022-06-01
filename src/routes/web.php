@@ -24,6 +24,10 @@ use App\Http\Middleware\VerifyCsrfToken;
 */
 
 // Autor: Vukašin Stepanović
+Route::get('/about-us', function () {
+  return view('about-us');
+});
+
 Route::get('/user/{username}', [UserController::class, 'get']);
 Route::patch('/user/{username}', [UserController::class, 'patch'])->middleware('auth');
 Route::post("/trigger-selection", [AdminController::class, 'triggerSelection'])->middleware('auth');
