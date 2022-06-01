@@ -97,7 +97,8 @@
                         </div>
                         <div class="col-12 col-12-xsmall">
                             <ul class="actions">
-                                <li><button id="submit-komentar" type="submit" class="button comment">Postavi
+                                <li><button id="submit-komentar" type="submit"
+                                        class="button comment js-comment-submit">Postavi
                                         komentar</button></li>
                             </ul>
                         </div>

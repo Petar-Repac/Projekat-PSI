@@ -1,8 +1,10 @@
-/* Autor: Vukašin Stepanović */
+/* Autori: Vukašin Stepanović & Petar Repac */
 
 "use strict";
 
 (function main() {
+
+    //Autor: Vukašin Stepanović
     const DOM = {
         lock: document.querySelector(".js-lock"),
         comment: {
@@ -35,4 +37,8 @@
     }
 
     init();
+
+    //Autor: Petar Repac
+
+
 })();

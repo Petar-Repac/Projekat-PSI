@@ -130,9 +130,20 @@ class PostController extends Controller
 
     protected function showSpecificPost($id)
     {
+        $authUser = Auth::user();
         $post = Post::findOrFail($id);
+        $post->upvotes = count(Vote::all()->where('post', $id)->where('value', 1));
+        $post->downvotes = count(Vote::all()->where('post', $id)->where('value', -1));
+        if ($authUser) {
+            $userVote = Vote::where('voter', $authUser->idUser)->where('post', $post->idPost)->first();
+            $userVote = isset($userVote) ? $userVote->value : 0;
+        }
+
+
         $author = User::find($post->author);
         $comments = CommentController::getComments($id);
+
+
 
         foreach ($comments as $comment) {
             $username = User::all()->where('idUser', $comment->commenter)->first()->username;
