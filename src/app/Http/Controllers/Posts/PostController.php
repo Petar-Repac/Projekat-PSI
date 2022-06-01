@@ -103,10 +103,10 @@ class PostController extends Controller
 
     protected function vote(Request $request)
     {
-
-        $voter = Auth::user()->idUser;
-        $post = $request->input('idPost');
-        $value = $request->input('value');
+        $req = json_decode($request->getContent(), true);
+        $voter = $req['user'];
+        $post = $req['post'];
+        $value = $req['value'];
 
         if ($value == 0) {
             Vote::where('voter', $voter)->where('post', $post)->delete();
@@ -120,8 +120,7 @@ class PostController extends Controller
             ]);
         }
 
-
-        return redirect('all');
+        return response()->json($req);
     }
 
     protected function showPostForm(Request $request)

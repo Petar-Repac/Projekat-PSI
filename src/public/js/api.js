@@ -31,8 +31,14 @@ const API = (function () {
     }
 
     function triggerSelection() {
-        return xfetch.post(`/trigger-selection`).catch((e) => {
-            console.dir(e);
+        return xfetch.post(`/trigger-selection`);
+    }
+
+    function setLikeDislike(idUser, idPost, value) {
+        return xfetch.patch(`/vote`, {
+            user: idUser,
+            post: idPost,
+            value,
         });
     }
 
@@ -42,5 +48,6 @@ const API = (function () {
         updateRole,
         triggerSelection,
         setPostLocked,
+        setLikeDislike,
     };
 })();
