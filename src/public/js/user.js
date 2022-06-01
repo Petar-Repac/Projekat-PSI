@@ -27,15 +27,15 @@
     };
 
     function updateStatus(status) {
-        DOM.status.display.textContent = status ?? "No status.";
+        DOM.status.display.textContent = status ?? "Nema status.";
     }
 
     function updateBanButton(banned) {
-        DOM.admin.ban.textContent = banned ? "Unban" : "Ban";
+        DOM.admin.ban.textContent = banned ? "Dozvoli pristup" : "Zabrani pristup";
     }
 
     function updateRoleButton(role) {
-        DOM.admin.promote.textContent = role === "mod" ? "Demote" : "Promote";
+        DOM.admin.promote.textContent = role === "mod" ? "Ražaluj moderatora" : "Unapredi u moderatora";
     }
 
     function initStatusEdit() {

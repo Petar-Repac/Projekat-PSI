@@ -1,7 +1,7 @@
 <!-- Autor: Petar Repac -->
 @extends('layouts.app')
 
-@section('title', 'Post page')
+@section('title', $post->heading . ' | Post')
 
 @section('scripts')
     <script>

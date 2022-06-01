@@ -2,7 +2,7 @@
 
 @extends('layouts.app')
 
-@section('title', $user->username . ' | Profile')
+@section('title', $user->username . ' | Profil')
 
 @section('scripts')
     <script>
