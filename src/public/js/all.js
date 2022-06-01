@@ -41,7 +41,7 @@
     const newUserVote = result.value;
     post.meta.userVote = result.value;
 
-    console.log("Old:" + oldUserVote + " New:" + newUserVote )
+    console.log("Old:" + oldUserVote + " New:" + newUserVote );
 
     //Logika za lokalno racunanje glasova
     switch(oldUserVote){

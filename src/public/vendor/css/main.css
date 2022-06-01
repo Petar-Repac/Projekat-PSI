@@ -3392,6 +3392,17 @@ body {
     color: #ffffff;
 }
 
+#header > .actions {
+    font-size: 1rem;
+    height: auto;
+    line-height: 1;
+    margin: 0;
+}
+
+#header > .actions span {
+    line-height: 3;
+}
+
 .dropotron {
     background-color: #d54857;
     border-radius: 0.5rem;

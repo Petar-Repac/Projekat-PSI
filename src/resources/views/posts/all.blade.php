@@ -84,7 +84,7 @@
         </section>
         <!-- One -->
         <div class="row">
-            <div class="col-8 col-12-medium">
+            <div class="col-8 off-2 col-12-medium">
                 <!-- One -->
                 <section id="one" class="wrapper">
                     <div class="inner">
@@ -109,7 +109,7 @@
 
                                                     <li>
                                                         <button class="button dislike">
-                                                            <span class="icon fa-minus-circle">0</span>
+                                                            <span class="icon fa-minus-circle"></span>
                                                             <span class="js-dislike-count">0</span>
                                                         </button>
                                                     </li>
@@ -159,72 +159,75 @@
 
             </div>
 
-            <!-- Korisnicke akcije -->
-            <div class="col-4 col-12-medium">
-                <section id="two" class="wrapper">
-                    <div class="inner">
-                        <div class="box">
-                            @if (Route::has('login'))
-                                <div class="fixed top-0 right-0 px-6 py-4 sm:block">
-                                    <ul class="actions stacked">
-                                        @auth
-                                            @if (Auth::user()->isAdmin())
-                                                Admin:
-                                            @elseif (Auth::user()->isMod())
-                                                Mod:
-                                            @else
-                                                Korisnik:
-                                            @endif
+            <!-- Korisnicke akcije
+                        <div class="col-4 col-12-medium">
+                            <section id="two" class="wrapper">
+                                <div class="inner">
+                                    <div class="box">
+                                        @if (Route::has('login'))
+                                            <div class="fixed top-0 right-0 px-6 py-4 sm:block">
+                                                <ul class="actions stacked">
+                                                    @auth
+                                                                    @if (Auth::user()->isAdmin())
+        Admin:
+    @elseif (Auth::user()->isMod())
+        Mod:
+    @else
+        Korisnik:
+        @endif
 
-                                            {{ Auth::user()->username }}
+                                                                    {{ Auth::user()->username }}
 
 
-                                            <li><a href="{{ url('/writepost') }}"
-                                                    class="button primary medium fit js-forbid-guest">Napiši
-                                                    definiciju</a></li>
-                                            <li class="user">
-                                                <form method="POST" class="invis" action="{{ route('logout') }}">
-                                                    @csrf
-                                                    <input type="submit" value="Odjavi me" />
-                                                </form>
-                                            @else
-                                            <li class="guest"><a href="{{ route('login') }}"
-                                                    class="button medium fit">Prijava</a></li>
+                                                                    <li><a href="{{ url('/writepost') }}"
+                                                                            class="button primary medium fit js-forbid-guest">Napiši
+                                                                            definiciju</a></li>
+                                                                    <li class="user">
+                                                                        <form method="POST" class="invis" action="{{ route('logout') }}">
+                                                                            @csrf
+                                                                            <input type="submit" value="Odjavi me" />
+                                                                        </form>
+    @else
+        <li class="guest"><a href="{{ route('login') }}"
+                                                                            class="button medium fit">Prijava</a></li>
 
-                                            @if (Route::has('register'))
-                                                <li class="guest">
-                                                    <a href="{{ route('register') }}" class="button medium fit">
-                                                        Registracija</a>
-                                                </li>
-                                            @endif
-                                        @endauth
-                                    </ul>
+                                                                    @if (Route::has('register'))
+        <li class="guest">
+                                                                            <a href="{{ route('register') }}" class="button medium fit">
+                                                                                Registracija</a>
+                                                                        </li>
+        @endif
+                                                    @endauth
+                                                </ul>
+                                            </div>
+                                        @endif
+
+                                    </div>
                                 </div>
-                            @endif
-
+                            </section>
                         </div>
-                    </div>
-                </section>
-            </div>
+                        -->
+
+
         </div>
 
         <!-- Paginacija
-                                                                                                <div class="row">
-                                                                                                    <div class="col-9">
-                                                                                                        <ul class="pagination">
-                                                                                                            <li><span class="button disabled">Prethodna</span></li>
-                                                                                                            <li><a href="#" class="page active">1</a></li>
-                                                                                                            <li><a href="#" class="page">2</a></li>
-                                                                                                            <li><a href="#" class="page">3</a></li>
-                                                                                                            <li><span>…</span></li>
-                                                                                                            <li><a href="#" class="page">8</a></li>
-                                                                                                            <li><a href="#" class="page">9</a></li>
-                                                                                                            <li><a href="#" class="page">10</a></li>
-                                                                                                            <li><a href="#" class="button">Sledeća</a></li>
-                                                                                                        </ul>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                        -->
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-9">
+                                                                                                                    <ul class="pagination">
+                                                                                                                        <li><span class="button disabled">Prethodna</span></li>
+                                                                                                                        <li><a href="#" class="page active">1</a></li>
+                                                                                                                        <li><a href="#" class="page">2</a></li>
+                                                                                                                        <li><a href="#" class="page">3</a></li>
+                                                                                                                        <li><span>…</span></li>
+                                                                                                                        <li><a href="#" class="page">8</a></li>
+                                                                                                                        <li><a href="#" class="page">9</a></li>
+                                                                                                                        <li><a href="#" class="page">10</a></li>
+                                                                                                                        <li><a href="#" class="button">Sledeća</a></li>
+                                                                                                                    </ul>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                    -->
 
     </div>
 

@@ -134,11 +134,12 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->upvotes = count(Vote::all()->where('post', $id)->where('value', 1));
         $post->downvotes = count(Vote::all()->where('post', $id)->where('value', -1));
+        $userVote = 0;
         if ($authUser) {
             $userVote = Vote::where('voter', $authUser->idUser)->where('post', $post->idPost)->first();
             $userVote = isset($userVote) ? $userVote->value : 0;
         }
-
+        $post->userVote = $userVote;
 
         $author = User::find($post->author);
         $comments = CommentController::getComments($id);
