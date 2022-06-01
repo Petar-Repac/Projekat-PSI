@@ -4,6 +4,21 @@
 
 @section('title', 'Posts')
 
+@section('scripts')
+    <script>
+        @auth
+        window.__user = {
+            id: {!! json_encode(Auth::user()->idUser) !!}
+        };
+        @else
+            window.__user = null;
+        @endauth
+
+        window.__posts = {!! json_encode($posts) !!};
+    </script>
+    <script src="{{ asset('js/all.js') }}"></script>
+@endsection
+
 @section('content')
 
 
@@ -77,78 +92,41 @@
 
                             @foreach ($posts as $post)
                                 <!-- Definicija -->
-                                <div class="spotlight post" id="{{ $post->idPost }}">
+                                <div class="spotlight post" data-id="{{ $post->idPost }}">
                                     <div class="content">
                                         <h2> <a href="/posts/{{ $post->idPost }}">{{ $post->heading }}</a></h2>
                                         <p> {{ $post->content }} </p>
                                         <div class='row'>
                                             <div class="col-8">
                                                 <ul class="actions">
-                                                    <!-- Vote forma-->
-                                                    @if (Auth::check())
-                                                        <form method="POST" class="invis"
-                                                            action="{{ route('vote') }}">
-                                                            @csrf
-                                                            <li><input type="hidden" id="idPost" name="idPost"
-                                                                    value="{{ $post->idPost }}" /> </li>
-
-                                                            @if (isset($post->userVote) && $post->userVote == 1)
-                                                                <li> <button class="voted button like" type="submit"
-                                                                        name="value" value="0" class="btn btn-primary">
-                                                                        <span class="icon fa-plus-circle"></span>
-                                                                        {{ $post->upvotes }}
-                                                                    </button></li>
-                                                            @else
-                                                                <li> <button type="submit" class="button like"
-                                                                        name="value" value="1" class="btn btn-primary">
-                                                                        <span class="icon fa-plus-circle"></span>
-                                                                        {{ $post->upvotes }}
-                                                                    </button> </li>
-                                                            @endif
+                                                    <li>
+                                                        <button class="button like">
+                                                            <span class="icon fa-plus-circle"></span>
+                                                            <span class="js-like-count">0</span>
+                                                        </button>
+                                                    </li>
 
 
-                                                            @if (isset($post->userVote) && $post->userVote == -1)
-                                                                <li> <button type="submit" class="voted button dislike"
-                                                                        name="value" value="0" class="btn btn-primary">
-                                                                        <span class="icon fa-minus-circle"></span>
-                                                                        {{ $post->downvotes }}
-                                                                    </button></li>
-                                                            @else
-                                                                <li> <button type="submit" class="button dislike"
-                                                                        name="value" value="-1" class="btn btn-primary">
-                                                                        <span class="icon fa-minus-circle"></span>
-                                                                        {{ $post->downvotes }}
-                                                                    </button></li>
-                                                            @endif
+                                                    <li>
+                                                        <button class="button dislike">
+                                                            <span class="icon fa-minus-circle"></span>
+                                                            <span class="js-dislike-count">0</span>
+                                                        </button>
+                                                    </li>
 
-                                                            @if (isset($post->userCommented) && $post->userCommented)
-                                                                <li><a href="/posts/{{ $post->idPost }}#comment"
-                                                                        class="button comment commented">
-                                                                        <span
-                                                                            class="icon fa-comment"></span>{{ $post->commentNum }}</a>
-                                                                </li>
-                                                            @else
-                                                                <li><a href="/posts/{{ $post->idPost }}#comment"
-                                                                        class="button comment">
-                                                                        <span
-                                                                            class="icon fa-comment"></span>{{ $post->commentNum }}</a>
-                                                                </li>
-                                                            @endif
-
-                                                        </form>
-                                                    @else
-                                                        <li><a href="/login/" class="button like"><span
-                                                                    class="icon fa-plus-circle"></span>
-                                                                {{ $post->upvotes }}</a></li>
-                                                        <li><a href="/login/" class="button dislike"><span
-                                                                    class="icon fa-minus-circle"></span>
-                                                                {{ $post->downvotes }}</a></li>
+                                                    @if (isset($post->userCommented) && $post->userCommented)
                                                         <li><a href="/posts/{{ $post->idPost }}#comment"
-                                                                class="button comment"><span
+                                                                class="button comment commented">
+                                                                <span
+                                                                    class="icon fa-comment"></span>{{ $post->commentNum }}</a>
+                                                        </li>
+                                                    @else
+                                                        <li><a href="/posts/{{ $post->idPost }}#comment"
+                                                                class="button comment">
+                                                                <span
                                                                     class="icon fa-comment"></span>{{ $post->commentNum }}</a>
                                                         </li>
                                                     @endif
-
                                                 </ul>
                                             </div>
                                             <div class="col-4">
@@ -231,22 +209,22 @@
         </div>
 
         <!-- Paginacija
-                    <div class="row">
-                        <div class="col-9">
-                            <ul class="pagination">
-                                <li><span class="button disabled">Prethodna</span></li>
-                                <li><a href="#" class="page active">1</a></li>
-                                <li><a href="#" class="page">2</a></li>
-                                <li><a href="#" class="page">3</a></li>
-                                <li><span>…</span></li>
-                                <li><a href="#" class="page">8</a></li>
-                                <li><a href="#" class="page">9</a></li>
-                                <li><a href="#" class="page">10</a></li>
-                                <li><a href="#" class="button">Sledeća</a></li>
-                            </ul>
-                        </div>
-                    </div>
-            -->
+                                                                                            <div class="row">
+                                                                                                <div class="col-9">
+                                                                                                    <ul class="pagination">
+                                                                                                        <li><span class="button disabled">Prethodna</span></li>
+                                                                                                        <li><a href="#" class="page active">1</a></li>
+                                                                                                        <li><a href="#" class="page">2</a></li>
+                                                                                                        <li><a href="#" class="page">3</a></li>
+                                                                                                        <li><span>…</span></li>
+                                                                                                        <li><a href="#" class="page">8</a></li>
+                                                                                                        <li><a href="#" class="page">9</a></li>
+                                                                                                        <li><a href="#" class="page">10</a></li>
+                                                                                                        <li><a href="#" class="button">Sledeća</a></li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                    -->
 
     </div>
 

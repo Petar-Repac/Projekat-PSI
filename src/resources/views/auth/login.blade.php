@@ -52,10 +52,16 @@
 @section('scripts')
     <script>
         const params = new URLSearchParams(location.search);
-        if (params.get("banned")) {
+        if (params.has("banned")) {
             showDialog({
                 content: "Vašem nalogu je zabranjen pristup.",
-                type: "error"
+                type: "error",
+            });
+        }
+        if (params.has("require_login")) {
+            showDialog({
+                content: "Potrebno je da budete prijavljeni kako biste izvršili tu akciju!",
+                type: "error",
             });
         }
     </script>

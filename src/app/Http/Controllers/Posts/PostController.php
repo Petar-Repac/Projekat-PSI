@@ -39,7 +39,7 @@ class PostController extends Controller
             $userVote = null;
             if ($authUser) {
                 $userVote = Vote::where('voter', $authUser->idUser)->where('post', $post->idPost)->first();
-                $userVote = isset($userVote) ? $userVote->value : null;
+                $userVote = isset($userVote) ? $userVote->value : 0;
             }
 
 
@@ -57,7 +57,6 @@ class PostController extends Controller
     public function showPosts(Request $request)
     {
         $posts = Post::all();
-
         return $this->display($posts);
     }
 
@@ -103,10 +102,10 @@ class PostController extends Controller
 
     protected function vote(Request $request)
     {
-
-        $voter = Auth::user()->idUser;
-        $post = $request->input('idPost');
-        $value = $request->input('value');
+        $req = json_decode($request->getContent(), true);
+        $voter = $req['user'];
+        $post = $req['post'];
+        $value = $req['value'];
 
         if ($value == 0) {
             Vote::where('voter', $voter)->where('post', $post)->delete();
@@ -120,8 +119,7 @@ class PostController extends Controller
             ]);
         }
 
-
-        return redirect('all');
+        return response()->json($req);
     }
 
     protected function showPostForm(Request $request)

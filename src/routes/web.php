@@ -52,7 +52,7 @@ Route::get('/writepost', [PostController::class, 'showPostForm'])->name('writefo
 Route::post('/writepost', [PostController::class, 'writePost'])->name('write')->middleware('auth');
 
 //Voting
-Route::post('/vote', [PostController::class, 'vote'])->name('vote')->middleware('auth');
+Route::patch('/vote', [PostController::class, 'vote'])->name('vote')->middleware('auth');
 
 //Commenting
 Route::post('/comment', [CommentController::class, 'writeComment'])->name('comment')->middleware('auth');
