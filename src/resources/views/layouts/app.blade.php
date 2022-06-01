@@ -33,9 +33,8 @@
             </ul>
         </nav>
     </header>
+
     @yield('content')
-
-
 
     <script src="{{ asset('/vendor/js/jquery.min.js') }}"></script>
     <script src="{{ asset('/vendor/js/jquery.dropotron.min.js') }}"></script>

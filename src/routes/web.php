@@ -23,10 +23,6 @@ use App\Http\Middleware\VerifyCsrfToken;
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-});
-
 // Autor: Vukašin Stepanović
 Route::get('/user/{username}', [UserController::class, 'get']);
 Route::patch('/user/{username}', [UserController::class, 'patch'])->middleware('auth');
