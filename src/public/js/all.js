@@ -38,16 +38,17 @@
     const result = await API.setLikeDislike(__user.id, post.meta.idPost, value);
 
     const oldUserVote = post.meta.userVote;
+    const newUserVote = result.value;
     post.meta.userVote = result.value;
-    console.log({result});
+
+    console.log("Old:" + oldUserVote + " New:" + newUserVote )
 
     //Logika za lokalno racunanje glasova
     switch(oldUserVote){
         //bio upvote
         case 1:
-
             //ponisten
-            if(post.meta.userVote == 0){
+            if(newUserVote == 0){
                 post.meta.upvotes -= 1; 
             }
             //downvote
@@ -60,7 +61,7 @@
         //bio downvote
         case -1:
             //ponisten
-            if(post.meta.userVote == 0){
+            if(newUserVote== 0){
                 post.meta.downvotes -= 1; 
             }
             //upvote
@@ -73,7 +74,7 @@
         //nije glasao 
         case 0: 
             //upvote
-            if(post.meta.userVote == 1){
+            if(newUserVote == 1){
                 post.meta.upvotes += 1; 
             }
             //downvote

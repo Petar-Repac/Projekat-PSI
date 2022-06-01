@@ -39,7 +39,7 @@ class PostController extends Controller
             $userVote = null;
             if ($authUser) {
                 $userVote = Vote::where('voter', $authUser->idUser)->where('post', $post->idPost)->first();
-                $userVote = isset($userVote) ? $userVote->value : null;
+                $userVote = isset($userVote) ? $userVote->value : 0;
             }
 
 
@@ -57,7 +57,6 @@ class PostController extends Controller
     public function showPosts(Request $request)
     {
         $posts = Post::all();
-
         return $this->display($posts);
     }
 
