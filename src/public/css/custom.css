@@ -31,3 +31,12 @@
 .swal2-actions button {
     line-height: inherit !important;
 }
+
+/* Autor: Petar Repac*/
+
+#comment-section > .content {
+    min-height: 10em;
+    max-height: 20em;
+
+    overflow-y: scroll;
+}

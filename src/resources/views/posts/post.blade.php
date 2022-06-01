@@ -1,11 +1,17 @@
 <!-- Autor: Petar Repac -->
-
 @extends('layouts.app')
 
 @section('title', 'Post page')
 
 @section('scripts')
     <script>
+        @auth
+        window.__user = {
+            id: {!! json_encode(Auth::user()->idUser) !!}
+        };
+        @else
+            window.__user = null;
+        @endauth
         window.__post = {
             id: {!! json_encode($post->idPost) !!},
             isLocked: {!! json_encode($post->isLocked) !!},
@@ -15,70 +21,105 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <section>
-                        <h1>{{ $post->heading }}</h1>
-                        <p>{{ $post->content }}</p>
-                    </section>
-                    <p> Author: <a href="/user/{{ $author->username }}"> {{ $author->username }}</a> </p>
+
+
+    <!-- Main -->
+    <div id="main" class="wrapper style1 post">
+        <div class="inner">
+            <header>
+                <ul class="actions">
+
+                    <a href="index.html" class="button medium"><span class="icon fa-angle-double-left"></a>
+                    <li><button id="post-like" href="#" class="button like"><span
+                                class="icon fa-plus-circle"></span>0</button></li>
+                    <li><button id="post-dislike" href="#" class="button dislike"><span
+                                class="icon fa-minus-circle"></span>0</button></li>
 
                     @auth
                         @if (Auth::user()->isMod())
-                            <button class="button js-lock">Zaključaj</button>
+                            <li class="mod">
+
+                                <button id="toggle-lock-text" class="button js-lock toggle-lock-text">
+                                    <span class="icon fa-lock"></span>
+                                </button>
+
+                            </li>
                         @endif
                     @endauth
-                </div>
-                <!-- Comment section -->
-                <div class="card">
+
+                </ul>
+                <h1>{{ $post->heading }} </h1>
+            </header>
+            <p>{{ $post->content }}</p>
+
+
+
+
+
+
+            <!--Comment section-->
+            <div id="comment-section" class="box">
+                <header>
+                    <h1>Komentari</h1>
+                </header>
+                <div class="content">
+
+                    <!-- Komentari -->
                     @foreach ($comments as $comment)
-                        <section>
-                            <h1>{{ $comment->username }}</h1>
-                            <p>{{ $comment->content }}</p>
-                            <span>{{ $comment->timeCreated }} </span>
-                        </section>
+                        <div class="spotlight comment">
+                            <div class="content">
+                                <h2> <a href="user.html">{{ $comment->username }}</a></h2>
+                                <p>{{ $comment->content }}</p>
+                                <span>{{ $comment->timeCreated }} </span>
+                            </div>
+                        </div>
                     @endforeach
+
                 </div>
-                <!-- Comment forma-->
-                @auth
-                    <div class="row">
-                        <form method="POST" action="{{ route('comment') }}">
-                            @csrf
+            </div>
 
-                            <div class="form-group row">
-                                <label for="content" class="col-md-4 col-form-label text-md-right">Content</label>
+            <div class="row">
+                <form id="post-comment" method="POST" action="{{ route('comment') }}">
+                    @csrf
+                    <input type="hidden" id="postId" name="postId" value="{{ $post->idPost }}" />
 
-                                <div class="col-md-6">
-                                    <textarea id="content" cols="50" rows="4" placeholder='comment'
-                                        class="js-comment-text form-control{{ $errors->has('content') ? ' is-invalid' : '' }}"
-                                        name="content"> </textarea>
+                    <div class="row gtr-uniform">
+                        <div class="col-12 col-12-xsmall">
+                            <textarea id="content" cols="50" rows="4" placeholder='comment'
+                                class="js-comment-text form-control{{ $errors->has('content') ? ' is-invalid' : '' }}"
+                                name="content"> </textarea>
 
-                                    @if ($errors->has('content'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('content') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <input type="hidden" id="postId" name="postId" value="{{ $post->idPost }}" />
+                            @if ($errors->has('content'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('content') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="col-12 col-12-xsmall">
+                            <ul class="actions">
+                                <li><button id="submit-komentar" type="submit" class="button comment">Postavi
+                                        komentar</button></li>
+                            </ul>
+                        </div>
 
 
-                                    <button type="submit" class="btn btn-primary js-comment-submit">
-                                        Comment
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
                     </div>
-                @endauth
+                </form>
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <div id="footer" class="wrapper post-page">
+        <div class="inner">
+
+            <p class="copyright">
+                &copy; <span class="rainbow">TOBAGO</span>. Sva prava zadržana.
+            </p>
+        </div>
+    </div>
+
+
+
+
 @endsection

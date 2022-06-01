@@ -109,7 +109,7 @@
 
                                                     <li>
                                                         <button class="button dislike">
-                                                            <span class="icon fa-minus-circle"></span>
+                                                            <span class="icon fa-minus-circle">0</span>
                                                             <span class="js-dislike-count">0</span>
                                                         </button>
                                                     </li>
@@ -209,22 +209,22 @@
         </div>
 
         <!-- Paginacija
-                                                                                            <div class="row">
-                                                                                                <div class="col-9">
-                                                                                                    <ul class="pagination">
-                                                                                                        <li><span class="button disabled">Prethodna</span></li>
-                                                                                                        <li><a href="#" class="page active">1</a></li>
-                                                                                                        <li><a href="#" class="page">2</a></li>
-                                                                                                        <li><a href="#" class="page">3</a></li>
-                                                                                                        <li><span>…</span></li>
-                                                                                                        <li><a href="#" class="page">8</a></li>
-                                                                                                        <li><a href="#" class="page">9</a></li>
-                                                                                                        <li><a href="#" class="page">10</a></li>
-                                                                                                        <li><a href="#" class="button">Sledeća</a></li>
-                                                                                                    </ul>
+                                                                                                <div class="row">
+                                                                                                    <div class="col-9">
+                                                                                                        <ul class="pagination">
+                                                                                                            <li><span class="button disabled">Prethodna</span></li>
+                                                                                                            <li><a href="#" class="page active">1</a></li>
+                                                                                                            <li><a href="#" class="page">2</a></li>
+                                                                                                            <li><a href="#" class="page">3</a></li>
+                                                                                                            <li><span>…</span></li>
+                                                                                                            <li><a href="#" class="page">8</a></li>
+                                                                                                            <li><a href="#" class="page">9</a></li>
+                                                                                                            <li><a href="#" class="page">10</a></li>
+                                                                                                            <li><a href="#" class="button">Sledeća</a></li>
+                                                                                                        </ul>
+                                                                                                    </div>
                                                                                                 </div>
-                                                                                            </div>
-                                                                                    -->
+                                                                                        -->
 
     </div>
 
