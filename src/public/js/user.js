@@ -90,7 +90,12 @@
         DOM.admin.selection.addEventListener("click", async () => {
             try {
                 const result = await API.triggerSelection();
-                showDialog({ content: "Selekcija je izvršena!" });
+
+                if (result.winner) {
+                    showDialog({ content: `Selekcija je izvršena! Pobednik je post "${result.winner.heading}".` });
+                } else {
+                    showDialog({content: "Nije moguće izvršiti selekciju jer ne postoji nijedan novi post!", type: "error"});
+                }
             } catch (e) {}
         });
     }
