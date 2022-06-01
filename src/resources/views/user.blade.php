@@ -40,7 +40,7 @@
         @endif
 
         @if (Auth::user()->isMod())
-            <ul class="js-admin-panel invisible actions">
+            <ul class="js-admin-panel invisible actions" style="margin-top: 1em;">
                 @if (Auth::user()->username != $user->username)
                     @unless(Auth::user()->isMod() && $user->isAdmin())
                         <li>
@@ -53,6 +53,10 @@
                             <button class="js-promote button">Unapredi u moderatora</button>
                         </li>
                     @endif
+                @elseif (Auth::user()->isAdmin())
+                    <li>
+                        <button class="js-selection button">Izvrši selekciju</button>
+                    </li>
                 @endif
             </ul>
         @endif
