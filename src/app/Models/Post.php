@@ -1,9 +1,6 @@
 <?php
-/* Autori: Vukašin Stepanović, Petar Repac */
+/* Autori: Vukašin Stepanović 2019/0133, Petar Repac 2019/0616 */
 
-/**
- * Created by Reliese Model.
- */
 
 namespace App\Models;
 
@@ -12,7 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Post
+ * Class Post  predstavlja jedan red tabele Post u bazi podataka
  * 
  * @property int $idPost
  * @property int $isPermanent
@@ -53,16 +50,34 @@ class Post extends Model
 		'isLocked'
 	];
 
+	/**
+	 * Pronalazi pripadajućeg korisnika
+	 * 
+	 * @param void
+	 * @return Models\Post
+	 */
 	public function user()
 	{
 		return $this->belongsTo(User::class, 'author');
 	}
 
+	/**
+	 * Pronalazi pripadajuće komentare
+	 * 
+	 * @param void
+	 * @return Collection|Models\Comment
+	 */
 	public function comments()
 	{
 		return $this->hasMany(Comment::class, 'post');
 	}
 
+	/**
+	 * Pronalazi pripadajuće glasove
+	 * 
+	 * @param void
+	 * @return @return Collection|Models\Vote
+	 */
 	public function votes()
 	{
 		return $this->hasMany(Vote::class, 'post');

@@ -1,9 +1,5 @@
 <?php
-/* Autori: Vukašin Stepanović, Petar Repac */
-
-/**
- * Created by Reliese Model.
- */
+/* Autori: Vukašin Stepanović 2019/0133 , Petar Repac 2019/0616 */
 
 namespace App\Models;
 
@@ -11,7 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Comment
+ * Klasa Comment predstavlja jedan red tabele Comment u bazi podataka
  * 
  * @property int $idComment
  * @property int|null $commenter
@@ -45,11 +41,23 @@ class Comment extends Model
 		'timeCreated'
 	];
 
+	/**
+	 * Pronalazi pripadajuću objavu
+	 * 
+	 * @param void
+	 * @return Models\Post
+	 */
 	public function post()
 	{
 		return $this->belongsTo(Post::class, 'post');
 	}
 
+	/**
+	 * Pronalazi pripadajućeg korisnika
+	 * 
+	 * @param void
+	 * @return Models\User
+	 */
 	public function user()
 	{
 		return $this->belongsTo(User::class, 'commenter');
