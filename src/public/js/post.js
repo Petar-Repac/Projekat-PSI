@@ -1,4 +1,4 @@
-/* Autori: Vukašin Stepanović & Petar Repac */
+/* Autori: Vukašin Stepanović 0133/2019 & Petar Repac 0616/2019 */
 
 "use strict";
 
