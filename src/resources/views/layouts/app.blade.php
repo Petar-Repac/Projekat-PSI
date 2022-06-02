@@ -28,9 +28,18 @@
 
         <nav id="nav">
             <ul>
-                <li class="current"><a href="{{ route('home') }}">Početna</a></li>
-                <li><a href="uputstvo.html">Uputstvo za korišćenje prototipa</a></li>
-                <li><a href="o-nama.html">O Kavujliji</a></li>
+                <li class="{{ Route::is('home') ? 'current' : '' }}">
+                    <a href="{{ route('home') }}">Početna</a>
+                </li>
+                <li class="{{ Route::is('about-us') ? 'current' : '' }}">
+                    <a href="{{ route('about-us') }}">O Kavujliji</a>
+                </li>
+
+                @auth
+                    <li class="{{ Request::is('user/' . Auth::user()->username) ? 'current' : '' }}">
+                        <a href="{{ route('user', Auth::user()->username) }}">Moj profil</a>
+                    </li>
+                @endauth
             </ul>
         </nav>
 
@@ -50,7 +59,7 @@
                     </span>
 
 
-                    <li><a href="{{ url('/writepost') }}" class="button primary medium fit js-forbid-guest">Napiši
+                    <li><a href="{{ route('writeform') }}" class="button primary medium fit js-forbid-guest">Napiši
                             definiciju</a></li>
                     <li class="user">
                         <form method="POST" class="invis" action="{{ route('logout') }}">
