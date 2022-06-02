@@ -23,7 +23,7 @@ class PostController extends Controller
 {
 
     //Autor: Petar Repac
-    public function display($posts)
+    public function display($posts, $searchParams = null)
     {
 
         $authUser = Auth::user();
@@ -53,7 +53,7 @@ class PostController extends Controller
             $post->userCommented = $userCommented;
         }
 
-        return view('posts.all', compact('posts'));
+        return view('posts.all', compact(['posts', 'searchParams']));
     }
 
     public function showPosts(Request $request)
@@ -88,6 +88,7 @@ class PostController extends Controller
                 $posts = $posts->orderBy('timePosted', 'DESC');
                 break;
             default:
+                $type = 'new';
                 $posts = $posts->orderBy('timePosted', 'DESC');
         }
 
@@ -101,6 +102,7 @@ class PostController extends Controller
             case 'all':
                 break;
             default:
+                $state = 'all';
                 break;
         }
 
@@ -118,8 +120,13 @@ class PostController extends Controller
         }
 
 
+        $searchParams = [
+            'type' => $type,
+            'state' => $state,
+            'keywords' => isset($keywords) ? implode(' ', $keywords) : null,
+        ];
 
-        return $this->display($posts->get());
+        return $this->display($posts->get(), $searchParams);
     }
 
 
@@ -178,20 +185,6 @@ class PostController extends Controller
         return view('posts.post', compact(["post", "author", "comments"]));
     }
 
-
-    /**
-     * Get a validator for an incoming post create request
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'heading' => ['required', 'string', 'min:3', 'max:255'],
-            'content' => ['required', 'string', 'min:5', 'max:8192'],
-        ]);
-    }
 
 
     /**
