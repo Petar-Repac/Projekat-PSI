@@ -379,7 +379,7 @@ class DatabaseSeeder extends Seeder
 
         Comment::create([
             'commenter' => 6,
-            'post' => 5,
+            'post' => 6,
             'content' => 'haha brain rot funni',
             'timeCreated' => $today,
         ]);

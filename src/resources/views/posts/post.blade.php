@@ -32,7 +32,7 @@
             <header>
                 <ul class="actions">
 
-                    <a href="/all" class="button medium"><span class="icon fa-angle-double-left"></a>
+                    <a href="/" class="button medium"><span class="icon fa-angle-double-left"></a>
                     <li>
                         <button class="button like">
                             <span class="icon fa-plus-circle"></span>

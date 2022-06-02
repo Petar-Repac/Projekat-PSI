@@ -1,5 +1,5 @@
 <?php
-//Autor: Petar Repac & Vukašin Stepanović
+//Autor: Petar Repac 2019/0616 & Vukašin Stepanović 2019/0133
 
 namespace App\Http\Controllers\Posts;
 
@@ -19,10 +19,23 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
+/**
+ * PostController klasa zadužena za
+ * prikaz, unos, pretragu, pisanje novih, zaključavanje i glasanje na objavama
+ */
 class PostController extends Controller
 {
 
-    //Autor: Petar Repac
+    //Autor: Petar Repac 2019/0616
+
+
+    /**
+     * Prikaz prodledjenih objava na pocetnoj strani
+     * 
+     * @param App\Models\Post $posts
+     * @param string[] $searchParams
+     * @return Response
+     */
     public function display($posts, $searchParams = null)
     {
 
@@ -56,13 +69,22 @@ class PostController extends Controller
         return view('posts.all', compact(['posts', 'searchParams']));
     }
 
+    /**
+     *   Prikaz svih objava na pocetnoj strani
+     *  @param Request $request 
+     *  @return Response
+     */
     public function showPosts(Request $request)
     {
         $posts = Post::all();
         return $this->display($posts);
     }
 
-
+    /**
+     *   Prikaz objava koje ispunjavaju uslove pretrage na pocetnoj strani
+     *  @param Request $request 
+     *  @return Response
+     */
     public function searchPosts(Request $request)
     {
         $type = $request->get('type', null);
@@ -129,7 +151,11 @@ class PostController extends Controller
         return $this->display($posts->get(), $searchParams);
     }
 
-
+    /**
+     *   Glasanje na odredjenoj objavi
+     *  @param Request $request 
+     *  @return JSON 
+     */
     protected function vote(Request $request)
     {
         $req = json_decode($request->getContent(), true);
@@ -152,12 +178,22 @@ class PostController extends Controller
         return response()->json($req);
     }
 
+    /**
+     *   Prikaz forme za pisanje objave
+     *  @param Request $request 
+     *  @return Response
+     */
     protected function showPostForm(Request $request)
     {
         return view('posts.write', []);
     }
 
 
+    /**
+     *   Prikaz konkretne objave u zasebnoj strani
+     *  @param integer $request 
+     *  @return Response
+     */
     protected function showSpecificPost($id)
     {
         $authUser = Auth::user();
@@ -191,7 +227,7 @@ class PostController extends Controller
      * Pisanje nove objave
      *
      * @param  array  $data
-     * @return \App\Post
+     * @return Response
      */
     protected function writePost(Request $request)
     {
@@ -221,7 +257,14 @@ class PostController extends Controller
     }
 
 
-    //Autor: Vukašin Stepanović
+    //Autor: Vukašin Stepanović 2019/0133
+    /**
+     * Zakljucavanje objave od strane mod/admina
+     *
+     * @param  Request  $request
+     * @param  integer  $id
+     * @return JSON
+     */
     protected function lockPost(Request $request, $id)
     {
         $post = Post::findOrFail($id);

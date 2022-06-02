@@ -1,5 +1,5 @@
 <?php
-//Autor: Petar Repac
+//Autor: Petar Repac 2019/0616
 
 namespace App\Http\Controllers\Posts;
 
@@ -14,9 +14,17 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
+/**
+ *  CommentController - Klasa za ispisivanje komentara
+ */
 class CommentController extends Controller
 {
 
+    /**
+     * Vraca sve komentare za odredjeni post
+     * @param @postId integer
+     * @return Comment
+     */
     public static function getComments($postId)
     {
 
@@ -26,10 +34,10 @@ class CommentController extends Controller
 
 
     /**
-     * Create a new post
+     * Stvaranje novog comentara
      *
-     * @param  array  $data
-     * @return \App\Post
+     * @param  Request $request
+     * @return Response
      */
     protected function writeComment(Request $request)
     {
