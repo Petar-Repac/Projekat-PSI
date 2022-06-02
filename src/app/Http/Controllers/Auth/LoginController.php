@@ -1,11 +1,14 @@
 <?php
-/* Autor: Vukašin Stepanović */
+/* Autor: Vukašin Stepanović 0133/2019 */
 
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+/**
+ * LoginController - klasa za prijavljivanje
+ */
 class LoginController extends Controller
 {
   /*
@@ -44,6 +47,10 @@ class LoginController extends Controller
     $this->username = 'username';
   }
 
+  /**
+   * Polje koje predstavlja username
+   * @return string
+   */
   public function username()
   {
     return $this->username;

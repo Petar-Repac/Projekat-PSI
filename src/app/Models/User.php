@@ -1,5 +1,5 @@
 <?php
-/* Autori: Vukašin Stepanović, Petar Repac */
+/* Autori: Vukašin Stepanović 0133/2019, Petar Repac 0616/2019 */
 
 /**
  * Created by Reliese Model.
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * Class User
+ * Klasa koja predstavlja jedan red tabele User u bazi podataka
  * 
  * @property int $idUser
  * @property string $username
@@ -47,21 +47,33 @@ class User extends Authenticatable
 		'isBanned',
 	];
 
+	/**
+	 * Definise inverznu vezu za ulogu.
+	 */
 	public function role()
 	{
 		return $this->belongsTo(Role::class, 'role', 'idRole');
 	}
 
+	/**
+	 * Definise 1:n vezu za komentare.
+	 */
 	public function comments()
 	{
 		return $this->hasMany(Comment::class, 'commenter');
 	}
 
+	/**
+	 * Definise 1:n vezu za postove.
+	 */
 	public function posts()
 	{
 		return $this->hasMany(Post::class, 'author');
 	}
 
+	/**
+	 * Definise 1:n vezu za glasove.
+	 */
 	public function votes()
 	{
 		return $this->hasMany(Vote::class, 'voter');

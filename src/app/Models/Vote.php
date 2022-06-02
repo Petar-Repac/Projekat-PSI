@@ -1,5 +1,5 @@
 <?php
-/* Autori: Vukašin Stepanović, Petar Repac */
+/* Autori: Vukašin Stepanović 0133/2019, Petar Repac 0616/2019 */
 
 /**
  * Created by Reliese Model.
@@ -10,7 +10,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Vote
+ * Klasa koja predstavlja jedan red tabele Vote u bazi podataka
  * 
  * @property int $voter
  * @property int $post
@@ -38,11 +38,17 @@ class Vote extends Model
 		'post',
 	];
 
+	/**
+	 * Definise inverznu vezu za postove.
+	 */
 	public function post()
 	{
 		return $this->belongsTo(Post::class, 'post');
 	}
 
+	/**
+	 * Definise inverznu vezu za korisnika.
+	 */
 	public function user()
 	{
 		return $this->belongsTo(User::class, 'voter');
