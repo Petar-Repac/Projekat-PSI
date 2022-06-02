@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('tobago123'),
             'role' => Role::user()->idRole,
             'isBanned' => false,
-            'postStatus' => 0,
+            'postStatus' => 1,
         ]);
 
         User::create([
@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
             'role' => Role::user()->idRole,
             'isBanned' => false,
             'status' => '🕷 🕷 🕷',
-            'postStatus' => 0,
+            'postStatus' => 1,
         ]);
         User::create([
             'username' => 'Asha20',
@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
             'role' => Role::user()->idRole,
             'isBanned' => false,
             'status' => 'JS Wizard, tetris crackhead',
-            'postStatus' => 0,
+            'postStatus' => 1,
         ]);
         User::create([
             'username' => 'SlavicLeshy',
@@ -74,7 +74,7 @@ class DatabaseSeeder extends Seeder
             'role' => Role::user()->idRole,
             'isBanned' => false,
             'status' => 'Violence enjoyer',
-            'postStatus' => 0,
+            'postStatus' => 1,
         ]);
         User::create([
             'username' => 'Walter',
@@ -90,7 +90,7 @@ class DatabaseSeeder extends Seeder
             'role' => Role::user()->idRole,
             'isBanned' => false,
             'status' => '🐤',
-            'postStatus' => 0,
+            'postStatus' => 1,
         ]);
         User::create([
             'username' => 'Trinidad',
@@ -98,7 +98,7 @@ class DatabaseSeeder extends Seeder
             'role' => Role::user()->idRole,
             'isBanned' => false,
             'status' => '🏝 🏝 🏝',
-            'postStatus' => 0,
+            'postStatus' => 1,
         ]);
         User::create([
             'username' => 'RickAstley',
@@ -114,7 +114,7 @@ class DatabaseSeeder extends Seeder
             'role' => Role::user()->idRole,
             'isBanned' => false,
             'status' => 'around the world around the world around the world around the world around the world',
-            'postStatus' => 0,
+            'postStatus' => 1,
         ]);
 
 
