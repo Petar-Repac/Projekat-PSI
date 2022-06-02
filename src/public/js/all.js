@@ -1,5 +1,7 @@
 "use strict";
 
+// Autor: Vukašin Stepanović 0133/2019 & Petar Repac 0616/2019
+
 (function main() {
   const allPosts = Array.from(document.querySelectorAll(".post")).map($post => {
     const $like = $post.querySelector(".button.like");

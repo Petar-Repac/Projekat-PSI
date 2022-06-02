@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Autor: Vukašin Stepanović
+# Autor: Vukašin Stepanović 0133/2019
 
 # Staviti u crontab da se pokrece svakodnevno (primer: 0 0 * * * autoselect.sh)
 
