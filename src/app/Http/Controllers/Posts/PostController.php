@@ -217,7 +217,7 @@ class PostController extends Controller
 
         Utilities::showDialog("Uspeh", "Objava uspešno postavljena!");
 
-        return redirect('all');
+        return redirect('home');
     }
 
 
