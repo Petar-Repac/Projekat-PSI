@@ -79,7 +79,7 @@
                     @foreach ($comments as $comment)
                         <div class="spotlight comment">
                             <div class="content">
-                                <h2> <a href="user.html">{{ $comment->username }}</a></h2>
+                                <h2> <a href="/user/{{ $comment->username }}">{{ $comment->username }}</a></h2>
                                 <p>{{ $comment->content }}</p>
                                 <span>{{ $comment->timeCreated }} </span>
                             </div>

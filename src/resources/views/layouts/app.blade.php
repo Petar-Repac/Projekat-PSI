@@ -29,7 +29,7 @@
         <nav id="nav">
 
             <ul>
-                <li class="current"><a href="index.html">Početna</a></li>
+                <li class="current"><a href="{{ route('all') }}">Početna</a></li>
                 <li><a href="uputstvo.html">Uputstvo za korišćenje prototipa</a></li>
                 <li><a href="o-nama.html">O Kavujliji</a></li>
             </ul>
