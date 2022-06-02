@@ -29,6 +29,7 @@ window.xfetch = (function () {
                 location.replace("/login?banned");
                 throw new Error(res.statusText);
             } else {
+                console.log({res});
                 throw new Error(res.statusText);
             }
         });

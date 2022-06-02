@@ -16,12 +16,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class PostController extends Controller
 {
 
     //Autor: Petar Repac
-    public function display($posts)
+    public function display($posts, $searchParams = null)
     {
 
         $authUser = Auth::user();
@@ -51,7 +53,7 @@ class PostController extends Controller
             $post->userCommented = $userCommented;
         }
 
-        return view('posts.all', compact('posts'));
+        return view('posts.all', compact(['posts', 'searchParams']));
     }
 
     public function showPosts(Request $request)
@@ -61,42 +63,70 @@ class PostController extends Controller
     }
 
 
-
-    public function searchPosts($type, $state, $keywords = null)
+    public function searchPosts(Request $request)
     {
+        $type = $request->get('type', null);
+        $state = $request->get('state', null);
+        $keywords = $request->get('keywords', null);
+
+
+        $posts = DB::table('Post')
+            ->select('idPost', 'isPermanent', 'timePosted', 'heading', 'content', 'author', 'isLocked')
+            ->selectRaw('SUM(V.value) as score')
+            ->Join('Vote as V', 'idPost', '=', 'post', 'left outer')
+            ->groupBy('idPost', 'isPermanent', 'timePosted', 'heading', 'content', 'author', 'isLocked');
+
+
         switch ($type) {
             case 'best':
+                $posts = $posts->orderBy('score', 'DESC');
+                break;
             case 'worst':
+                $posts = $posts->orderBy('score', 'ASC');
+                break;
             case 'new':
+                $posts = $posts->orderBy('timePosted', 'DESC');
                 break;
             default:
                 $type = 'new';
+                $posts = $posts->orderBy('timePosted', 'DESC');
         }
 
         switch ($state) {
             case 'hall':
+                $posts = $posts->where('isPermanent',  1);
+                break;
             case 'purgatory':
+                $posts = $posts->where('isPermanent',  0);
+                break;
             case 'all':
                 break;
             default:
                 $state = 'all';
+                break;
         }
+
 
         if (isset($keywords)) {
+            //Za svaku rec odvojenu razmakom
             $keywords = explode(' ', $keywords);
+            foreach ($keywords as $keyword) {
+                //Logicko grupisanje where klauzula
+                $posts = $posts->where(function ($query) use ($keyword) {
+                    $query->orWhere('content', 'like', '%' . $keyword . '%');
+                    $query->orWhere('heading', 'like', '%' . $keyword . '%');
+                });
+            }
         }
 
-        $typeParam = [];
-        switch ($type) {
-            case 'best':
-                $typeParam = '';
-                break;
-            case 'worst':
-                break;
-            case 'new':
-                break;
-        }
-        $posts = Post::all();
+
+        $searchParams = [
+            'type' => $type,
+            'state' => $state,
+            'keywords' => isset($keywords) ? implode(' ', $keywords) : null,
+        ];
+
+        return $this->display($posts->get(), $searchParams);
     }
 
 
@@ -134,11 +164,12 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->upvotes = count(Vote::all()->where('post', $id)->where('value', 1));
         $post->downvotes = count(Vote::all()->where('post', $id)->where('value', -1));
+        $userVote = 0;
         if ($authUser) {
             $userVote = Vote::where('voter', $authUser->idUser)->where('post', $post->idPost)->first();
             $userVote = isset($userVote) ? $userVote->value : 0;
         }
-
+        $post->userVote = $userVote;
 
         $author = User::find($post->author);
         $comments = CommentController::getComments($id);
@@ -154,20 +185,6 @@ class PostController extends Controller
         return view('posts.post', compact(["post", "author", "comments"]));
     }
 
-
-    /**
-     * Get a validator for an incoming post create request
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'heading' => ['required', 'string', 'min:3', 'max:255'],
-            'content' => ['required', 'string', 'min:5', 'max:8192'],
-        ]);
-    }
 
 
     /**

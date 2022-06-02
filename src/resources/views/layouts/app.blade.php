@@ -25,13 +25,52 @@
             <img src="{{ asset('images/tobago-white-stroke.png') }}" alt="Tobago">
         </a>
 
+
         <nav id="nav">
+
             <ul>
-                <li class="current"><a href="index.html">Početna</a></li>
+                <li class="current"><a href="{{ route('all') }}">Početna</a></li>
                 <li><a href="uputstvo.html">Uputstvo za korišćenje prototipa</a></li>
                 <li><a href="o-nama.html">O Kavujliji</a></li>
             </ul>
         </nav>
+
+        @if (Route::has('login'))
+            <ul class="actions">
+
+                @auth
+                    <span>
+                        @if (Auth::user()->isAdmin())
+                            Admin:
+                        @elseif (Auth::user()->isMod())
+                            Mod:
+                        @else
+                            Korisnik:
+                        @endif
+                        {{ Auth::user()->username }}
+                    </span>
+
+
+                    <li><a href="{{ url('/writepost') }}" class="button primary medium fit js-forbid-guest">Napiši
+                            definiciju</a></li>
+                    <li class="user">
+                        <form method="POST" class="invis" action="{{ route('logout') }}">
+                            @csrf
+                            <input type="submit" value="Odjavi me" />
+                        </form>
+                    @else
+                    <li class="guest"><a href="{{ route('login') }}" class="button medium fit">Prijava</a>
+                    </li>
+
+                    @if (Route::has('register'))
+                        <li class="guest">
+                            <a href="{{ route('register') }}" class="button medium fit">
+                                Registracija</a>
+                        </li>
+                    @endif
+                @endauth
+            </ul>
+        @endif
     </header>
 
     @yield('content')

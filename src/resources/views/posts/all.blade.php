@@ -34,38 +34,46 @@
                         <h1>Pretraga</h1>
 
 
-                        <form method="GET" action="#">
+                        <form method="GET" action="{{ route('search') }}">
                             <div class="row gtr-uniform">
 
                                 <!-- Break -->
                                 <div class="col-4 col-12-small">
-                                    <input type="radio" id="radio-1" name="type" value="new" checked>
+                                    <input type="radio" id="radio-1" name="type" value="new"
+                                        @if (isset($searchParams) && $searchParams['type'] == 'new') checked @endif>
                                     <label for="radio-1">Najnovije</label>
                                 </div>
                                 <div class="col-4 col-12-small">
-                                    <input type="radio" id="radio-2" name="type" value="best" checked>
+                                    <input type="radio" id="radio-2" name="type" value="best"
+                                        @if (isset($searchParams) && $searchParams['type'] == 'best') checked @endif>
                                     <label for="radio-2">Najbolje</label>
                                 </div>
                                 <div class="col-4 col-12-small">
-                                    <input type="radio" id="radio-4" name="type" value="worst">
+                                    <input type="radio" id="radio-4" name="type" value="worst"
+                                        @if (isset($searchParams) && $searchParams['type'] == 'worst') checked @endif>
                                     <label for="radio-4">Najgore</label>
                                 </div>
                                 <!-- Break -->
                                 <div class="col-4 col-12-small">
-                                    <input type="radio" id="radio-ds" name="state" value="hall" checked>
+                                    <input type="radio" id="radio-ds" name="state" value="hall"
+                                        @if (isset($searchParams) && $searchParams['state'] == 'hall') checked @endif>
                                     <label for="radio-ds">Dvorana slavnih</label>
                                 </div>
                                 <div class="col-4 col-12-small">
-                                    <input type="radio" id="radio-ci" name="state" value="purgatory">
+                                    <input type="radio" id="radio-ci" name="state" value="purgatory"
+                                        @if (isset($searchParams) && $searchParams['state'] == 'purgatory') checked @endif>
                                     <label for="radio-ci">Čistilište</label>
                                 </div>
                                 <div class="col-4 col-12-small">
-                                    <input type="radio" id="radio-sv" name="state" value="all">
+                                    <input type="radio" id="radio-sv" name="state" value="all"
+                                        @if (isset($searchParams) && $searchParams['state'] == 'all') checked @endif>
                                     <label for="radio-sv">Sve</label>
                                 </div>
                                 <!-- Break -->
                                 <div class="col-6 col-12-xsmall">
-                                    <input type="text" name="keywords" id="demo-name" value="" placeholder="Ključne reči" />
+                                    <input type="text" name="keywords" id="demo-name"
+                                        value="@if (isset($searchParams['keywords'])) {{ $searchParams['keywords'] }} @endif"
+                                        placeholder="Ključne reči" />
                                 </div>
                                 <div class="col-6">
                                     <ul class="actions">
@@ -84,7 +92,7 @@
         </section>
         <!-- One -->
         <div class="row">
-            <div class="col-8 col-12-medium">
+            <div class="col-8 off-2 col-12-medium">
                 <!-- One -->
                 <section id="one" class="wrapper">
                     <div class="inner">
@@ -109,7 +117,7 @@
 
                                                     <li>
                                                         <button class="button dislike">
-                                                            <span class="icon fa-minus-circle">0</span>
+                                                            <span class="icon fa-minus-circle"></span>
                                                             <span class="js-dislike-count">0</span>
                                                         </button>
                                                     </li>
@@ -206,26 +214,26 @@
                     </div>
                 </section>
             </div>
+
+
         </div>
 
-        <!-- Paginacija
-                                                                                                    <div class="row">
-                                                                                                        <div class="col-9">
-                                                                                                            <ul class="pagination">
-                                                                                                                <li><span class="button disabled">Prethodna</span></li>
-                                                                                                                <li><a href="#" class="page active">1</a></li>
-                                                                                                                <li><a href="#" class="page">2</a></li>
-                                                                                                                <li><a href="#" class="page">3</a></li>
-                                                                                                                <li><span>…</span></li>
-                                                                                                                <li><a href="#" class="page">8</a></li>
-                                                                                                                <li><a href="#" class="page">9</a></li>
-                                                                                                                <li><a href="#" class="page">10</a></li>
-                                                                                                                <li><a href="#" class="button">Sledeća</a></li>
-                                                                                                            </ul>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                            -->
-
+        <!-- Paginacija -->
+        <div class="row">
+            <div class="col-9">
+                <ul class="pagination">
+                    <li><span class="button disabled">Prethodna</span></li>
+                    <li><a href="#" class="page active">1</a></li>
+                    <li><a href="#" class="page">2</a></li>
+                    <li><a href="#" class="page">3</a></li>
+                    <li><span>…</span></li>
+                    <li><a href="#" class="page">8</a></li>
+                    <li><a href="#" class="page">9</a></li>
+                    <li><a href="#" class="page">10</a></li>
+                    <li><a href="#" class="button">Sledeća</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
