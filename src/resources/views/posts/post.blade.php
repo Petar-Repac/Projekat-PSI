@@ -1,4 +1,4 @@
-<!-- Autor: Petar Repac -->
+<!-- Autor: Petar Repac 2019/0616, Vukašin Stepanović 2019/0133-->
 @extends('layouts.app')
 
 @section('title', $post->heading . ' | Post')

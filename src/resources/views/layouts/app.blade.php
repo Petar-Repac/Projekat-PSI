@@ -1,4 +1,4 @@
-<!-- Autor: Vukašin Stepanović & Petar Repac -->
+<!-- Autor: Vukašin Stepanović 2019/0133 & Petar Repac 2019/0616-->
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">

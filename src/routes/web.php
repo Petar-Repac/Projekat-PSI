@@ -1,6 +1,6 @@
 <?php
 
-// Autor: Vukašin Stepanović & Petar Repac
+// Autor: Vukašin Stepanović 2019/0133 & Petar Repac 2019/0616
 
 use Illuminate\Support\Facades\Route;
 
