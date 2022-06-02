@@ -1,6 +1,6 @@
 <?php
 
-// Autor: Vukašin Stepanović
+// Autor: Vukašin Stepanović 0133/2019
 
 namespace App\Http\Middleware;
 
@@ -8,6 +8,9 @@ use App\Utilities;
 use Closure;
 use Illuminate\Http\Request;
 
+/**
+ * Middleware koji proverava da li je korisnik banovan. Ako jeste, izloguje ga i prikazuje poruku.
+ */
 class Banned
 {
     /**

@@ -1,5 +1,5 @@
 <?php
-/* Autor: Vukašin Stepanović */
+/* Autor: Vukašin Stepanović 0133/2019 */
 
 namespace App\Http\Controllers\Auth;
 
@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+/**
+ * RegisterController - klasa za registrovanje novih korisnika
+ */
 class RegisterController extends Controller
 {
     /*

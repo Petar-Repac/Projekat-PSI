@@ -1,20 +1,33 @@
 <?php
 
-// Autor: Vukašin Stepanović
+// Autor: Vukašin Stepanović 0133/2019
 
 namespace App\Http\Controllers;
 
 use App\Utilities;
 use Illuminate\Http\Request;
 
+/** 
+ * AdminController - klasa za administratorske funkcije
+ */
 class AdminController extends Controller
 {
+    /** 
+     * Pokrece selekciju
+     * 
+     * @return Post
+     */
     public function triggerSelection(Request $request)
     {
         $winner = Utilities::triggerSelection();
         return response()->json(['winner' => $winner]);
     }
 
+    /**
+     * Pokrece selekciju (JSON endpoint)
+     * 
+     * @return Post
+     */
     public function triggerAutoSelection(Request $request)
     {
         $req = json_decode($request->getContent(), true);

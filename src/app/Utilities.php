@@ -1,6 +1,6 @@
 <?php
 
-// Autor: Vukašin Stepanović & Petar Repac
+// Autor: Vukašin Stepanović 0133/2019 & Petar Repac 0616/2019
 
 namespace App;
 
@@ -8,13 +8,32 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 
+/**
+ * Klasa koja sadrzi razne pomocne funkcije za rad
+ */
 class Utilities
 {
+
+  /**
+   * Prikazuje flash dialog korisniku
+   * 
+   * @param string $title
+   * @param string $content
+   * @param string $type
+   * @return void
+   */
   public static function showDialog($title, $content, $type = "success")
   {
     Session::flash("dialog", json_encode(compact("title", "content", "type")));
   }
 
+  /**
+   * Uporedjuje rezultat dva posta.
+   * 
+   * @param Post $a
+   * @param Post $b
+   * @return Post
+   */
   private static function comparePosts(Post $a, Post $b)
   {
     if ($a == null) return $b;
@@ -29,6 +48,11 @@ class Utilities
     return $sumA > $sumB ? $a : $b;
   }
 
+  /**
+   * Pokrece selekciju i vraca pobednicki Post.
+   * 
+   * @return Post
+   */
   public static function triggerSelection()
   {
     $authors = User::where('postStatus', 1)->get();

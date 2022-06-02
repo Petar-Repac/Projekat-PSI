@@ -1,6 +1,6 @@
 <?php
 
-// Autor: Vukašin Stepanović
+// Autor: Vukašin Stepanović 0133/2019
 
 namespace App\Http\Middleware;
 
@@ -10,6 +10,9 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
+/**
+ * Middleware koji ispisuje poruku o tome da li je korisnicki post pobedio ili izgubio nakon selekcije.
+ */
 class DeclareWinner
 {
     /**
