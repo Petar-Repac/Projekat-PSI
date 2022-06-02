@@ -47,6 +47,7 @@ class CommentController extends Controller
             'timeCreated' => Carbon::now()->timestamp,
         ];
 
+        Utilities::showDialog("Obaveštenje", "Komentar uspešno postavljen!");
         Comment::create($data);
 
         return redirect('/posts/' . $data['post']);
