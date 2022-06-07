@@ -122,7 +122,7 @@ class DatabaseSeeder extends Seeder
             'role' => Role::user()->idRole,
             'isBanned' => true,
             'status' => 'Banovan zbog zločina protiv čovečnosti',
-            'postStatus' => 1,
+            'postStatus' => 0,
         ]);
 
 
