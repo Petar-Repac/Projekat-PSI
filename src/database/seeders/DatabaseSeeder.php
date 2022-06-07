@@ -116,6 +116,14 @@ class DatabaseSeeder extends Seeder
             'status' => 'around the world around the world around the world around the world around the world',
             'postStatus' => 1,
         ]);
+        User::create([
+            'username' => 'Banovan',
+            'password' => Hash::make('tobago123'),
+            'role' => Role::user()->idRole,
+            'isBanned' => true,
+            'status' => 'Banovan zbog zločina protiv čovečnosti',
+            'postStatus' => 1,
+        ]);
 
 
         //Objave
