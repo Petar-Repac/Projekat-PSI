@@ -97,8 +97,8 @@
                     <div class="row gtr-uniform">
                         <div class="col-12 col-12-xsmall">
                             <textarea id="content" cols="50" rows="4" placeholder='comment'
-                                class="js-comment-text form-control{{ $errors->has('content') ? ' is-invalid' : '' }}"
-                                name="content" maxlength="1000"> </textarea>
+                                class="js-comment-text form-control{{ $errors->has('content') ? ' is-invalid' : '' }}" name="content"
+                                maxlength="1000" required></textarea>
 
                             @if ($errors->has('content'))
                                 <span class="invalid-feedback" role="alert">

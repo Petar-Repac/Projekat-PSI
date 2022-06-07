@@ -27,7 +27,7 @@
                         <label for="heading" class="col-md-4 col-form-label text-md-right">Naslov</label>
                         <input id="heading" type="text"
                             class="form-control{{ $errors->has('heading') ? ' is-invalid' : '' }}" name="heading"
-                            placeholder="Naslov" maxlength="100">
+                            placeholder="Naslov" maxlength="100" required>
                         @if ($errors->has('heading'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('heading') }}</strong>
@@ -38,7 +38,7 @@
 
                         <label for="heading" class="col-md-4 col-form-label text-md-right">Sadržaj</label>
                         <textarea id="content" cols="50" rows="4" class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}"
-                            name="content" maxlength="1000"> </textarea>
+                            name="content" maxlength="1000" required></textarea>
                         @if ($errors->has('content'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('content') }}</strong>
