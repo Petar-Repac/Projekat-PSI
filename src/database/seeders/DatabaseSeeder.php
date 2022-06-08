@@ -281,6 +281,16 @@ class DatabaseSeeder extends Seeder
             'post' => 4,
             'value' => 1,
         ]);
+        Vote::create([
+            'voter' => 3,
+            'post' => 4,
+            'value' => 1,
+        ]);
+        Vote::create([
+            'voter' => 9,
+            'post' => 4,
+            'value' => 1,
+        ]);
         Comment::create([
             'commenter' => 2,
             'post' => 4,
