@@ -67,7 +67,18 @@
     
         console.log(__user.id, $post.meta.id, value);
         const result = await API.setLikeDislike(__user.id, $post.meta.id, value);
-    
+        console.log({result});
+        if(result.locked == true){
+            window.showDialog({
+                title: "Greška",
+                content:"Akcija nije dozvoljena jer je ova objava zaključana.",
+                type: "error"
+            });
+
+            return;
+        }
+
+
         const oldUserVote = $post.meta.userVote;
         const newUserVote = result.value;
         $post.meta.userVote = result.value;

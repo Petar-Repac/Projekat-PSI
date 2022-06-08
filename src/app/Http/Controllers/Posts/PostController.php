@@ -163,6 +163,14 @@ class PostController extends Controller
         $post = $req['post'];
         $value = $req['value'];
 
+        $postRecord = Post::where('idPost', $post)->first();
+
+        if ($postRecord->isLocked == true) {
+            return response()->json([
+                'locked' => true
+            ]);
+        }
+
         if ($value == 0) {
             Vote::where('voter', $voter)->where('post', $post)->delete();
         } else {
