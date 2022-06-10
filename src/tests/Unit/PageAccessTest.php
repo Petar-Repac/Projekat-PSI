@@ -7,6 +7,7 @@ use Tests\TestCase;
 
 class PageAccessTest extends TestCase
 {
+
     public function test_about_us_page_access()
     {
         $this->get('/about-us')->assertStatus(200);
@@ -44,7 +45,7 @@ class PageAccessTest extends TestCase
 
     public function test_writepost_page_accepts_auth_user()
     {
-        $admin = User::where('username', 'admin')->first();
+        $admin = User::firstWhere('username', 'admin');
         $this->actingAs($admin)->get('/writepost')->assertStatus(200);
     }
 }
