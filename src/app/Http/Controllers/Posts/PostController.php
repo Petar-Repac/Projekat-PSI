@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Response;
 
 /**
  * PostController klasa zadužena za
@@ -40,8 +41,14 @@ class PostController extends Controller
     {
 
         $authUser = Auth::user();
+        $firstPost = null;
+
         //Dohvatanje lajkova
         foreach ($posts as $post) {
+            if ($firstPost == null) {
+                $firstPost = $post;
+            }
+
             $upvotes = count(Vote::all()->where('post', $post->idPost)->where('value', 1));
             $downvotes = count(Vote::all()->where('post', $post->idPost)->where('value', -1));
             $commentNum = count(Comment::all()->where('post', $post->idPost));
@@ -66,7 +73,16 @@ class PostController extends Controller
             $post->userCommented = $userCommented;
         }
 
-        return view('posts.all', compact(['posts', 'searchParams']));
+        $contents = view('posts.all', compact(['posts', 'searchParams']));
+        $response = Response::make($contents, 200);
+
+        $response->header('X-Post-Count', count($posts->toArray()));
+
+        if ($firstPost) {
+            $response->header('X-First-Post', $firstPost->idPost);
+        }
+
+        return $response;
     }
 
     /**
