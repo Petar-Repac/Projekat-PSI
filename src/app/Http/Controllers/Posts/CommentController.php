@@ -45,7 +45,7 @@ class CommentController extends Controller
 
         if ($post->isLocked) {
             Utilities::showDialog("Greška", "Ne možete postaviti komentar jer je post zaključan.", "error");
-            return Redirect::back();
+            return Redirect::back()->header('X-Error', 'post_locked');
         }
 
         $data = [

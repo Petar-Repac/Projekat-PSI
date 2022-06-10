@@ -52,7 +52,8 @@ class WritePostTest extends TestCase
         $this
             ->actingAs($user)
             ->post('/writepost', $data)
-            ->assertRedirect('/');
+            ->assertRedirect('/')
+            ->assertHeader('X-Error', 'double_post');
 
         $this->assertEquals($user->postStatus, 1);
 

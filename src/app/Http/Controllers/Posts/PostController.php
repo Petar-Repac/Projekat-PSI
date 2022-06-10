@@ -245,7 +245,7 @@ class PostController extends Controller
         //Jedna objava dnevno
         if (Auth::user()->postStatus == 1) {
             Utilities::showDialog("Greška", "Moguće je napraviti samo jedan post pre selekcije!", "error");
-            return Redirect::back();
+            return Redirect::back()->header('X-Error', 'double_post');
         } else {
             Post::create([
                 'heading' => $request->input('heading'),
